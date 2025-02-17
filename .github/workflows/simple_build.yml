@@ -1,0 +1,17 @@
+name: simple_build
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["**"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build addon
+        uses: blenderkit/blender-addon-build@main
+        with:
+          name: sample-addon
+          exclude-files: ".git; .gitignore;README.md"
