@@ -14,4 +14,4 @@ jobs:
         uses: blenderkit/blender-addon-build@main
         with:
           name: sample-addon
-          exclude-files: ".git; .gitignore;README.md"
+          exclude-files: ".git;.gitignore;README.md"
