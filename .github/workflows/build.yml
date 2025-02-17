@@ -1,4 +1,4 @@
-name: simple_build
+name: build
 on:
   push:
     branches: ["main"]
@@ -13,5 +13,5 @@ jobs:
       - name: Build addon
         uses: blenderkit/blender-addon-build@main
         with:
-          name: sample-addon
+          name: cityGen
           exclude-files: ".git;.gitignore;README.md"
