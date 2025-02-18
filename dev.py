@@ -4,60 +4,49 @@ import shutil
 import subprocess
 import bpy
 
-
-def install_addon(install_dir):
-    extract_files(include_tests=True)
-    # shutil.copytree("out", install_dir)
+out_dir = os.path.abspath("out/cityGen")
 
 
 def extract_files(include_tests=False):
-    out_dir = os.path.abspath("out/cityGen")
-    shutil.rmtree(out_dir, True)
-
-    ignore_files = [
-        ".gitignore",
-        "dev.py",
-        "README.md",
-        "cityGen.zip",
-    ]
+    addon_files = ["__init__.py", "blender_manifest.toml"]
     print("Copying files to ", out_dir)
     shutil.copytree(
-        "buildingGen",
-        f"{out_dir}/buildingGen",
-        ignore=shutil.ignore_patterns("__pycache__", ".DS_Store"),
+        "core", f"{out_dir}/core", ignore=shutil.ignore_patterns("__pycache__")
     )
     if include_tests:
         shutil.copytree(
-            "tests",
-            f"{out_dir}/tests",
-            ignore=shutil.ignore_patterns("__pycache__", ".DS_Store"),
+            "tests", f"{out_dir}/tests", ignore=shutil.ignore_patterns("__pycache__")
         )
-    for item in os.listdir():
-        if not os.path.isdir(item) and not item in ignore_files:
-            shutil.copy(item, f"{out_dir}/{item}")
+    for item in addon_files:
+        shutil.copy(item, f"{out_dir}/{item}")
 
 
-def build(out_dir=None):
-    extract_files(include_tests=False)
+def build(out_dir=None, include_tests=False):
+    cleanup()
+    extract_files(include_tests=include_tests)
 
     print("Creating ZIP archive.")
     shutil.make_archive("cityGen", "zip", root_dir="out", base_dir="cityGen")
     print("Build done!")
 
 
-def install_to(install_dir):
-    if not install_dir:
-        print("No install directory specified.")
-        return
+def run_tests(blender_path):
+    blender_executable = f"{blender_path}/blender"
+    test_process = subprocess.Popen(
+        [
+            blender_executable,
+            "--factory-startup",
+            "--background",
+            "--python",
+            "run_tests.py",
+        ]
+    )
+    test_process.wait()
 
-    print(f"Installing to {install_dir}")
-    shutil.copytree("out", install_dir)
-    print("Done!")
 
-
-def run_tests(args):
-    extract_files()
-    install_addon("/home/josua/Documents/bin/blender-4.3 (2).2-linux-x64/blender"
+def cleanup():
+    shutil.rmtree(out_dir, True)
+    os.remove("cityGen.zip")
 
 
 ### COMMAND LINE INTERFACE
@@ -85,6 +74,7 @@ if args.command == "build":
 elif args.command == "release":
     build(args.install_at)
 elif args.command == "test":
-    run_tests(args)
+    build(include_tests=True)
+    run_tests(blender_path="/home/josua/Documents/bin/blender-4.3.2-linux-x64")
 else:
     parser.print_help()

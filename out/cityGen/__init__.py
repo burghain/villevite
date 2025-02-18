@@ -12,56 +12,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import bpy
-
-
-class OBJECT_OT_add_building(bpy.types.Operator):
-    "Create and initialize a new building"
-    bl_idname = "object.add_building"
-    bl_label = "Add Building"
-    bl_options = {"REGISTER", "UNDO"}
-
-    @classmethod
-    def poll(cls, context):
-        return context.mode == "OBJECT"
-
-    def execute(self, context):
-        bpy.ops.mesh.primitive_plane_add()
-        return {"FINISHED"}
-
-
-class OBJECT_OT_delete_building(bpy.types.Operator):
-    "Deletes the selected building"
-    bl_idname = "object.delete_building"
-    bl_label = "Delete Building"
-    bl_options = {"REGISTER", "UNDO"}
-
-    @classmethod
-    def poll(cls, context):
-        return context.mode == "OBJECT"
-
-    def execute(self, context):
-        bpy.ops.object.delete(confirm=False)
-        return {"FINISHED"}
-
-
-class VIEW3D_PT_cube_business(bpy.types.Panel):
-
-    bl_space_type = "VIEW_3D"
-    bl_region_type = "UI"
-    bl_category = "cityGen"
-    bl_label = "cityGen"
-
-    def draw(self, context):
-
-        layout = self.layout
-        layout.operator("object.add_building")
-        layout.operator("object.delete_building")
+from .core import operators, ui
 
 
 classes = [
-    OBJECT_OT_add_building,
-    VIEW3D_PT_cube_business,
-    OBJECT_OT_delete_building,
+    ui.VIEW3D_PT_SidePanel,
+    operators.AddBuilding,
+    operators.DeleteBuilding,
+    operators.AppendBuildingGen,
 ]
 
 

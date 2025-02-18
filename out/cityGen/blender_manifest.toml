@@ -4,7 +4,7 @@ schema_version = "1.0.0"
 # Change the values according to your extension
 id = "citygen"
 version = "1.0.0"
-name = "CityGen"
+name = "cityGen"
 tagline = "Procedural City Generator"
 maintainer = "Josua Zehner"
 # Supported types: "add-on", "theme"

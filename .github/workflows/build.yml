@@ -11,7 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build addon
-        uses: blenderkit/blender-addon-build@main
+        run: python dev.py build
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          name: cityGen
-          exclude-files: ".git;.gitignore;README.md"
+          path: cityGen.zip
+          name: cityGen.zip
