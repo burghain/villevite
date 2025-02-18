@@ -2,7 +2,6 @@ import argparse
 import os
 import shutil
 import subprocess
-import bpy
 
 out_dir = os.path.abspath("out/cityGen")
 
