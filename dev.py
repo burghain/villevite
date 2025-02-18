@@ -44,8 +44,10 @@ def run_tests(blender_path):
 
 
 def cleanup():
-    shutil.rmtree(out_dir, True)
-    os.remove("cityGen.zip")
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir, True)
+    if os.path.exists("cityGen.zip"):
+        os.remove("cityGen.zip")
 
 
 ### COMMAND LINE INTERFACE
