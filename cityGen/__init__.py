@@ -17,17 +17,20 @@ from .core import operators, ui
 
 classes = [
     ui.VIEW3D_PT_SidePanel,
-    operators.AddBuilding,
-    operators.DeleteBuilding,
-    operators.AppendBuildingGen,
+    operators.OBJECT_OT_AddBuilding,
+    operators.OBJECT_OT_DeleteBuilding,
+    operators.OBJECT_OT_AppendBuildingGen,
 ]
 
 
 def register():
+    print("akfjkfjakfhf")
     for cls in classes:
         bpy.utils.register_class(cls)
 
 
 def unregister():
+    print(cls)
     for cls in classes:
-        bpy.utils.unregister_class(cls)
+        op_class = getattr(bpy.types, str(cls.__name__))
+        bpy.utils.unregister_class(op_class)

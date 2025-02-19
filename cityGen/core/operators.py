@@ -2,7 +2,7 @@ import bpy
 from .buildingGen import buildingGen
 
 
-class AddBuilding(bpy.types.Operator):
+class OBJECT_OT_AddBuilding(bpy.types.Operator):
     "Create and initialize a new building"
     bl_idname = "object.add_building"
     bl_label = "Add Building"
@@ -17,7 +17,7 @@ class AddBuilding(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class DeleteBuilding(bpy.types.Operator):
+class OBJECT_OT_DeleteBuilding(bpy.types.Operator):
     "Deletes the selected building"
     bl_idname = "object.delete_building"
     bl_label = "Delete Building"
@@ -32,7 +32,7 @@ class DeleteBuilding(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class AppendBuildingGen(bpy.types.Operator):
+class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     bl_idname = "object.add_building_gen"
     bl_label = "Append BuildingGen"
     bl_options = {"REGISTER", "UNDO"}

@@ -2,6 +2,7 @@ import argparse
 import os
 import shutil
 import subprocess
+import urllib.request
 
 out_dir = os.path.abspath("out/cityGen")
 
@@ -20,21 +21,34 @@ def extract_files(include_tests=False):
         shutil.copy(item, f"{out_dir}/{item}")
 
 
-def build(out_dir=None, include_tests=False):
-    cleanup()
-    extract_files(include_tests=include_tests)
+def build():
+    download_blender("blender", "4.3.2")
+    subprocess.run(
+        [
+            "blender/blender-4.3.2/blender",
+            "--factory-startup",
+            "--command",
+            "extension",
+            "build",
+            "--source-dir",
+            "./cityGen",
+            "--output-filepath",
+            "./cityGen.zip",
+        ]
+    )
 
-    print("Creating ZIP archive.")
-    shutil.make_archive("cityGen", "zip", root_dir="out", base_dir="cityGen")
-    print("Build done!")
 
-
-def run_tests(blender_path):
-    blender_executable = f"{blender_path}/blender"
+def run_tests(blender_executable):
+    # python_dir = f"{blender_path}/blender-{version}/{major_version}/python/bin"
+    # python_interpreter = f"{python_dir}/{os.listdir(python_dir)[0]}"
+    # subprocess.run([python_interpreter, "-m", "ensurepip"])
+    # subprocess.run([python_interpreter, "-m", "pip", "install", "pytest"])
+    subprocess.run(
+        [blender_executable, "--command", "extension", "install-file", "cityGen.zip"]
+    )
     test_process = subprocess.Popen(
         [
             blender_executable,
-            "--factory-startup",
             "--background",
             "--python",
             "run_tests.py",
@@ -50,6 +64,39 @@ def cleanup():
         os.remove("cityGen.zip")
 
 
+def download_blender(blender_path, version):
+    major_version = version[:3]
+    if not os.path.exists(blender_path):
+        os.makedirs(blender_path)
+    if not os.path.exists(f"{blender_path}/blender-{version}"):
+        print(f"Downloading Blender {version}.")
+
+        subprocess.run(
+            [
+                "wget",
+                f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz",
+            ]
+        )
+
+        shutil.unpack_archive(f"blender-{version}-linux-x64.tar.xz")
+        shutil.move(f"blender-{version}-linux-x64", f"{blender_path}/blender-{version}")
+        os.remove(f"blender-{version}-linux-x64.tar.xz")
+    else:
+        print(
+            f"Blender {version} already downloaded. Continuing with existing installation"
+        )
+
+
+def test():
+
+    blender_versions = ["4.3.2"]
+    blender_path = "./blender"
+    build(include_tests=True)
+    for version in blender_versions:
+        download_blender(blender_path, version)
+        # run_tests(blender_path=f"{blender_path}/blender-{version}/blender")
+
+
 ### COMMAND LINE INTERFACE
 
 parser = argparse.ArgumentParser()
@@ -58,7 +105,7 @@ parser.add_argument(
     choices=["build", "test", "release"],
     help="""
   TEST = build with test files and run tests
-  BUILD = copy relevant files into ./out/blenderkit and zip to addon.
+  BUILD = copy relevant files into ./out/cityGen and zip to addon.
   RELEASE = build the add-on .zip with already built client binaries.
   """,
 )
@@ -71,11 +118,10 @@ parser.add_argument(
 args = parser.parse_args()
 
 if args.command == "build":
-    build(args.directory)
+    build()
 elif args.command == "release":
-    build(args.install_at)
+    build()
 elif args.command == "test":
-    build(include_tests=True)
-    run_tests(blender_path="/home/josua/Documents/bin/blender-4.3.2-linux-x64")
+    test()
 else:
     parser.print_help()
