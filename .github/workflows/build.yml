@@ -12,16 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Build addon
-        run: python dev.py build
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: cityGen
-          path: cityGen.zip
-          compression-level: 0
+          path: cityGen

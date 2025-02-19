@@ -22,20 +22,8 @@ def extract_files(include_tests=False):
 
 
 def build():
-    download_blender("blender", "4.3.2")
-    subprocess.run(
-        [
-            "blender/blender-4.3.2/blender",
-            "--factory-startup",
-            "--command",
-            "extension",
-            "build",
-            "--source-dir",
-            "./cityGen",
-            "--output-filepath",
-            "./cityGen.zip",
-        ]
-    )
+    print("Building addon")
+    shutil.make_archive("cityGen", "zip", "cityGen")
 
 
 def run_tests(blender_executable):
