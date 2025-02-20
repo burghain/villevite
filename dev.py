@@ -40,14 +40,21 @@ def run_tests(blender_executable):
         ]
     )
     print("Installed cityGen extension")
-    subprocess.run(
+    test = subprocess.Popen(
         [
             blender_executable,
             "--background",
+            "--python-exit-code",
+            "1",
             "--python",
             "run_tests.py",
         ]
     )
+    test.wait()
+    print("returned", test.returncode)
+    if test.returncode != 0:
+        raise Exception("Tests failed")
+    print("Tests passed")
 
 
 def download_blender(blender_path, version):
@@ -69,16 +76,15 @@ def download_blender(blender_path, version):
         os.remove(f"blender-{version}-linux-x64.tar.xz")
     else:
         print(
-            f"Blender {version} already downloaded. Continuing with existing installation"
+            f"Blender {version} already downloaded. Continuing with existing installation."
         )
 
 
 def install_test_deps(blender_path, version):
     major_version = version[:3]
     python_dir = f"{blender_path}/blender-{version}/{major_version}/python/bin/"
-    python_executable = f"{python_dir}/{os.listdir(python_dir)[0]}"
-    subprocess.run([python_executable, "-m", "ensurepip"])
-    subprocess.run([python_executable, "-m", "pip", "install", "pytest"])
+    python_executable = f"{python_dir}/{next(name for name in os.listdir(python_dir) if name.startswith('python3.'))}"
+    subprocess.run([python_executable, "-m", "pip", "install", "pytest", "-q", "-q"])
 
 
 def test():
