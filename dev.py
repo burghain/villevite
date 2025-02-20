@@ -39,7 +39,6 @@ def run_tests(blender_executable):
             "cityGen.zip",
         ]
     )
-    print("Installed cityGen extension")
     test = subprocess.Popen(
         [
             blender_executable,
@@ -51,7 +50,6 @@ def run_tests(blender_executable):
         ]
     )
     test.wait()
-    print("returned", test.returncode)
     if test.returncode != 0:
         raise Exception("Tests failed")
     print("Tests passed")
