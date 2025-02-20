@@ -4,9 +4,8 @@ import shutil
 import subprocess
 
 
-def build(include_tests=False):
-    if include_tests:
-        shutil.copytree("tests", "cityGen/tests")
+def build():
+
     print("Building addon")
     download_blender("./blender", "4.3.2")
     subprocess.run(
@@ -17,13 +16,11 @@ def build(include_tests=False):
             "extension",
             "build",
             "--source-dir",
-            "./cityGen",
+            "./citygen",
             "--output-filepath",
             "cityGen.zip",
         ]
     )
-    if include_tests:
-        shutil.rmtree("cityGen/tests")
 
 
 def run_tests(blender_executable):

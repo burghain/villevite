@@ -1,5 +1,5 @@
 import bpy
-from .buildingGen import buildingGen
+from .buildings import buildings
 
 
 class OBJECT_OT_AddBuilding(bpy.types.Operator):
@@ -38,5 +38,5 @@ class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        buildingGen.append_node_group("buildingGen")
+        buildings.append_node_group()
         return {"FINISHED"}
