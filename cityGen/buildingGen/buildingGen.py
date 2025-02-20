@@ -7,8 +7,7 @@ def add_building():
     return {"FINISHED"}
 
 
-def append_nodes():
-    filepath = "/mnt/Daten/Blender/cityGen/core/buildingGen/nodes/buildingGen.blend"
-
+def append_node_group(name):
+    filepath = os.path.join(os.path.dirname(__file__), f"nodes/{name}.blend")
     with bpy.data.libraries.load(filepath, link=False) as (data_from, data_to):
-        data_to.node_groups = ["buildingGen"]
+        data_to.node_groups = [name]
