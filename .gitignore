@@ -3,6 +3,5 @@
 .pytest_cache
 .venv
 __pycache__
-out
 cityGen.zip
 blender

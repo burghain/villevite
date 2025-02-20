@@ -2,30 +2,16 @@ import argparse
 import os
 import shutil
 import subprocess
-import urllib.request
-
-out_dir = os.path.abspath("out/cityGen")
 
 
-def extract_files(include_tests=False):
-    addon_files = ["__init__.py", "blender_manifest.toml"]
-    print("Copying files to ", out_dir)
-    shutil.copytree(
-        "core", f"{out_dir}/core", ignore=shutil.ignore_patterns("__pycache__")
-    )
+def build(include_tests=False):
     if include_tests:
-        shutil.copytree(
-            "tests", f"{out_dir}/tests", ignore=shutil.ignore_patterns("__pycache__")
-        )
-    for item in addon_files:
-        shutil.copy(item, f"{out_dir}/{item}")
-
-
-def build():
-    download_blender("blender", "4.3.2")
+        shutil.copytree("tests", "cityGen/tests")
+    print("Building addon")
+    download_blender("./blender", "4.3.2")
     subprocess.run(
         [
-            "blender/blender-4.3.2/blender",
+            "./blender/blender-4.3.2/blender",
             "--factory-startup",
             "--command",
             "extension",
@@ -33,20 +19,28 @@ def build():
             "--source-dir",
             "./cityGen",
             "--output-filepath",
-            "./cityGen.zip",
+            "cityGen.zip",
         ]
     )
+    if include_tests:
+        shutil.rmtree("cityGen/tests")
 
 
 def run_tests(blender_executable):
-    # python_dir = f"{blender_path}/blender-{version}/{major_version}/python/bin"
-    # python_interpreter = f"{python_dir}/{os.listdir(python_dir)[0]}"
-    # subprocess.run([python_interpreter, "-m", "ensurepip"])
-    # subprocess.run([python_interpreter, "-m", "pip", "install", "pytest"])
     subprocess.run(
-        [blender_executable, "--command", "extension", "install-file", "cityGen.zip"]
+        [
+            blender_executable,
+            "--command",
+            "extension",
+            "install-file",
+            "-r",
+            "user_default",
+            "-e",
+            "cityGen.zip",
+        ]
     )
-    test_process = subprocess.Popen(
+    print("Installed cityGen extension")
+    subprocess.run(
         [
             blender_executable,
             "--background",
@@ -54,14 +48,6 @@ def run_tests(blender_executable):
             "run_tests.py",
         ]
     )
-    test_process.wait()
-
-
-def cleanup():
-    if os.path.exists(out_dir):
-        shutil.rmtree(out_dir, True)
-    if os.path.exists("cityGen.zip"):
-        os.remove("cityGen.zip")
 
 
 def download_blender(blender_path, version):
@@ -87,14 +73,23 @@ def download_blender(blender_path, version):
         )
 
 
+def install_test_deps(blender_path, version):
+    major_version = version[:3]
+    python_dir = f"{blender_path}/blender-{version}/{major_version}/python/bin/"
+    python_executable = f"{python_dir}/{os.listdir(python_dir)[0]}"
+    subprocess.run([python_executable, "-m", "ensurepip"])
+    subprocess.run([python_executable, "-m", "pip", "install", "pytest"])
+
+
 def test():
 
     blender_versions = ["4.3.2"]
     blender_path = "./blender"
-    build(include_tests=True)
+    build(include_tests=False)
     for version in blender_versions:
         download_blender(blender_path, version)
-        # run_tests(blender_path=f"{blender_path}/blender-{version}/blender")
+        install_test_deps(blender_path, version)
+        run_tests(blender_executable=f"{blender_path}/blender-{version}/blender")
 
 
 ### COMMAND LINE INTERFACE

@@ -24,13 +24,10 @@ classes = [
 
 
 def register():
-    print("akfjkfjakfhf")
     for cls in classes:
         bpy.utils.register_class(cls)
 
 
 def unregister():
-    print(cls)
-    for cls in classes:
-        op_class = getattr(bpy.types, str(cls.__name__))
-        bpy.utils.unregister_class(op_class)
+    for cls in reversed(classes):
+        bpy.utils.unregister_class(cls)
