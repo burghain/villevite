@@ -39,5 +39,5 @@ class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        assets.import_nodes()
+        assets.import_all()
         return {"FINISHED"}

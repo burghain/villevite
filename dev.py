@@ -117,12 +117,18 @@ parser.add_argument(
     action=argparse.BooleanOptionalAction,
     help="Do not use the blender addon builder and instead just zip the folder",
 )
+parser.add_argument(
+    "--skip-rebuild",
+    action=argparse.BooleanOptionalAction,
+    help="Do not rebuild the addon when running the tests, only viable when there are no changes in the citygen code",
+)
 args = parser.parse_args()
 
 if args.command == "build":
     build(args.fast)
 elif args.command == "test":
-    build(args.fast)
+    if not args.skip_rebuild:
+        build(args.fast)
     test()
 else:
     parser.print_help()
