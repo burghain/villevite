@@ -1,26 +1,34 @@
+#!/usr/bin/env python
 import argparse
 import os
 import shutil
 import subprocess
 
 
-def build():
-
-    print("Building addon")
-    download_blender("./blender", "4.3.2")
-    subprocess.run(
-        [
-            "./blender/blender-4.3.2/blender",
-            "--factory-startup",
-            "--command",
-            "extension",
-            "build",
-            "--source-dir",
-            "./citygen",
-            "--output-filepath",
-            "cityGen.zip",
-        ]
-    )
+def build(fast=False):
+    source_dir = "./citygen"
+    filename = "cityGen"
+    print("")
+    if fast:
+        print(f"Building addon: Zipping folder {source_dir} to {filename}.zip")
+        shutil.make_archive("cityGen", "zip", "citygen")
+    else:
+        version = "4.3.2"
+        print(f"Building addon: Using blender version {version} to build")
+        download_blender("./blender", version)
+        subprocess.run(
+            [
+                "./blender/blender-4.3.2/blender",
+                "--factory-startup",
+                "--command",
+                "extension",
+                "build",
+                "--source-dir",
+                source_dir,
+                "--output-filepath",
+                f"{filename}.zip",
+            ]
+        )
 
 
 def run_tests(blender_executable):
@@ -83,13 +91,13 @@ def install_test_deps(blender_path, version):
 
 
 def test():
-
     blender_versions = ["4.3.2"]
     blender_path = "./blender"
-    build(include_tests=False)
     for version in blender_versions:
+
         download_blender(blender_path, version)
         install_test_deps(blender_path, version)
+        print(f"Running tests for Blender version {version}")
         run_tests(blender_executable=f"{blender_path}/blender-{version}/blender")
 
 
@@ -101,23 +109,20 @@ parser.add_argument(
     choices=["build", "test", "release"],
     help="""
   TEST = build with test files and run tests
-  BUILD = copy relevant files into ./out/cityGen and zip to addon.
-  RELEASE = build the add-on .zip with already built client binaries.
+  BUILD = Create the zip
   """,
 )
 parser.add_argument(
-    "--directory",
-    type=str,
-    default=None,
-    help="If a path is specified, then addon will be copied to that location.",
+    "--fast",
+    action=argparse.BooleanOptionalAction,
+    help="Do not use the blender addon builder and instead just zip the folder",
 )
 args = parser.parse_args()
 
 if args.command == "build":
-    build()
-elif args.command == "release":
-    build()
+    build(args.fast)
 elif args.command == "test":
+    build(args.fast)
     test()
 else:
     parser.print_help()
