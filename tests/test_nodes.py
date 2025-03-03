@@ -1,25 +1,9 @@
-from bl_ext.user_default.citygen.assets import import_asset
 import bpy
 import pytest
 import os
 
-
-def import_group(name):
-    import_asset(name, "node_groups", False)
-
-
-@pytest.fixture
-def clean_scene():
-    bpy.ops.wm.read_factory_settings(use_empty=True)
-
-    for obj in bpy.data.objects:
-        bpy.data.objects.remove(obj)
-    return bpy.context.scene
-
-
-@pytest.fixture
-def building_gen_import():
-    import_group("buildingGen")
+from bl_ext.user_default.citygen import assets, nodes
+from .fixtures import import_assets
 
 
 @pytest.fixture
@@ -31,7 +15,7 @@ def setup_one_plane(clean_scene, building_gen_import):
     geo_mod.node_group = bpy.data.node_groups["buildingGen"]
 
 
-def test_building_gen_exists(building_gen_import):
+def test_building_gen_exists(import_assets):
     assert "buildingGen" in bpy.data.node_groups
 
 

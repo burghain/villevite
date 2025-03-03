@@ -1,6 +1,6 @@
 import bpy
 from .buildings.buildingGenerator import buildingGenerator
-from . import assets
+from . import assets, nodes
 
 
 class OBJECT_OT_AddBuilding(bpy.types.Operator):
@@ -14,7 +14,17 @@ class OBJECT_OT_AddBuilding(bpy.types.Operator):
         return context.mode == "OBJECT"
 
     def execute(self, context):
-        bpy.ops.mesh.primitive_plane_add()
+        bpy.ops.mesh.primitive_plane_add(size=4)
+        obj = bpy.context.object
+        obj.name = "Building"
+        group_name = "buildingGen"
+        nodes.add_to_object(obj, group_name)
+        modifier = obj.modifiers[group_name]
+        inputs = {
+            "Max Number Of Floors": 5,
+            "Min Number of Floors": 4,
+        }
+        nodes.set_inputs(modifier, inputs)
         return {"FINISHED"}
 
 
@@ -35,7 +45,7 @@ class OBJECT_OT_DeleteBuilding(bpy.types.Operator):
 
 class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     bl_idname = "object.add_building_gen"
-    bl_label = "Append BuildingGen"
+    bl_label = "Test"
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
