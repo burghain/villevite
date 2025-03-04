@@ -2,7 +2,7 @@ import bpy
 import pytest
 import os
 
-from bl_ext.user_default.citygen import assets, nodes
+from bl_ext.user_default.villevite import assets, nodes
 from .fixtures import import_assets
 
 
@@ -17,9 +17,6 @@ def setup_one_plane(clean_scene, building_gen_import):
 
 def test_building_gen_exists(import_assets):
     assert "buildingGen" in bpy.data.node_groups
-
-
-# def test_building_gen_creates_one_building(setup_one_plane):
 
 
 def building_generator_creates_instances(self, clean_scene):

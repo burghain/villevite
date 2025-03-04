@@ -1,6 +1,6 @@
 import bpy
 import pytest
-from bl_ext.user_default.citygen import assets
+from bl_ext.user_default.villevite import assets
 from .fixtures import import_assets
 
 
