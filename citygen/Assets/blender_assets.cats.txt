@@ -1,0 +1,12 @@
+# This is an Asset Catalog Definition file for Blender.
+#
+# Empty lines and lines starting with `#` will be ignored.
+# The first non-ignored line should be the version indicator.
+# Other lines are of the format "UUID:catalog/path/for/assets:simple catalog name"
+
+VERSION 1
+
+6fcfbc0e-f054-4d68-8c8d-0c846536419f:cityGen Assets:cityGen Assets
+113021b7-0fb6-45f6-af53-29b41fc925c9:cityGen Assets/Building Assets:cityGen Assets-Building Assets
+92420b9e-60ec-467b-8e80-661c58a11300:cityGen Assets/Plot Assets:cityGen Assets-Plot Assets
+284412f7-a01a-4b33-9b37-82b6d4db0bb6:cityGen Nodes:cityGen Nodes
