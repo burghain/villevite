@@ -4,14 +4,15 @@ import os
 import shutil
 import subprocess
 
+addon_name = "villevite"
 
 def build(fast=False):
-    source_dir = "./citygen"
-    filename = "cityGen"
+    source_dir = f"./{addon_name}"
+    filename = addon_name
     print("")
     if fast:
         print(f"Building addon: Zipping folder {source_dir} to {filename}.zip")
-        shutil.make_archive("cityGen", "zip", "citygen")
+        shutil.make_archive(addon_name, "zip", addon_name)
     else:
         version = "4.3.2"
         print(f"Building addon: Using blender version {version} to build")
@@ -41,7 +42,7 @@ def run_tests(blender_executable):
             "-r",
             "user_default",
             "-e",
-            "cityGen.zip",
+            f"{addon_name}.zip",
         ]
     )
     test = subprocess.Popen(
@@ -120,7 +121,7 @@ parser.add_argument(
 parser.add_argument(
     "--skip-rebuild",
     action=argparse.BooleanOptionalAction,
-    help="Do not rebuild the addon when running the tests, only viable when there are no changes in the citygen code",
+    help="Do not rebuild the addon when running the tests, only viable when there are no changes in the code",
 )
 args = parser.parse_args()
 
