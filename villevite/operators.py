@@ -1,6 +1,8 @@
 import bpy
 from .buildings.buildingGenerator import buildingGenerator
 from . import assets, nodes
+from .blender_mesh_gen import BlenderMeshGen
+from .osm_parser import OSMParser
 
 
 class OBJECT_OT_AddBuilding(bpy.types.Operator):
@@ -51,3 +53,17 @@ class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     def execute(self, context):
         assets.import_all()
         return {"FINISHED"}
+    
+class OBJECT_OT_ReadOSM(bpy.types.Operator):
+    bl_idname = "object.generate_street_mesh"
+    bl_label = "Generate Street Mesh"
+    bl_options = {"REGISTER", "UNDO"}
+
+    def execute(self, context):
+        parser = OSMParser()
+        g, v = parser.parse('/home/simon/Dokumente/villevite/potsdam-mini.osm')
+        gen = BlenderMeshGen(g)
+        gen.generate()
+
+        return {"FINISHED"}
+

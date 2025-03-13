@@ -74,7 +74,7 @@ class OSMParser():
         desired_type = ['primary', 'secondary', 'tertiary', 'living_street', 'residential']
 
         # read osm xml
-        tree = ET.parse(f'{os.getcwd()}/{filename}')
+        tree = ET.parse(filename)
         root = tree.getroot()
 
         # create node_to_coord dict
