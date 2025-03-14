@@ -1,8 +1,10 @@
 import bpy
+
+from . import nodes
 from .buildings.buildingGenerator import buildingGenerator
-from . import assets, nodes
-from .blender_mesh_gen import BlenderMeshGen
-from .osm_parser import OSMParser
+from . import assets
+from .osm.blender_mesh_gen import BlenderMeshGen
+from .osm.osm_parser import OSMParser
 
 
 class OBJECT_OT_AddBuilding(bpy.types.Operator):
@@ -53,7 +55,8 @@ class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
     def execute(self, context):
         assets.import_all()
         return {"FINISHED"}
-    
+
+
 class OBJECT_OT_ReadOSM(bpy.types.Operator):
     bl_idname = "object.generate_street_mesh"
     bl_label = "Generate Street Mesh"
@@ -66,4 +69,3 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
         gen.generate()
 
         return {"FINISHED"}
-
