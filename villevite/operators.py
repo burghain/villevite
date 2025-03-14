@@ -1,6 +1,11 @@
 import bpy
+import os
+
+from . import nodes
 from .buildings.buildingGenerator import buildingGenerator
-from . import assets, nodes
+from . import assets
+from .osm.blender_mesh_gen import BlenderMeshGen
+from .osm.osm_parser import OSMParser
 
 
 class OBJECT_OT_AddBuilding(bpy.types.Operator):
@@ -50,4 +55,20 @@ class OBJECT_OT_AppendBuildingGen(bpy.types.Operator):
 
     def execute(self, context):
         assets.import_all()
+        return {"FINISHED"}
+
+
+class OBJECT_OT_ReadOSM(bpy.types.Operator):
+    bl_idname = "object.generate_street_mesh"
+    bl_label = "Generate Street Mesh"
+    bl_options = {"REGISTER", "UNDO"}
+
+    def execute(self, context):
+        library_path = os.path.join(os.path.dirname(__file__), "Assets")
+
+        parser = OSMParser()
+        g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
+        gen = BlenderMeshGen(g)
+        gen.generate()
+
         return {"FINISHED"}

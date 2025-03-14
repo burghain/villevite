@@ -22,6 +22,7 @@ classes = [
     operators.OBJECT_OT_AddBuilding,
     operators.OBJECT_OT_DeleteBuilding,
     operators.OBJECT_OT_AppendBuildingGen,
+    operators.OBJECT_OT_ReadOSM
 ]
 
 

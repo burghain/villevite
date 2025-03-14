@@ -14,3 +14,4 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
         layout.operator("object.add_building")
         layout.operator("object.delete_building")
         layout.operator("object.add_building_gen")
+        layout.operator("object.generate_street_mesh")
