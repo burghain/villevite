@@ -1,4 +1,5 @@
 import bpy
+import os
 
 from . import nodes
 from .buildings.buildingGenerator import buildingGenerator
@@ -63,8 +64,10 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
+        library_path = os.path.join(os.path.dirname(__file__), "Assets")
+
         parser = OSMParser()
-        g, v = parser.parse('/home/simon/Dokumente/villevite/potsdam-mini.osm')
+        g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
         gen = BlenderMeshGen(g)
         gen.generate()
 
