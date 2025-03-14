@@ -2,7 +2,6 @@ import bpy
 import os
 
 from . import nodes
-from .buildings.buildingGenerator import buildingGenerator
 from . import assets
 from .osm.blender_mesh_gen import BlenderMeshGen
 from .osm.osm_parser import OSMParser

@@ -1,11 +1,12 @@
 import bpy
 import igraph as ig
 
+
 class BlenderMeshGen:
 
     def __init__(self, graph):
         self.g = graph
-    
+
     def generate(self):
         g = self.g
         components = g.connected_components(mode='weak')
@@ -13,7 +14,6 @@ class BlenderMeshGen:
         no_components = len(components)
 
         print(f"Computed {no_components} components")
-
 
         # iterate through components
         # build blender mesh for every subgraph
@@ -23,7 +23,6 @@ class BlenderMeshGen:
             edges = []
 
             osm_id_to_bvertex_idx = {}
-
 
             # fill in vertices
             for v in subgraph.vs:
@@ -37,9 +36,9 @@ class BlenderMeshGen:
                 source = subgraph.vs[e.source]
                 target = subgraph.vs[e.target]
 
-                edges.append( (osm_id_to_bvertex_idx[source['osm_id']], osm_id_to_bvertex_idx[target['osm_id']]) )
+                edges.append(
+                    (osm_id_to_bvertex_idx[source['osm_id']], osm_id_to_bvertex_idx[target['osm_id']]))
 
-                
             # create mesh
             new_mesh = bpy.data.meshes.new('mesh')
             new_mesh.from_pydata(vertices, edges, [])
