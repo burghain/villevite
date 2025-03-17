@@ -20,7 +20,7 @@ from . import ui
 classes = [
     ui.VIEW3D_PT_SidePanel,
     operators.OBJECT_OT_AddBuilding,
-    operators.OBJECT_OT_DeleteBuilding,
+    operators.OBJECT_OT_Tests,
     operators.OBJECT_OT_AppendBuildingGen,
     operators.OBJECT_OT_ReadOSM
 ]
