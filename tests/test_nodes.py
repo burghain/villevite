@@ -57,12 +57,14 @@ def building_generator_creates_instances(self, clean_scene):
                     link.to_node == output_node
                     and link.to_socket.identifier == "Geometry"
                 ):
-                    original_connections.append((link.from_node, link.from_socket))
+                    original_connections.append(
+                        (link.from_node, link.from_socket))
             break
 
     # Add realize instances node
     realize_node = node_group.nodes.new("GeometryNodeRealizeInstances")
-    realize_node.location = (output_node.location.x - 200, output_node.location.y)
+    realize_node.location = (output_node.location.x -
+                             200, output_node.location.y)
 
     # Reconnect the nodes
     if original_connections:
@@ -88,7 +90,8 @@ def building_generator_creates_instances(self, clean_scene):
 
     # Method 1: Count actual mesh elements (should increase from plane)
     mesh = plane.data
-    assert len(mesh.vertices) > 4, "No geometry was generated beyond the original plane"
+    assert len(
+        mesh.vertices) > 4, "No geometry was generated beyond the original plane"
     assert len(mesh.polygons) > 1, "No building faces were generated"
 
     # Method 2: Check for hierarchical structure (if building uses collections)
