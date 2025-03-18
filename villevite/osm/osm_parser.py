@@ -8,12 +8,6 @@ class OSMParser():
 
     KM_PER_LAT_DEG = 111
 
-    # Crop
-    minlon = 12
-    minlat = 51
-    maxlon = 14
-    maxlat = 53
-
     # min building size
     min_size = 0.01
 
@@ -22,15 +16,6 @@ class OSMParser():
     # to compute bbox
     x_max = None
     y_max = None
-
-    # compute meter extent
-    delta_lat_geo = maxlat - minlat
-    delta_lon_geo = maxlon - minlon
-
-    lonlat_ratio = delta_lon_geo / delta_lat_geo
-
-    delta_lat_meter = (delta_lat_geo * KM_PER_LAT_DEG) * 1000
-    delta_lon_meter = delta_lat_meter * lonlat_ratio
 
     DEFAULT_STREET_LANE_COUNT = {
         'primary': 6,
@@ -41,15 +26,30 @@ class OSMParser():
     }
 
 
-    def geo_coords_to_meter(self, latlon):
+    def geo_coords_to_meter(self, latlon, map_bounds):
+        # Crop
+        minlon = map_bounds[0]
+        minlat = map_bounds[1]
+        maxlon = map_bounds[2]
+        maxlat = map_bounds[3]
+
+        # compute meter extent
+        delta_lat_geo = maxlat - minlat
+        delta_lon_geo = maxlon - minlon
+
+        lonlat_ratio = delta_lon_geo / delta_lat_geo
+
+        delta_lat_meter = (delta_lat_geo * self.KM_PER_LAT_DEG) * 1000
+        delta_lon_meter = delta_lat_meter * lonlat_ratio
+
         lat = latlon[0]
         lon = latlon[1]
 
-        norm_lat = (self.maxlat - lat) / self.delta_lat_geo
-        norm_lon = (self.maxlon - lon) / self.delta_lon_geo
+        norm_lat = (maxlat - lat) / delta_lat_geo
+        norm_lon = (maxlon - lon) / delta_lon_geo
 
-        vec = Vector(((float(norm_lon * self.delta_lon_meter),
-                     float(norm_lat * self.delta_lat_meter))))
+        vec = Vector(((float(norm_lon * delta_lon_meter),
+                     float(norm_lat * delta_lat_meter))))
 
         # calculate the bbox
         if self.x_max == None or self.x_max < vec[0]:
@@ -58,7 +58,7 @@ class OSMParser():
         if self.y_max == None or self.y_max > vec[1]:
             self.y_max = vec[1]
 
-        return Vector(((float(norm_lon * self.delta_lon_meter), float(norm_lat * self.delta_lat_meter))))
+        return Vector(((float(norm_lon * delta_lon_meter), float(norm_lat * delta_lat_meter))))
 
     '''
     Read a plain XML OpenStreetMap File and output an igraph.Graph object
@@ -82,6 +82,14 @@ class OSMParser():
         tree = ET.parse(filename)
         root = tree.getroot()
 
+        bounds_tag = root.find('bounds')
+        if bounds_tag != None:
+            self.map_bounds = [float(bounds_tag.attrib['minlon']),
+                               float(bounds_tag.attrib['minlat']),
+                               float(bounds_tag.attrib['maxlon']),
+                               float(bounds_tag.attrib['maxlat'])]
+
+
         # create node_to_coord dict
         for child in root:
             if child.tag == 'node':
@@ -90,7 +98,7 @@ class OSMParser():
                 node_id = child.attrib['id']
 
                 v = g.add_vertex()
-                v['coord'] = self.geo_coords_to_meter([lat, lon])
+                v['coord'] = self.geo_coords_to_meter([lat, lon], self.map_bounds)
                 v['osm_id'] = node_id
 
         # build graph
