@@ -14,6 +14,14 @@ def clear_all():
 
 @pytest.fixture
 def import_assets():
-    assets.import_all()
+    assets.import_assets()
+    yield
+    clear_all()
+
+
+@pytest.fixture
+def import_assets_and_tests():
+    assets.import_assets()
+    assets.import_tests()
     yield
     clear_all()

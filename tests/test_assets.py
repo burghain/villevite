@@ -6,7 +6,7 @@ from .fixtures import import_assets
 
 @pytest.fixture
 def import_assets_twice(import_assets):
-    assets.import_all()
+    assets.import_assets()
 
 
 def test_assets_import_all(import_assets):

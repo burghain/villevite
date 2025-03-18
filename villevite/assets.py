@@ -22,7 +22,7 @@ def import_tests():
                 data_to.node_groups = all_node_groups
 
 
-def import_all():
+def import_assets():
     for file in os.listdir(library_path):
         if file.endswith(".blend"):
             blend_path = os.path.join(library_path, file)
