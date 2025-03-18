@@ -43,12 +43,6 @@ class OBJECT_OT_Tests(bpy.types.Operator):
         return context.mode == "OBJECT"
 
     def execute(self, context):
-        assets.import_tests()
-        test_groups = [
-            ng for ng in bpy.data.node_groups if ng.name.startswith('.test: ')]
-        for test in test_groups:
-            for error_message in evaluate_node_group(test):
-                print(error_message)
         return {"FINISHED"}
 
 
