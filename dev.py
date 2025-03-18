@@ -54,6 +54,9 @@ def run_tests(blender_executable):
             "run_tests.py",
         ]
     )
+    if result.returncode != 0:
+        raise Exception("Tests failed")
+    print("Tests passed")
 
 
 def setup_blender(blender_path, version):
