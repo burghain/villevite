@@ -32,6 +32,15 @@ class OSMParser():
     delta_lat_meter = (delta_lat_geo * KM_PER_LAT_DEG) * 1000
     delta_lon_meter = delta_lat_meter * lonlat_ratio
 
+    DEFAULT_STREET_LANE_COUNT = {
+        'primary': 6,
+        'secondary': 4,
+        'tertiary': 2,
+        'living_street': 2,
+        'residential': 1
+    }
+
+
     def geo_coords_to_meter(self, latlon):
         lat = latlon[0]
         lon = latlon[1]
@@ -89,22 +98,23 @@ class OSMParser():
         for child in root:
             if child.tag == 'way':
                 is_desired_type = False
-                lanes = -1
+                lanes = 1
 
-                # go through the ways' tags
+                # check that the way is of a type we want to parse
                 for n in child:
                     if n.tag == 'tag':
-                        # check that the way is of a type we want to parse
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
-
+                            lanes = self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']]
+                            
+                for n in child:
+                    if n.tag == 'tag':
                         # capture the ways width
                         if n.attrib['k'] == 'width':
                             lanes = max(math.floor(float(n.attrib['v']) / 5), 1)
 
                         if n.attrib['k'] == 'lanes':
                             lanes = int(n.attrib['v'])
-                            
 
                 if not is_desired_type:
                     continue
