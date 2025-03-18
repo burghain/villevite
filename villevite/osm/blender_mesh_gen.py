@@ -22,7 +22,10 @@ class BlenderMeshGen:
             vertices = []
             edges = []
 
+            # TODO: simplify this behemoth
             osm_id_to_bvertex_idx = {}
+
+            edge_lanes_seq = []
 
             # fill in vertices
             for v in subgraph.vs:
@@ -38,11 +41,18 @@ class BlenderMeshGen:
 
                 edges.append(
                     (osm_id_to_bvertex_idx[source['osm_id']], osm_id_to_bvertex_idx[target['osm_id']]))
+                
+                edge_lanes_seq.append(e['lanes'])
+
 
             # create mesh
             new_mesh = bpy.data.meshes.new('mesh')
             new_mesh.from_pydata(vertices, edges, [])
             new_mesh.update()
+
+            # add width as edge property
+            edge_attr = new_mesh.attributes.new(name='street_lanes', type='INT8', domain='EDGE')
+            edge_attr.data.foreach_set('value', edge_lanes_seq)
 
             # make object from mesh
             new_object = bpy.data.objects.new('x', new_mesh)

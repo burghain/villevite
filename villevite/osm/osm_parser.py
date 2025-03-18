@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 import igraph as ig
+import math
 from mathutils import Vector
 
 
@@ -88,12 +89,22 @@ class OSMParser():
         for child in root:
             if child.tag == 'way':
                 is_desired_type = False
+                lanes = -1
 
-                # filter for certain ways for now (desired_type)
+                # go through the ways' tags
                 for n in child:
                     if n.tag == 'tag':
+                        # check that the way is of a type we want to parse
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
+
+                        # capture the ways width
+                        if n.attrib['k'] == 'width':
+                            lanes = max(math.floor(float(n.attrib['v']) / 5), 1)
+
+                        if n.attrib['k'] == 'lanes':
+                            lanes = int(n.attrib['v'])
+                            
 
                 if not is_desired_type:
                     continue
@@ -111,7 +122,10 @@ class OSMParser():
 
                         if prev_vertex != None:
                             # Connect previous with current node
-                            g.add_edge(current_vertex, prev_vertex)
+                            e = g.add_edge(current_vertex, prev_vertex)
+
+                            if lanes != None:
+                                e['lanes'] = lanes
 
                         prev_vertex = current_vertex
 
