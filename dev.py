@@ -69,6 +69,7 @@ def setup_blender(blender_path, version):
         subprocess.run(
             [
                 "wget",
+                "-nv",
                 f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz",
             ]
         )
