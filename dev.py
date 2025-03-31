@@ -96,7 +96,7 @@ def install_test_deps(blender_path, version):
 
 
 def test():
-    blender_versions = ["4.3.2"]
+    blender_versions = ["4.3.2", "4.4.0"]
     blender_path = "./blender"
     for version in blender_versions:
 
