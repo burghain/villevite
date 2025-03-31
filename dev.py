@@ -114,8 +114,8 @@ parser.add_argument(
     "command",
     choices=["build", "test", "release"],
     help="""
-  TEST = build with test files and run tests
-  BUILD = Create the zip
+  test = build with test files and run tests
+  build = Create the zip
   """,
 )
 parser.add_argument(
