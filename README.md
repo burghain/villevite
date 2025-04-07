@@ -21,3 +21,9 @@
 ### General Add-on Structure
 
 - See BlenderAddonTemplate
+
+## References
+
+### Assets
+
+- The vehicles were selected from the CADillac dataset and can be used under the Creative Commons Public License Version 4.0.
