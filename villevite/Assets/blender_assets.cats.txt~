@@ -6,9 +6,4 @@
 
 VERSION 1
 
-6fcfbc0e-f054-4d68-8c8d-0c846536419f:cityGen Assets:cityGen Assets
-113021b7-0fb6-45f6-af53-29b41fc925c9:cityGen Assets/Building Assets:cityGen Assets-Building Assets
-92420b9e-60ec-467b-8e80-661c58a11300:cityGen Assets/Plot Assets:cityGen Assets-Plot Assets
-0ff61525-9d1f-4ad6-8626-3612518bc887:cityGen Assets/Street Assets:cityGen Assets-Street Assets
-cd7c40c7-a03d-4c84-9ed7-41821ef2885e:cityGen Assets/Street Assets/Roadway Assets:cityGen Assets-Street Assets-Roadway Assets
-284412f7-a01a-4b33-9b37-82b6d4db0bb6:cityGen Nodes:cityGen Nodes
+c5231aec-3be0-41d7-93fc-5c2cf1cf69ec:All:All
