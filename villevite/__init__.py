@@ -19,10 +19,8 @@ from . import ui
 
 classes = [
     ui.VIEW3D_PT_SidePanel,
-    operators.OBJECT_OT_AddBuilding,
-    operators.OBJECT_OT_Tests,
-    operators.OBJECT_OT_AppendBuildingGen,
-    operators.OBJECT_OT_ReadOSM
+    operators.OBJECT_OT_GenerateCity,
+    operators.OBJECT_OT_ReadOSM,
 ]
 
 
