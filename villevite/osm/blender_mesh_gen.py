@@ -22,25 +22,22 @@ class BlenderMeshGen:
             vertices = []
             edges = []
 
-            # TODO: simplify this behemoth
-            osm_id_to_bvertex_idx = {}
-
             edge_lanes_seq = []
 
             # fill in vertices
             for v in subgraph.vs:
                 coords = v['coord']
+
                 vertices.append((coords[0], coords[1], 0))
 
-                osm_id_to_bvertex_idx[v['osm_id']] = len(vertices) - 1
+                v['bvertex_id'] = len(vertices) - 1
 
             # fill in edges
             for e in subgraph.es:
                 source = subgraph.vs[e.source]
                 target = subgraph.vs[e.target]
 
-                edges.append(
-                    (osm_id_to_bvertex_idx[source['osm_id']], osm_id_to_bvertex_idx[target['osm_id']]))
+                edges.append((source['bvertex_id'], target['bvertex_id']))
                 
                 edge_lanes_seq.append(e['lanes'])
 
