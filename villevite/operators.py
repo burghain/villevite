@@ -34,8 +34,8 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
         library_path = os.path.join(os.path.dirname(__file__), "Assets")
 
         parser = OSMParser()
-        g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
-        gen = BlenderMeshGen(g)
+        g, a, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
+        gen = BlenderMeshGen(g, a)
         gen.generate()
 
         return {"FINISHED"}
