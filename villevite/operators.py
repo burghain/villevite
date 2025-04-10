@@ -1,15 +1,22 @@
 import bpy
 import os
-
-from . import nodes
-from . import assets
 from .osm.blender_mesh_gen import BlenderMeshGen
 from .osm.osm_parser import OSMParser
+from .city.cityGenerator import CityGenerator
+
+
+def clear_all():
+    for obj in bpy.data.objects:
+        bpy.data.objects.remove(obj)
+    for group in bpy.data.node_groups:
+        bpy.data.node_groups.remove(group)
+    for collection in bpy.data.collections:
+        bpy.data.collections.remove(collection)
 
 
 class OBJECT_OT_GenerateCity(bpy.types.Operator):
     "Generate a city with given parameters"
-    bl_idname = "object.generate_city"
+    bl_idname = "villevite.generate_city"
     bl_label = "Generate City"
     bl_options = {"REGISTER", "UNDO"}
 
@@ -18,26 +25,15 @@ class OBJECT_OT_GenerateCity(bpy.types.Operator):
         return context.mode == "OBJECT"
 
     def execute(self, context):
-        assets.import_assets()
-        source = "osm"
-
-        if source == "osm":
-            library_path = os.path.join(os.path.dirname(__file__), "Assets")
-
-            parser = OSMParser()
-            g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
-            gen = BlenderMeshGen(g)
-            road_graph = gen.generate()
-        elif source == "template":
-            road_graph = bpy.data.objects.get("Example Road Graph")
-            bpy.context.collection.objects.link(road_graph)
-
-        nodes.add_to_object(road_graph, "Road Graph Test")
+        clear_all()
+        parameters = context.scene.cityproperties
+        citygen = CityGenerator(source="osm")
+        city = citygen.generate()
         return {"FINISHED"}
 
 
 class OBJECT_OT_ReadOSM(bpy.types.Operator):
-    bl_idname = "object.generate_street_mesh"
+    bl_idname = "villevite.generate_street_mesh"
     bl_label = "Generate Street Mesh"
     bl_options = {"REGISTER", "UNDO"}
 
