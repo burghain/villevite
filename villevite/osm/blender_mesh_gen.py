@@ -53,3 +53,4 @@ class BlenderMeshGen:
             collection.objects.link(new_object)
 
             print("Subgraph generation done")
+            return new_object

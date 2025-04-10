@@ -19,8 +19,19 @@ class OBJECT_OT_GenerateCity(bpy.types.Operator):
 
     def execute(self, context):
         assets.import_assets()
-        road_graph = bpy.data.objects.get("Example Road Graph")
-        bpy.context.collection.objects.link(road_graph)
+        source = "osm"
+
+        if source == "osm":
+            library_path = os.path.join(os.path.dirname(__file__), "Assets")
+
+            parser = OSMParser()
+            g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
+            gen = BlenderMeshGen(g)
+            road_graph = gen.generate()
+        elif source == "template":
+            road_graph = bpy.data.objects.get("Example Road Graph")
+            bpy.context.collection.objects.link(road_graph)
+
         nodes.add_to_object(road_graph, "Road Graph Test")
         return {"FINISHED"}
 
