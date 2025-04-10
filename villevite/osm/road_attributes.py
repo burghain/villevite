@@ -4,3 +4,4 @@ class RoadAttributes():
         self.intersection_a_position = None
         self.intersection_b_position = None
         self.numer_of_lanes = None
+        self.sidewalk = None

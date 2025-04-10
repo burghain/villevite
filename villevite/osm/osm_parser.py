@@ -111,13 +111,17 @@ class OSMParser():
             if child.tag == 'way':
                 is_desired_type = False
                 lanes = 1
+                sidewalk = False
 
-                # check that the way is of a type we want to parse
+                # check for ways' properties
                 for n in child:
                     if n.tag == 'tag':
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
                             lanes = self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']]
+
+                        if n.attrib['k'] == 'sidewalk':
+                            sidewalk = True
                             
                 for n in child:
                     if n.tag == 'tag':
@@ -135,6 +139,7 @@ class OSMParser():
 
                 road_attributes = RoadAttributes()
                 road_attributes.number_of_lanes = lanes
+                road_attributes.sidewalk = sidewalk
                 intersection_a = None
                 intersection_b = None
 
