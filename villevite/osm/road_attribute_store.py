@@ -4,7 +4,7 @@ from .road_attributes import RoadAttributes
 class RoadAttributeStore():
 
     def __init__(self):
-        self._attributes = [('Number Of Lanes', 'INT8'), ('Has Sidewalk', 'BOOLEAN')]
+        self._attributes = [('Number Of Lanes', 'INT8'), ('Has Sidewalk', 'BOOLEAN'), ('Has Bike Lane', 'BOOLEAN')]
 
         self._array = np.empty(shape=(0, len(self._attributes)))
         self._positions = np.empty(shape=(0, 6))
@@ -12,7 +12,8 @@ class RoadAttributeStore():
     def add_road_attributes(self, road_attributes):
         data_row = np.array([
             int(road_attributes.number_of_lanes),
-            road_attributes.sidewalk
+            road_attributes.sidewalk,
+            road_attributes.cycleway
         ])
 
         pos_row = np.array(
