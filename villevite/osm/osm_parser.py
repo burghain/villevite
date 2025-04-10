@@ -113,6 +113,7 @@ class OSMParser():
                 lanes = 1
                 sidewalk = False
                 cycleway = False
+                parking = False
 
                 # check for ways' properties
                 for n in child:
@@ -126,6 +127,9 @@ class OSMParser():
 
                         if n.attrib['k'] == 'cycleway':
                             cycleway = True
+
+                        if n.attrib['k'] == 'parking:both':
+                            parking = True
                             
                 for n in child:
                     if n.tag == 'tag':
@@ -145,6 +149,7 @@ class OSMParser():
                 road_attributes.number_of_lanes = lanes
                 road_attributes.sidewalk = sidewalk
                 road_attributes.cycleway = cycleway
+                road_attributes.parking = parking
                 intersection_a = None
                 intersection_b = None
 

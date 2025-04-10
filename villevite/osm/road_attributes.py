@@ -6,3 +6,4 @@ class RoadAttributes():
         self.numer_of_lanes = None
         self.sidewalk = None
         self.cycleway = None
+        self.parking = None
