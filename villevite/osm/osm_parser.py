@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import igraph as ig
 import math
+from .road_attributes import RoadAttributes
+from .road_attribute_store import RoadAttributeStore
 from mathutils import Vector
 
 
@@ -58,7 +60,7 @@ class OSMParser():
         if self.y_max == None or self.y_max > vec[1]:
             self.y_max = vec[1]
 
-        return Vector(((float(norm_lon * delta_lon_meter), float(norm_lat * delta_lat_meter))))
+        return Vector(( float(norm_lon * delta_lon_meter), float(norm_lat * delta_lat_meter), 0))
 
     '''
     Read a plain XML OpenStreetMap File and output an igraph.Graph object
@@ -73,6 +75,8 @@ class OSMParser():
 
         # create graph and helper vars
         g = ig.Graph(directed=False)
+
+        road_attributes_store = RoadAttributeStore()
 
         no_highways = 0
         desired_type = ['primary', 'secondary',
@@ -107,13 +111,25 @@ class OSMParser():
             if child.tag == 'way':
                 is_desired_type = False
                 lanes = 1
+                sidewalk = False
+                cycleway = False
+                parking = False
 
-                # check that the way is of a type we want to parse
+                # check for ways' properties
                 for n in child:
                     if n.tag == 'tag':
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
                             lanes = self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']]
+
+                        if n.attrib['k'] == 'sidewalk':
+                            sidewalk = True
+
+                        if n.attrib['k'] == 'cycleway':
+                            cycleway = True
+
+                        if n.attrib['k'] == 'parking:both':
+                            parking = True
                             
                 for n in child:
                     if n.tag == 'tag':
@@ -129,6 +145,14 @@ class OSMParser():
 
                 no_highways += 1
 
+                road_attributes = RoadAttributes()
+                road_attributes.number_of_lanes = lanes
+                road_attributes.sidewalk = sidewalk
+                road_attributes.cycleway = cycleway
+                road_attributes.parking = parking
+                intersection_a = None
+                intersection_b = None
+
                 # iterate over osm_nodes that belong to the way and add them
                 # and their respective connections to other nodes to the graph
                 prev_vertex = None
@@ -138,6 +162,11 @@ class OSMParser():
 
                         current_vertex = g.vs.find(osm_id=osm_id)
 
+                        if intersection_a == None:
+                            intersection_a = current_vertex
+                        
+                        intersection_b = current_vertex
+
                         if prev_vertex != None:
                             # Connect previous with current node
                             e = g.add_edge(current_vertex, prev_vertex)
@@ -146,6 +175,12 @@ class OSMParser():
                                 e['lanes'] = lanes
 
                         prev_vertex = current_vertex
+                
+
+                road_attributes.intersection_a_position = intersection_a['coord']
+                road_attributes.intersection_b_position = intersection_b['coord']
+
+                road_attributes_store.add_road_attributes(road_attributes)
 
         # clear unconnected verts away
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
@@ -156,4 +191,4 @@ class OSMParser():
 
         print(f'no highways: {no_highways}')
 
-        return g, Vector((self.x_max, self.y_max))
+        return g, road_attributes_store, Vector((self.x_max, self.y_max))
