@@ -47,35 +47,42 @@ class BlenderMeshGen:
             new_object = bpy.data.objects.new('x', new_mesh)
 
             # add object to scene collection
-            collection = bpy.data.collections.new('collection')
+            collection = bpy.data.collections.new('City Generator')
             bpy.context.scene.collection.children.link(collection)
             collection.objects.link(new_object)
 
             print("Subgraph generation done")
+            return new_object
 
         self._add_road_attributes()
 
     def _add_road_attributes(self):
         # create mesh
         new_mesh = bpy.data.meshes.new('mesh')
-        new_mesh.from_pydata([(0, 0, 0) for _ in range(0, len(self.road_attributes))], [], [])
+        new_mesh.from_pydata([(0, 0, 0) for _ in range(
+            0, len(self.road_attributes))], [], [])
         new_mesh.update()
 
         print(self.road_attributes.get_intersection_a_positions())
 
         # add intersection a position
-        vert_attr = new_mesh.attributes.new(name='Intersection Position 0', type='FLOAT_VECTOR', domain='POINT')
-        vert_attr.data.foreach_set('vector', self.road_attributes.get_intersection_a_positions())
+        vert_attr = new_mesh.attributes.new(
+            name='Intersection Position 0', type='FLOAT_VECTOR', domain='POINT')
+        vert_attr.data.foreach_set(
+            'vector', self.road_attributes.get_intersection_a_positions())
 
         # add intersection b position
-        vert_attr = new_mesh.attributes.new(name='Intersection Position 1', type='FLOAT_VECTOR', domain='POINT')
-        vert_attr.data.foreach_set('vector', self.road_attributes.get_intersection_b_positions())
+        vert_attr = new_mesh.attributes.new(
+            name='Intersection Position 1', type='FLOAT_VECTOR', domain='POINT')
+        vert_attr.data.foreach_set(
+            'vector', self.road_attributes.get_intersection_b_positions())
 
         for x in self.road_attributes:
             print("aaa")
             print(x[1])
             # add vertex property
-            vert_attr = new_mesh.attributes.new(name=x[0][0], type=x[0][1], domain='POINT')
+            vert_attr = new_mesh.attributes.new(
+                name=x[0][0], type=x[0][1], domain='POINT')
             vert_attr.data.foreach_set('value', x[1])
 
         # make object from mesh

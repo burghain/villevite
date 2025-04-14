@@ -3,13 +3,12 @@ from bpy import props, types
 
 class CityProperties(types.PropertyGroup):
     source: props.EnumProperty(
-        name="Source",
+        name="Data Source",
         description="Source of the city data",
         items=[
-            ("osm", "OSM", "OpenStreetMap"),
-            ("template", "Template", "Template"),
+            ("OSM_Attributes", "Read from OSM", "OpenStreetMap"),
+            ("Generated", "Generated", "Generated"),
         ],
-        default="osm",
     )  # type: ignore
     roadway_vehicle_density: props.FloatProperty(
         name="Roadway Vehicle Density",

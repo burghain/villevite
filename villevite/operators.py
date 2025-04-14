@@ -27,7 +27,7 @@ class OBJECT_OT_GenerateCity(bpy.types.Operator):
     def execute(self, context):
         clear_all()
         parameters = context.scene.cityproperties
-        citygen = CityGenerator(source="osm")
+        citygen = CityGenerator(parameters)
         city = citygen.generate()
         return {"FINISHED"}
 
