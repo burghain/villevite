@@ -114,7 +114,7 @@ class OSMParser():
                     if n.tag == 'tag':
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
-                            way_property_watcher.watch('#Roadway Width', self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']])
+                            way_property_watcher.watch('Number Of Lanes', self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']])
 
                         way_property_watcher.watch('Has Sidewalk', n.attrib['k'] == 'sidewalk')
                         way_property_watcher.watch('Has Bike Lane', n.attrib['k'] == 'cycleway')
@@ -124,10 +124,10 @@ class OSMParser():
                     if n.tag == 'tag':
                         # capture the ways width
                         if n.attrib['k'] == 'width':
-                            way_property_watcher.watch('Roadway Width', max(math.floor(float(n.attrib['v']) / 5), 1))
+                            way_property_watcher.watch('Number Of Lanes', max(math.floor(float(n.attrib['v']) / 5), 1))
 
                         if n.attrib['k'] == 'lanes':
-                            way_property_watcher.watch('Roadway Width', int(n.attrib['v']))
+                            way_property_watcher.watch('Number Of Lanes', int(n.attrib['v']))
 
                 if not is_desired_type:
                     continue
