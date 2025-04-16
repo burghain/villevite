@@ -1,7 +1,6 @@
 import bpy
 import os
-from .osm.blender_mesh_gen import BlenderMeshGen
-from .osm.osm_parser import OSMParser
+from .osm.osm_generator import OSMGenerator
 from .city.cityGenerator import CityGenerator
 from .tree.treeGenerator import generate_tree
 
@@ -39,12 +38,7 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        library_path = os.path.join(os.path.dirname(__file__), "Assets")
-
-        parser = OSMParser()
-        g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
-        gen = BlenderMeshGen(g)
-        gen.generate()
+        OSMGenerator().generate()
 
         return {"FINISHED"}
 
