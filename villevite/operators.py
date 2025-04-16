@@ -3,6 +3,7 @@ import os
 from .osm.blender_mesh_gen import BlenderMeshGen
 from .osm.osm_parser import OSMParser
 from .city.cityGenerator import CityGenerator
+from .tree.treeGenerator import generate_tree
 
 
 def clear_all():
@@ -45,4 +46,14 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
         gen = BlenderMeshGen(g, a)
         gen.generate()
 
+        return {"FINISHED"}
+
+
+class OBJECT_OT_Surprise(bpy.types.Operator):
+    bl_idname = "villevite.surprise"
+    bl_label = "Surprise me!"
+    bl_options = {"REGISTER", "UNDO"}
+
+    def execute(self, context):
+        generate_tree("acer")
         return {"FINISHED"}

@@ -19,3 +19,4 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
         box.prop(parameters, "parking_lot_vehicle_density")
         layout.operator("villevite.generate_city")
         layout.operator("villevite.generate_street_mesh")
+        layout.operator("villevite.surprise")

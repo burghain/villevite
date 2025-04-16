@@ -21,6 +21,7 @@ classes = [
     ui.VIEW3D_PT_SidePanel,
     operators.OBJECT_OT_GenerateCity,
     operators.OBJECT_OT_ReadOSM,
+    operators.OBJECT_OT_Surprise,
     properties.CityProperties,
 ]
 
