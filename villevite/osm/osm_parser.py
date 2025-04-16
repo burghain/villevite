@@ -1,9 +1,8 @@
 import xml.etree.ElementTree as ET
 import igraph as ig
 import math
-from .road_attributes import RoadAttributes
-from .road_attribute_store import RoadAttributeStore
 from mathutils import Vector
+from .edge_properties import edge_property_names, edge_property_defaults
 
 
 class OSMParser():
@@ -26,7 +25,6 @@ class OSMParser():
         'living_street': 2,
         'residential': 1
     }
-
 
     def geo_coords_to_meter(self, latlon, map_bounds):
         # Crop
@@ -76,8 +74,6 @@ class OSMParser():
         # create graph and helper vars
         g = ig.Graph(directed=False)
 
-        road_attributes_store = RoadAttributeStore()
-
         no_highways = 0
         desired_type = ['primary', 'secondary',
                         'tertiary', 'living_street', 'residential']
@@ -110,48 +106,33 @@ class OSMParser():
         for child in root:
             if child.tag == 'way':
                 is_desired_type = False
-                lanes = 1
-                sidewalk = False
-                cycleway = False
-                parking = False
+
+                way_property_watcher = PropertyWatcher(edge_property_names, edge_property_defaults)
 
                 # check for ways' properties
                 for n in child:
                     if n.tag == 'tag':
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
-                            lanes = self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']]
+                            way_property_watcher.watch('Number Of Lanes', self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']])
 
-                        if n.attrib['k'] == 'sidewalk':
-                            sidewalk = True
+                        way_property_watcher.watch('Has Sidewalk', n.attrib['k'] == 'sidewalk')
+                        way_property_watcher.watch('Has Bike Lane', n.attrib['k'] == 'cycleway')
+                        way_property_watcher.watch('Has Parking Lots', n.attrib['k'] == 'parking:both')
 
-                        if n.attrib['k'] == 'cycleway':
-                            cycleway = True
-
-                        if n.attrib['k'] == 'parking:both':
-                            parking = True
-                            
                 for n in child:
                     if n.tag == 'tag':
                         # capture the ways width
                         if n.attrib['k'] == 'width':
-                            lanes = max(math.floor(float(n.attrib['v']) / 5), 1)
+                            way_property_watcher.watch('Number Of Lanes', max(math.floor(float(n.attrib['v']) / 5), 1))
 
                         if n.attrib['k'] == 'lanes':
-                            lanes = int(n.attrib['v'])
+                            way_property_watcher.watch('Number Of Lanes', int(n.attrib['v']))
 
                 if not is_desired_type:
                     continue
 
                 no_highways += 1
-
-                road_attributes = RoadAttributes()
-                road_attributes.number_of_lanes = lanes
-                road_attributes.sidewalk = sidewalk
-                road_attributes.cycleway = cycleway
-                road_attributes.parking = parking
-                intersection_a = None
-                intersection_b = None
 
                 # iterate over osm_nodes that belong to the way and add them
                 # and their respective connections to other nodes to the graph
@@ -162,25 +143,16 @@ class OSMParser():
 
                         current_vertex = g.vs.find(osm_id=osm_id)
 
-                        if intersection_a == None:
-                            intersection_a = current_vertex
-                        
-                        intersection_b = current_vertex
-
                         if prev_vertex != None:
                             # Connect previous with current node
                             e = g.add_edge(current_vertex, prev_vertex)
 
-                            if lanes != None:
-                                e['lanes'] = lanes
+                            way_properties = way_property_watcher.get_values()
+
+                            for k, v in way_properties.items():
+                                e[k] = v
 
                         prev_vertex = current_vertex
-                
-
-                road_attributes.intersection_a_position = intersection_a['coord']
-                road_attributes.intersection_b_position = intersection_b['coord']
-
-                road_attributes_store.add_road_attributes(road_attributes)
 
         # clear unconnected verts away
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
@@ -191,4 +163,22 @@ class OSMParser():
 
         print(f'no highways: {no_highways}')
 
-        return g, road_attributes_store, Vector((self.x_max, self.y_max))
+        return g, Vector((self.x_max, self.y_max))
+
+
+class PropertyWatcher():
+
+    def __init__(self, property_names, default_value):
+        self.values = {}
+
+        for i, name in enumerate(property_names):
+            self.values[name] = default_value[i]
+
+    def watch(self, name, value):
+        if name in self.values:
+            self.values[name] = self.values[name] if value == False else value
+        else:    
+            self.values[name] = value
+
+    def get_values(self):
+        return self.values
