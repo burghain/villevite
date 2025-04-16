@@ -21,7 +21,7 @@ from mathutils import Quaternion
 from . import utilities
 from .chturtle import Vector, CHTurtle
 from .leaf import Leaf
-from .tree_params.tree_param import TreeParam
+from .tree_param import TreeParam
 
 __console_logging__ = True
 
@@ -172,19 +172,13 @@ class Tree(object):
         self.tree_obj = None
         self.trunk_length = 0
 
-        # Disable leaf generation
-        if not generate_leaves:
-            self.param.leaf_blos_num = 0
-
     def make(self):
-        """make the tree"""
 
         # create parent object
         self.tree_obj = bpy.data.objects.new('Tree', None)
         bpy.context.collection.objects.link(self.tree_obj)
         bpy.context.view_layer.objects.active = self.tree_obj
 
-        # create branches
         self.create_branches()
 
         # Create leaf mesh if needed and enabled
@@ -296,42 +290,24 @@ class Tree(object):
         update_log('\nMaking Leaves\n')
         start_time = time.time()
 
-        # Start loading spinner
-        windman = bpy.context.window_manager
-        windman.progress_begin(0, len(self.leaves_array))
-
         # go through global leaf array populated in branch making phase and add polygons to mesh
         base_leaf_shape = Leaf.get_shape(self.param.leaf_shape, self.tree_scale / self.param.g_scale,
                                          self.param.leaf_scale, self.param.leaf_scale_x)
-
-        base_blossom_shape = Leaf.get_shape(-self.param.blossom_shape, self.tree_scale / self.param.g_scale,
-                                            self.param.blossom_scale, 1)
         leaf_verts = []
         leaf_faces = []
         leaf_index = 0
-        blossom_verts = []
-        blossom_faces = []
-        blossom_index = 0
-
         counter = 0
         for leaf in self.leaves_array:
             # Update loading spinner periodically
             if counter % 500 == 0:
-                windman.progress_update(counter / 100)
                 update_log(
-                    '\r-> {} leaves made, {} blossoms made'.format(leaf_index, blossom_index))
-            if self.param.blossom_rate and random_random() < self.param.blossom_rate:
-                verts, faces = leaf.get_mesh(
-                    self.param.leaf_bend, base_blossom_shape, blossom_index)
-                blossom_verts.extend(verts)
-                blossom_faces.extend(faces)
-                blossom_index += 1
-            else:
-                verts, faces = leaf.get_mesh(
-                    self.param.leaf_bend, base_leaf_shape, leaf_index)
-                leaf_verts.extend(verts)
-                leaf_faces.extend(faces)
-                leaf_index += 1
+                    '\r-> {} leaves made'.format(leaf_index))
+
+            verts, faces = leaf.get_mesh(
+                self.param.leaf_bend, base_leaf_shape, leaf_index)
+            leaf_verts.extend(verts)
+            leaf_faces.extend(faces)
+            leaf_index += 1
             counter += 1
 
         # set up mesh object
@@ -355,18 +331,9 @@ class Tree(object):
                         vert_ind += 1
                         # leaves.validate()
 
-        if blossom_index > 0:
-            blossom = bpy.data.meshes.new('blossom')
-            blossom_obj = bpy.data.objects.new('Blossom', blossom)
-            bpy.context.collection.objects.link(blossom_obj)
-            blossom_obj.parent = self.tree_obj
-            blossom.from_pydata(blossom_verts, (), blossom_faces)
-            # blossom.validate()
-
         l_time = time.time() - start_time
-        update_log('\nMade %i leaves and %i blossoms in %f seconds\n' %
-                   (leaf_index, blossom_index, l_time))
-        windman.progress_end()
+        update_log('\nMade %i leaves in %f seconds\n' %
+                   (leaf_index, l_time))
 
     def make_leaf(self, leaf, base_leaf_shape, index, verts_array, faces_array):
         """get vertices and faces for leaf and append to appropriate arrays"""
@@ -457,7 +424,7 @@ class Tree(object):
 
         leaf_count = 0
         branch_count = 0
-        if depth == self.param.levels - 1 and depth > 0 and self.param.leaf_blos_num != 0:
+        if depth == self.param.levels - 1 and depth > 0 and self.param.leaf_num != 0:
             # calc base leaf count
             leaf_count = self.calc_leaf_count(stem)
             # correct leaf count for start position along stem
@@ -1114,13 +1081,13 @@ class Tree(object):
 
     def calc_leaf_count(self, stem):
         """Calculate leaf count of this stem as defined in paper"""
-        if self.param.leaf_blos_num >= 0:
+        if self.param.leaf_num >= 0:
             # scale number of leaves to match global scale and taper
-            leaves = self.param.leaf_blos_num * self.tree_scale / self.param.g_scale
+            leaves = self.param.leaf_num * self.tree_scale / self.param.g_scale
             result = leaves * \
                 (stem.length / (stem.parent.length_child_max * stem.parent.length))
         else:  # fan leaves
-            return self.param.leaf_blos_num
+            return self.param.leaf_num
         return result
 
     def calc_branch_count(self, stem):
@@ -1327,27 +1294,3 @@ def scale_bezier_handles_for_flare(stem, max_points_per_seg):
             (point.handle_left - point.co) / max_points_per_seg
         point.handle_right = point.co + \
             (point.handle_right - point.co) / max_points_per_seg
-
-
-def construct(params, seed=0, generate_leaves=True):
-    """Construct the tree"""
-
-    if seed == 0:
-        seed = int(random_random() * 9999999)
-        bpy.context.scene.last_seed = seed
-
-    update_log('\nUsing seed: {}\n'.format(seed))
-
-    random.seed(seed)
-
-    t = Tree(TreeParam(params), generate_leaves)
-    t.make()
-
-    ret_obj = t.tree_obj
-
-    # Try to get unneeded data out of memory ASAP
-    del t.leaves_array
-    del t.branch_curves
-    del t
-
-    return ret_obj
