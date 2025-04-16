@@ -1,8 +1,7 @@
 import bpy
 import os
 from .. import nodes, assets
-from ..osm.osm_parser import OSMParser
-from ..osm.blender_mesh_gen import BlenderMeshGen
+from ..osm.osm_generator import OSMGenerator
 
 
 class CityGenerator:
@@ -22,13 +21,7 @@ class CityGenerator:
 
     def generate_road_graph(self):
         if self.source == "OSM-Attributes":
-            library_path = os.path.join(
-                os.path.dirname(os.path.dirname(__file__)), "Assets")
-            parser = OSMParser()
-            graph, a, v = parser.parse(os.path.join(
-                library_path, 'potsdam-mini.osm'))
-            gen = BlenderMeshGen(graph, a)
-            road_graph = gen.generate()
+            road_graph = OSMGenerator().generate()
 
         elif self.source == "Generated":
             road_graph = bpy.data.objects.get("Example Road Graph")

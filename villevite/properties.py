@@ -6,7 +6,7 @@ class CityProperties(types.PropertyGroup):
         name="Data Source",
         description="Source of the city data",
         items=[
-            ("OSM_Attributes", "Read from OSM", "OpenStreetMap"),
+            ("OSM-Attributes", "Read from OSM", "OpenStreetMap"),
             ("Generated", "Generated", "Generated"),
         ],
     )  # type: ignore
