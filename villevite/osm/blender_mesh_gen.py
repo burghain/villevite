@@ -1,15 +1,16 @@
 import bpy
 import igraph as ig
+from .edge_properties import *
 
 
 class BlenderMeshGen:
 
-    def __init__(self, graph, road_attributes):
+    def __init__(self, graph):
         self.g = graph
-        self.road_attributes = road_attributes
 
     def generate(self):
         g = self.g
+
         components = g.connected_components(mode='weak')
 
         no_components = len(components)
@@ -22,6 +23,8 @@ class BlenderMeshGen:
             # gather vertex and edge info
             vertices = []
             edges = []
+
+            sorter = EdgePropertySorter(edge_property_names)
 
             # fill in vertices
             for v in subgraph.vs:
@@ -38,10 +41,18 @@ class BlenderMeshGen:
 
                 edges.append((source['bvertex_id'], target['bvertex_id']))
 
+                sorter.add_element(e)
+
             # create mesh
             new_mesh = bpy.data.meshes.new('mesh')
             new_mesh.from_pydata(vertices, edges, [])
             new_mesh.update()
+
+            # add edge properties
+            for name, dtype in zip(edge_property_names, edge_property_dtype):
+                edge_attr = new_mesh.attributes.new(
+                    name=name, type=dtype, domain='EDGE')
+                edge_attr.data.foreach_set('value', sorter.get_property(name))
 
             # make object from mesh
             new_object = bpy.data.objects.new('x', new_mesh)
@@ -54,41 +65,20 @@ class BlenderMeshGen:
             print("Subgraph generation done")
             return new_object
 
-        self._add_road_attributes()
 
-    def _add_road_attributes(self):
-        # create mesh
-        new_mesh = bpy.data.meshes.new('mesh')
-        new_mesh.from_pydata([(0, 0, 0) for _ in range(
-            0, len(self.road_attributes))], [], [])
-        new_mesh.update()
+class EdgePropertySorter():
 
-        print(self.road_attributes.get_intersection_a_positions())
+    def __init__(self, property_names):
+        self.property_names = property_names
 
-        # add intersection a position
-        vert_attr = new_mesh.attributes.new(
-            name='Intersection Position 0', type='FLOAT_VECTOR', domain='POINT')
-        vert_attr.data.foreach_set(
-            'vector', self.road_attributes.get_intersection_a_positions())
+        self.values = {}
 
-        # add intersection b position
-        vert_attr = new_mesh.attributes.new(
-            name='Intersection Position 1', type='FLOAT_VECTOR', domain='POINT')
-        vert_attr.data.foreach_set(
-            'vector', self.road_attributes.get_intersection_b_positions())
+        for name in property_names:
+            self.values[name] = []
 
-        for x in self.road_attributes:
-            print("aaa")
-            print(x[1])
-            # add vertex property
-            vert_attr = new_mesh.attributes.new(
-                name=x[0][0], type=x[0][1], domain='POINT')
-            vert_attr.data.foreach_set('value', x[1])
+    def add_element(self, e):
+        for name in self.property_names:
+            self.values[name].append(e[name])
 
-        # make object from mesh
-        new_object = bpy.data.objects.new('data', new_mesh)
-
-        # add object to scene collection
-        collection = bpy.data.collections.new('collection')
-        bpy.context.scene.collection.children.link(collection)
-        collection.objects.link(new_object)
+    def get_property(self, property_name):
+        return self.values[property_name]
