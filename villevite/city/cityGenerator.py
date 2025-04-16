@@ -6,20 +6,31 @@ from ..osm.blender_mesh_gen import BlenderMeshGen
 
 
 class CityGenerator:
-    def __init__(self, source="osm"):
-        self.source = source
+    def __init__(self, properties):
+        self.set_parameters(properties)
+        self.source = properties.source
         assets.import_assets()
 
+    def set_parameters(self, parameters):
+        self.parameters = {
+            "Roadway Vehicle Density": parameters.roadway_vehicle_density,
+            "Parking Lot Vehicle Density": parameters.parking_lot_vehicle_density,
+            "Preview": False,
+            "Data Source": ["OSM-Attributes", "Generated"].index(parameters.source),
+            "Seed": 0,
+        }
+
     def generate_road_graph(self):
-        if self.source == "osm":
+        if self.source == "OSM-Attributes":
             library_path = os.path.join(
                 os.path.dirname(os.path.dirname(__file__)), "Assets")
             parser = OSMParser()
-            graph, v = parser.parse(os.path.join(
+            graph, a, v = parser.parse(os.path.join(
                 library_path, 'potsdam-mini.osm'))
-            gen = BlenderMeshGen(graph)
+            gen = BlenderMeshGen(graph, a)
             road_graph = gen.generate()
-        elif self.source == "template":
+
+        elif self.source == "Generated":
             road_graph = bpy.data.objects.get("Example Road Graph")
             bpy.context.collection.objects.link(road_graph)
         return road_graph
@@ -27,5 +38,6 @@ class CityGenerator:
     def generate(self):
 
         road_graph = self.generate_road_graph()
-        nodes.add_to_object(road_graph, "City Generator")
+        nodes.add_to_object(road_graph, "City Generator",
+                            self.parameters)
         return road_graph

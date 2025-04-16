@@ -1,9 +1,10 @@
 import bpy
 
 
-def add_to_object(object, group_name):
+def add_to_object(object, group_name, parameters):
     modifier = object.modifiers.new(group_name, "NODES")
     modifier.node_group = bpy.data.node_groups[group_name]
+    set_inputs(modifier, parameters)
     return
 
 
