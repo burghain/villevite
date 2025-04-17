@@ -3,6 +3,7 @@ import igraph as ig
 import math
 from mathutils import Vector
 from .edge_properties import edge_property_names, edge_property_defaults
+from .objects.building import Building
 
 
 class OSMParser():
@@ -74,6 +75,8 @@ class OSMParser():
         # create graph and helper vars
         g = ig.Graph(directed=False)
 
+        buildings = []
+
         no_highways = 0
         desired_type = ['primary', 'secondary',
                         'tertiary', 'living_street', 'residential']
@@ -103,7 +106,7 @@ class OSMParser():
 
         # build graph
         # building ways from node dict
-        for child in root:
+        for child in root.findall("way"):
             if child.tag == 'way':
                 is_desired_type = False
 
@@ -154,6 +157,41 @@ class OSMParser():
 
                         prev_vertex = current_vertex
 
+        # parse buildings
+        for child in root.findall("way"):
+            # is our osm way a building?
+            is_building = False
+
+            for tagtag in child.findall("tag"):
+                if tagtag.attrib['k'] == 'building':
+                    is_building = True
+
+            if not is_building:
+                continue
+
+            # get geometry
+            building_geom = []
+
+            for n in child.findall("nd"):
+                osm_id = n.attrib['ref']
+
+                v = g.vs.find(osm_id=osm_id)
+
+                building_geom.append(v['coord'])
+
+            building_levels = 1
+
+            # get attributes
+            for tagtag in child.findall("tag"):
+                if tagtag.attrib['k'] == 'building:levels':
+                    building_levels = tagtag.attrib['v']
+
+            building = Building(geom=building_geom)
+            building.levels = building_levels
+
+            buildings.append(building)
+
+
         # clear unconnected verts away
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
         g.delete_vertices(lonely_vertices)
@@ -163,7 +201,7 @@ class OSMParser():
 
         print(f'no highways: {no_highways}')
 
-        return g, Vector((self.x_max, self.y_max))
+        return g, Vector((self.x_max, self.y_max)), buildings
 
 
 class PropertyWatcher():
