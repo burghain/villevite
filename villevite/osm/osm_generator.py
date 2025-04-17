@@ -12,6 +12,6 @@ class OSMGenerator:
                 os.path.dirname(os.path.dirname(__file__)), "Assets")
 
         parser = OSMParser()
-        g, v = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
-        gen = BlenderMeshGen(g)
+        g, b = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
+        gen = BlenderMeshGen(g, b)
         return gen.generate()

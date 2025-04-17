@@ -5,10 +5,21 @@ from .edge_properties import *
 
 class BlenderMeshGen:
 
-    def __init__(self, graph):
+    def __init__(self, graph, buildings):
         self.g = graph
+        self.b = buildings
 
     def generate(self):
+
+        collection = bpy.data.collections.new('City Generator')
+        bpy.context.scene.collection.children.link(collection)
+        roads = self.generate_roads()
+        collection.objects.link(roads)
+        collection.objects.link(self.generate_buildings())
+
+        return roads
+
+    def generate_roads(self):
         g = self.g
 
         components = g.connected_components(mode='weak')
@@ -28,9 +39,9 @@ class BlenderMeshGen:
 
             # fill in vertices
             for v in subgraph.vs:
-                coords = v['coord']
+                coord = v['coord']
 
-                vertices.append((coords[0], coords[1], 0))
+                vertices.append(coord)
 
                 v['bvertex_id'] = len(vertices) - 1
 
@@ -55,16 +66,49 @@ class BlenderMeshGen:
                 edge_attr.data.foreach_set('value', sorter.get_property(name))
 
             # make object from mesh
-            new_object = bpy.data.objects.new('x', new_mesh)
+            new_object = bpy.data.objects.new('Roads', new_mesh)
 
-            # add object to scene collection
-            collection = bpy.data.collections.new('City Generator')
-            bpy.context.scene.collection.children.link(collection)
-            collection.objects.link(new_object)
 
             print("Subgraph generation done")
             return new_object
 
+    def generate_buildings(self):
+        b = self.b
+
+        vertices = []
+        edges = []
+        faces = []
+        floors = []
+
+        for building in b:
+            v_start_id = len(vertices)
+
+            vertices = vertices + building.geometry
+
+            v_end_id = len(vertices) - 1
+
+            for i in range(v_start_id, v_end_id):
+                edges.append((i, i+1))
+
+            faces.append(range(v_start_id, v_end_id + 1))
+
+            floors.append(building.levels)
+
+
+        # create mesh
+        new_mesh = bpy.data.meshes.new('mesh')
+        new_mesh.from_pydata(vertices, edges, faces)
+        new_mesh.update()
+
+        face_attr = new_mesh.attributes.new(
+                    name='Number Of Floors', type='INT8', domain='FACE')
+        face_attr.data.foreach_set('value', floors)
+
+        # make object from mesh
+        new_object = bpy.data.objects.new('Buildings', new_mesh)
+
+        
+        return new_object
 
 class EdgePropertySorter():
 
