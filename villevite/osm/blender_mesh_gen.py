@@ -39,9 +39,9 @@ class BlenderMeshGen:
 
             # fill in vertices
             for v in subgraph.vs:
-                coords = v['coord']
+                coord = v['coord']
 
-                vertices.append((coords[0], coords[1], 0))
+                vertices.append(coord)
 
                 v['bvertex_id'] = len(vertices) - 1
 
