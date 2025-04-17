@@ -184,7 +184,7 @@ class OSMParser():
             # get attributes
             for tagtag in child.findall("tag"):
                 if tagtag.attrib['k'] == 'building:levels':
-                    building_levels = tagtag.attrib['v']
+                    building_levels = math.floor(float(tagtag.attrib['v']))
 
             building = Building(geom=building_geom)
             building.levels = building_levels

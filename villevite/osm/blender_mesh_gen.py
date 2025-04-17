@@ -78,6 +78,7 @@ class BlenderMeshGen:
         vertices = []
         edges = []
         faces = []
+        floors = []
 
         for building in b:
             v_start_id = len(vertices)
@@ -91,11 +92,17 @@ class BlenderMeshGen:
 
             faces.append(range(v_start_id, v_end_id + 1))
 
+            floors.append(building.levels)
+
 
         # create mesh
         new_mesh = bpy.data.meshes.new('mesh')
         new_mesh.from_pydata(vertices, edges, faces)
         new_mesh.update()
+
+        face_attr = new_mesh.attributes.new(
+                    name='Number Of Floors', type='INT8', domain='FACE')
+        face_attr.data.foreach_set('value', floors)
 
         # make object from mesh
         new_object = bpy.data.objects.new('Buildings', new_mesh)
