@@ -14,6 +14,16 @@ def clear_all():
         bpy.data.collections.remove(collection)
 
 
+def increase_clipping_distance():
+    for area in bpy.context.screen.areas:
+        if area.type == 'VIEW_3D':
+            for space in area.spaces:
+                if space.type == 'VIEW_3D':
+                    # Near clip distance (default is 0.1)
+                    space.clip_start = 0.1
+                    space.clip_end = 100000.0
+
+
 class OBJECT_OT_GenerateCity(bpy.types.Operator):
     "Generate a city with given parameters"
     bl_idname = "villevite.generate_city"
@@ -59,4 +69,5 @@ class OBJECT_OT_ClearAll(bpy.types.Operator):
 
     def execute(self, context):
         clear_all()
+        increase_clipping_distance()
         return {"FINISHED"}

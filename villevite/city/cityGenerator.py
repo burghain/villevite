@@ -25,7 +25,7 @@ class CityGenerator:
 
         elif self.source == "Generated":
             city_map = bpy.data.objects.get("Example Road Graph")
-            bpy.context.collection.objects.link(road_graph)
+            bpy.context.collection.objects.link(city_map)
         return city_map
 
     def generate(self):
