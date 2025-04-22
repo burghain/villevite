@@ -49,5 +49,5 @@ class OBJECT_OT_Surprise(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        generate_tree("acer")
+        generate_tree("")
         return {"FINISHED"}

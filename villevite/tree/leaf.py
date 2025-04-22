@@ -5,7 +5,7 @@ from math import atan2, pi
 from .chturtle import Vector
 from mathutils import Quaternion
 
-from .  import leaf_shapes as leaf_geom
+from . import leaf_shapes as leaf_geom
 
 
 class Leaf(object):
@@ -26,15 +26,9 @@ class Leaf(object):
         """returns the base leaf shape mesh"""
         u_v = []
 
-        if leaf_type < 0:  # blossom
-            if leaf_type < -3:  # out of range
-                leaf_type = -1
-            shape = leaf_geom.blossom(abs(leaf_type + 1))
-
-        else:  # leaf
-            if leaf_type < 1 or leaf_type > 10:  # is out of range or explicitly default
-                leaf_type = 8
-            shape = leaf_geom.leaves(leaf_type - 1)
+        if leaf_type < 1 or leaf_type > 10:  # is out of range or explicitly default
+            leaf_type = 8
+        shape = leaf_geom.leaves(leaf_type - 1)
 
         verts = shape[0]
         faces = shape[1]
