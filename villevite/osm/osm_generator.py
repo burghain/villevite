@@ -1,5 +1,6 @@
 import os
 from .blender_mesh_gen import BlenderMeshGen
+from .scan_path_generator import ScanPathGenerator
 from .osm_parser import OSMParser
 
 
@@ -14,6 +15,10 @@ class OSMGenerator:
 
         parser = OSMParser()
         g, b = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
-        gen = BlenderMeshGen(g, b)
-        city_map = gen.generate()
+
+        scan_path_gen = ScanPathGenerator(g)
+        scan_path_gen.generate_path()
+
+        bmgen = BlenderMeshGen(g, b)
+        city_map = bmgen.generate()
         return city_map
