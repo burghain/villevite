@@ -20,3 +20,4 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
         layout.operator("villevite.generate_city")
         layout.operator("villevite.generate_street_mesh")
         layout.operator("villevite.surprise")
+        layout.operator("villevite.clear_all")

@@ -25,7 +25,6 @@ class OBJECT_OT_GenerateCity(bpy.types.Operator):
         return context.mode == "OBJECT"
 
     def execute(self, context):
-        clear_all()
         parameters = context.scene.cityproperties
         citygen = CityGenerator(parameters)
         city = citygen.generate()
@@ -38,7 +37,7 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        OSMGenerator().generate()
+        city_map = OSMGenerator().generate()
 
         return {"FINISHED"}
 
@@ -50,4 +49,14 @@ class OBJECT_OT_Surprise(bpy.types.Operator):
 
     def execute(self, context):
         generate_tree("")
+        return {"FINISHED"}
+
+
+class OBJECT_OT_ClearAll(bpy.types.Operator):
+    bl_idname = "villevite.clear_all"
+    bl_label = "Clear all"
+    bl_options = {"REGISTER", "UNDO"}
+
+    def execute(self, context):
+        clear_all()
         return {"FINISHED"}

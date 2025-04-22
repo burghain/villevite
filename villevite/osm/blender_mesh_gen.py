@@ -1,6 +1,17 @@
 import bpy
+import bmesh
 import igraph as ig
 from .edge_properties import *
+
+
+def merge_meshes(name: str, meshes: list) -> bpy.types.Object:
+    bm = bmesh.new()
+    for mesh in meshes:
+        bm.from_mesh(mesh)
+    merged_mesh = bpy.data.meshes.new(name)
+    bm.to_mesh(merged_mesh)
+
+    return merged_mesh
 
 
 class BlenderMeshGen:
@@ -13,11 +24,14 @@ class BlenderMeshGen:
 
         collection = bpy.data.collections.new('City Generator')
         bpy.context.scene.collection.children.link(collection)
-        roads = self.generate_roads()
-        collection.objects.link(roads)
-        collection.objects.link(self.generate_buildings())
+        road_graph = self.generate_roads()
+        buildings = self.generate_buildings()
 
-        return roads
+        city_map_mesh = merge_meshes('City', [road_graph, buildings])
+        city_map = bpy.data.objects.new('City', city_map_mesh)
+        collection.objects.link(city_map)
+
+        return city_map
 
     def generate_roads(self):
         g = self.g
@@ -68,9 +82,8 @@ class BlenderMeshGen:
             # make object from mesh
             new_object = bpy.data.objects.new('Roads', new_mesh)
 
-
             print("Subgraph generation done")
-            return new_object
+            return new_mesh
 
     def generate_buildings(self):
         b = self.b
@@ -94,21 +107,20 @@ class BlenderMeshGen:
 
             floors.append(building.levels)
 
-
         # create mesh
         new_mesh = bpy.data.meshes.new('mesh')
         new_mesh.from_pydata(vertices, edges, faces)
         new_mesh.update()
 
         face_attr = new_mesh.attributes.new(
-                    name='Number Of Floors', type='INT8', domain='FACE')
+            name='Number Of Floors', type='INT8', domain='FACE')
         face_attr.data.foreach_set('value', floors)
 
         # make object from mesh
         new_object = bpy.data.objects.new('Buildings', new_mesh)
 
-        
-        return new_object
+        return new_mesh
+
 
 class EdgePropertySorter():
 

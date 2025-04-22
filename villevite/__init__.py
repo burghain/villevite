@@ -23,6 +23,7 @@ classes = [
     operators.OBJECT_OT_ReadOSM,
     operators.OBJECT_OT_Surprise,
     properties.CityProperties,
+    operators.OBJECT_OT_ClearAll,
 ]
 
 

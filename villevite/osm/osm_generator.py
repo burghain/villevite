@@ -2,6 +2,7 @@ import os
 from .blender_mesh_gen import BlenderMeshGen
 from .osm_parser import OSMParser
 
+
 class OSMGenerator:
 
     def __init__(self):
@@ -9,9 +10,10 @@ class OSMGenerator:
 
     def generate(self):
         library_path = os.path.join(
-                os.path.dirname(os.path.dirname(__file__)), "Assets")
+            os.path.dirname(os.path.dirname(__file__)), "Assets")
 
         parser = OSMParser()
         g, b = parser.parse(os.path.join(library_path, 'potsdam-mini.osm'))
         gen = BlenderMeshGen(g, b)
-        return gen.generate()
+        city_map = gen.generate()
+        return city_map

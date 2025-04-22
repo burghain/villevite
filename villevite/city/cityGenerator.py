@@ -19,18 +19,19 @@ class CityGenerator:
             "Seed": 0,
         }
 
-    def generate_road_graph(self):
+    def retrieve_map(self):
         if self.source == "OSM-Attributes":
-            road_graph = OSMGenerator().generate()
+            city_map = OSMGenerator().generate()
 
         elif self.source == "Generated":
-            road_graph = bpy.data.objects.get("Example Road Graph")
+            city_map = bpy.data.objects.get("Example Road Graph")
             bpy.context.collection.objects.link(road_graph)
-        return road_graph
+        return city_map
 
     def generate(self):
 
-        road_graph = self.generate_road_graph()
-        nodes.add_to_object(road_graph, "City Generator",
+        city_map = self.retrieve_map()
+        nodes.add_to_object(city_map, "City Generator",
                             self.parameters)
-        return road_graph
+
+        return city_map
