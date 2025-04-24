@@ -21,19 +21,17 @@ class ScanPathGenerator:
         return [self.g.vs[i]['coord'] for i in solution]
 
     def draw_path(self, path):
-        vertices = path
-        edges = []
+        curve = bpy.data.curves.new('curve', type='CURVE')
+        curve.dimensions = '3D'
+        curve.resolution_u = 2
 
-        for i in range(0, len(vertices) - 1):
-            edges.append((i, i+1))
+        polyline = curve.splines.new('BEZIER')
+        polyline.bezier_points.add(len(path) - 1)
+        for i, coord in enumerate(path):
+            x, y, z = coord
+            polyline.bezier_points[i].co = (x, y, 2.5)
+            polyline.bezier_points[i].handle_left_type = 'ALIGNED'
+            polyline.bezier_points[i].handle_right_type = 'ALIGNED'
 
-        new_mesh = bpy.data.meshes.new('mesh')
-        new_mesh.from_pydata(vertices, edges, [])
-        new_mesh.update()
-
-        new_object = bpy.data.objects.new('Scan Path', new_mesh)
-        new_object.location = (0, 0, 1.5)
-
-        collection = bpy.data.collections.new('Path')
-        bpy.context.scene.collection.children.link(collection)
-        collection.objects.link(new_object)
+        new_object = bpy.data.objects.new('Scan Path', curve)
+        bpy.context.collection.objects.link(new_object)
