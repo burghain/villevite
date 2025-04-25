@@ -3,6 +3,7 @@ import os
 from .osm.osm_generator import OSMGenerator
 from .city.cityGenerator import CityGenerator
 from .tree.treeGenerator import generate_tree
+from . import assets
 
 
 def clear_all():
@@ -19,7 +20,6 @@ def increase_clipping_distance():
         if area.type == 'VIEW_3D':
             for space in area.spaces:
                 if space.type == 'VIEW_3D':
-                    # Near clip distance (default is 0.1)
                     space.clip_start = 0.1
                     space.clip_end = 100000.0
 
@@ -58,7 +58,7 @@ class OBJECT_OT_Surprise(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        generate_tree("")
+        assets.import_tests()
         return {"FINISHED"}
 
 
