@@ -109,32 +109,33 @@ def test():
 
 # COMMAND LINE INTERFACE
 
-parser = argparse.ArgumentParser()
-parser.add_argument(
-    "command",
-    choices=["build", "test", "release"],
-    help="""
-  test = build with test files and run tests
-  build = Create the zip
-  """,
-)
-parser.add_argument(
-    "--fast",
-    action=argparse.BooleanOptionalAction,
-    help="Do not use the blender addon builder and instead just zip the folder",
-)
-parser.add_argument(
-    "--skip-rebuild",
-    action=argparse.BooleanOptionalAction,
-    help="Do not rebuild the addon when running the tests, only viable when there are no changes in the addon code",
-)
-args = parser.parse_args()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "command",
+        choices=["build", "test", "release"],
+        help="""
+    test = build with test files and run tests
+    build = Create the zip
+    """,
+    )
+    parser.add_argument(
+        "--fast",
+        action=argparse.BooleanOptionalAction,
+        help="Do not use the blender addon builder and instead just zip the folder",
+    )
+    parser.add_argument(
+        "--skip-rebuild",
+        action=argparse.BooleanOptionalAction,
+        help="Do not rebuild the addon when running the tests, only viable when there are no changes in the addon code",
+    )
+    args = parser.parse_args()
 
-if args.command == "build":
-    build(args.fast)
-elif args.command == "test":
-    if not args.skip_rebuild:
+    if args.command == "build":
         build(args.fast)
-    test()
-else:
-    parser.print_help()
+    elif args.command == "test":
+        if not args.skip_rebuild:
+            build(args.fast)
+        test()
+    else:
+        parser.print_help()
