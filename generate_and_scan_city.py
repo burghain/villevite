@@ -6,7 +6,7 @@ import sys
 argv = sys.argv
 argv = argv[argv.index("--") + 1:] 
 
-if len(argv) < 2:
+if len(argv) < 3:
     exit()
 
 bpy.ops.preferences.addon_install(overwrite=True, target='DEFAULT', filepath=argv[1], filter_folder=True, filter_python=False, filter_glob="*.py;*.zip")
@@ -21,6 +21,9 @@ vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"
 #bpy.ops.preferences.addon_enable(module="villevite")
 
 # deal with villevite stuff
+osm_file = argv[2]
+bpy.data.scenes["Scene"].cityproperties.source_file = osm_file
+
 bpy.ops.villevite.clear_all()
 bpy.ops.villevite.generate_city()
 

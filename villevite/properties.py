@@ -10,6 +10,10 @@ class CityProperties(types.PropertyGroup):
             ("Generated", "Generated", "Generated"),
         ],
     )  # type: ignore
+    source_file: props.StringProperty(
+        name="Source File Location",
+        description="Location of the Source OSM File"
+    )
     roadway_vehicle_density: props.FloatProperty(
         name="Roadway Vehicle Density",
         description="Amount of vehicles on the road",
