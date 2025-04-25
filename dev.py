@@ -14,7 +14,7 @@ def build(fast=False):
         print(f"Building addon: Zipping folder {source_dir} to {filename}.zip")
         shutil.make_archive(addon_name, "zip", addon_name)
     else:
-        version = "4.3.2"
+        version = "4.4.0"
         print(f"Building addon: Using blender version {version} to build")
         setup_blender("./blender", version)
         subprocess.run(
@@ -32,6 +32,7 @@ def build(fast=False):
 
 
 def run_tests(blender_executable):
+    # Install the addon
     subprocess.run(
         [
             blender_executable,
@@ -96,7 +97,7 @@ def install_test_deps(blender_path, version):
 
 
 def test():
-    blender_versions = ["4.3.2", "4.4.0"]
+    blender_versions = ["4.4.0"]
     blender_path = "./blender"
     for version in blender_versions:
 

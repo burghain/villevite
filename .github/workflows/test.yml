@@ -11,9 +11,36 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          lfs: true
+          fetch-depth: 0
+      - name: Set up git lfs
+        run: git lfs install
+      - name: Restore lfs cache
+        id: lfs-cache
+        uses: actions/cache@v4
+        with:
+          path: .git/lfs
+          key: ${{ runner.os }}-lfs-${{ hashFiles('.gitattributes') }}
+          restore-keys: |
+            ${{ runner.os }}-lfs-
+      - name: Pull LFS files
+        run: git lfs pull
+
+      - name: Cache Blender installations
+        id: blender-cache
+        uses: actions/cache@v4
+        with:
+          path: ./blender
+          key: ${{ runner.os }}-blender-${{ hashFiles('./dev.py') }}
+          restore-keys: |
+            ${{ runner.os }}-blender-
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
+
+
       - name: Run tests
         run: python dev.py test
