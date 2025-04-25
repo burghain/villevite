@@ -27,9 +27,20 @@ jobs:
       - name: Pull LFS files
         run: git lfs pull
 
+      - name: Cache Blender installations
+        id: blender-cache
+        uses: actions/cache@v4
+        with:
+          path: ./blender
+          key: ${{ runner.os }}-blender-${{ hashFiles('./dev.py') }}
+          restore-keys: |
+            ${{ runner.os }}-blender-
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
+
+
       - name: Run tests
         run: python dev.py test
