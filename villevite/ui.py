@@ -15,6 +15,7 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
         box = layout.box()
         box.row()
         box.prop(parameters, "source")
+        box.prop(parameters, "source_file")
         # box.prop(parameters, "roadway_vehicle_density")
         # box.prop(parameters, "parking_lot_vehicle_density")
         layout.operator("villevite.generate_city")

@@ -47,7 +47,8 @@ class OBJECT_OT_ReadOSM(bpy.types.Operator):
     bl_options = {"REGISTER", "UNDO"}
 
     def execute(self, context):
-        city_map = OSMGenerator().generate()
+        parameters = context.scene.cityproperties
+        city_map = OSMGenerator(parameters.source_file).generate()
 
         return {"FINISHED"}
 

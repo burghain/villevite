@@ -8,6 +8,7 @@ class CityGenerator:
     def __init__(self, properties):
         self.set_parameters(properties)
         self.source = properties.source
+        self.source_file = properties.source_file
         assets.import_assets()
 
     def set_parameters(self, parameters):
@@ -21,7 +22,7 @@ class CityGenerator:
 
     def retrieve_map(self):
         if self.source == "OSM-Attributes":
-            city_map = OSMGenerator().generate()
+            city_map = OSMGenerator(self.source_file).generate()
 
         elif self.source == "Generated":
             city_map = bpy.data.objects.get("Example Road Graph")
