@@ -43,4 +43,4 @@ jobs:
 
 
       - name: Run tests
-        run: python dev.py test
+        run: python utils/dev.py test

@@ -1,5 +1,5 @@
 import subprocess
-from utils.dev import build
+from dev import build
 import json
 import os
 import shutil
@@ -20,14 +20,14 @@ if __name__ == '__main__':
 
         blender_dir = d['blender_dir']
         blender_portable_dir = blender_dir + '/portable'
-        
+
         vlidar_zip = d['vlidar_zip']
 
         osm_file = d['osm_file']
 
         if os.path.isdir(blender_portable_dir):
             shutil.rmtree(blender_portable_dir)
-        
+
         os.mkdir(blender_dir + '/portable')
 
         blender_executable = blender_dir + '/blender'
@@ -36,27 +36,26 @@ if __name__ == '__main__':
         build(fast=True)
 
         subprocess.run(
-                [
-                    blender_executable,
-                    "--command",
-                    "extension",
-                    "install-file",
-                    "-r",
-                    "user_default",
-                    "-e",
-                    "villevite.zip"
-                ]
-            )
-
+            [
+                blender_executable,
+                "--command",
+                "extension",
+                "install-file",
+                "-r",
+                "user_default",
+                "-e",
+                "villevite.zip"
+            ]
+        )
 
         subprocess.run(
-                [
-                    blender_executable,
-                    "--python",
-                    "/home/simon/Dokumente/villevite/generate_and_scan_city.py",
-                    "--",
-                    point_cloud_save_file,
-                    vlidar_zip,
-                    osm_file
-                ]
+            [
+                blender_executable,
+                "--python",
+                "/home/simon/Dokumente/villevite/generate_and_scan_city.py",
+                "--",
+                point_cloud_save_file,
+                vlidar_zip,
+                osm_file
+            ]
         )
