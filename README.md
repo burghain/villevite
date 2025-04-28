@@ -1,26 +1,73 @@
 # Villevite City Generator
 
+Villevite is a Blender add-on designed to procedurally generate cities, including buildings, streets, and trees. It provides tools for creating realistic urban environments and supports customization through assets and parameters.
+
+## Features
+
+- Procedural generation of cities with buildings, streets, and trees.
+- Asset-based architecture for modular and reusable components.
+- Integration with Blender's 3D Viewport for real-time visualization.
+- Support for generating and managing city elements through a custom UI panel.
+
 ## Development Setup
 
-### Blender
+### Prerequisites
 
-- Blender Preferences>File Paths>Asset Catalogs
-  - Add the absolute Path for ./villevite/Assets as Asset Catalog (Name arbitrary)
-  - Change import policy to link
+- **Blender**: Ensure you have Blender installed. The add-on has been tested with Blender versions 4.3.2 and 4.4.0.
+- **Python**: Python 3.9 or later is required for development.
+
+### Setting Up the Development Environment
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd villevite
+   ```
+
+2. Install the required Python dependencies:
+
+   ```bash
+   pip install -r development_requirements.txt
+   ```
+
+3. Set up Blender to recognize the Villevite Assets:
+   - Open Blender.
+   - Go to `Edit > Preferences > File Paths > Asset Catalogs`.
+   - Add the absolute path to the `./villevite/Assets` directory as an Asset Catalog.
+   - Change the import policy to "Link".
+
+### Running Tests
+
+Villevite includes a test suite to ensure the functionality of its components. To run the tests:
+
+  ```bash
+  python ./dev.py test
+  ```
+
+## Usage
+
+1. Open Blender and navigate to the 3D Viewport.
+2. Access the Villevite panel from the side toolbar under the "Villevite" tab.
+3. Use the provided operators to generate city elements:
+   - **Generate City**: Creates a procedural city layout.
+   - **Generate Street Mesh**: Generates street meshes based on OSM data.
+   - **Clear All**: Clears all generated elements from the scene.
 
 ## Architecture
 
 ### Assets
 
-- Assets sorted in different blend files
-- Each not larger than 100mb (github limitation, don't wanna use lfs)
-- Every Collection that needs to be used individually (e.g. Building Walls) as separate Asset
+- Assets are sorted into different `.blend` files.
+- Each collection that needs to be used individually (e.g., Building Walls) is stored as a separate asset.
 
 ### City Generator
 
+- The city generator uses procedural algorithms to create realistic urban layouts.
+
 ### General Add-on Structure
 
-- See BlenderAddonTemplate
+- The add-on follows the structure outlined in the BlenderAddonTemplate.
 
 ## References
 

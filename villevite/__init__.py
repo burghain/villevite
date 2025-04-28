@@ -10,7 +10,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
-
+"""Handles the registration and unregistration of the add-on classes and properties."""
 import bpy
 
 from . import operators
@@ -19,15 +19,18 @@ from . import properties
 
 classes = [
     ui.VIEW3D_PT_SidePanel,
-    operators.OBJECT_OT_GenerateCity,
-    operators.OBJECT_OT_ReadOSM,
-    operators.OBJECT_OT_Surprise,
+    operators.OperatorGenerateCity,
+    operators.OperatorReadOSM,
+    operators.OperatorSurprise,
     properties.CityProperties,
-    operators.OBJECT_OT_ClearAll,
+    operators.OperatorClearAll,
 ]
 
 
-def register():
+def register() -> None:
+    """
+    Register the add-on classes and properties.
+    """
     for cls in classes:
         bpy.utils.register_class(cls)
 
@@ -35,7 +38,10 @@ def register():
         type=properties.CityProperties)
 
 
-def unregister():
+def unregister() -> None:
+    """
+    Unregister the add-on classes and properties.
+    """
     del bpy.types.Scene.cityproperties
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)

@@ -1,7 +1,15 @@
+"""
+This module defines the propertygroup for the parameters of the city generation.
+"""
+
 from bpy import props, types
 
 
 class CityProperties(types.PropertyGroup):
+    """
+    A class representing properties for city generation in Blender.
+    """
+
     source: props.EnumProperty(
         name="Data Source",
         description="Source of the city data",
@@ -10,10 +18,12 @@ class CityProperties(types.PropertyGroup):
             ("Generated", "Generated", "Generated"),
         ],
     )  # type: ignore
+
     source_file: props.StringProperty(
         name="Source File Location",
-        description="Location of the Source OSM File"
-    )
+        description="Location of the Source OSM File",
+    )  # type: ignore
+
     roadway_vehicle_density: props.FloatProperty(
         name="Roadway Vehicle Density",
         description="Amount of vehicles on the road",
@@ -21,6 +31,7 @@ class CityProperties(types.PropertyGroup):
         min=0.0,
         max=1.0,
     )  # type: ignore
+
     parking_lot_vehicle_density: props.FloatProperty(
         name="Parking Lot Vehicle Density",
         description="Amount of parked vehicles",
