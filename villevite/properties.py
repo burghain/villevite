@@ -22,6 +22,7 @@ class CityProperties(types.PropertyGroup):
     source_file: props.StringProperty(
         name="Source File Location",
         description="Location of the Source OSM File",
+        default="../Assets/default_map.osm",
     )  # type: ignore
 
     roadway_vehicle_density: props.FloatProperty(
