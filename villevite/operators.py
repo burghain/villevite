@@ -1,8 +1,7 @@
 """
 This module defines various operators for the Villevite Blender add-on.
 
-Operators include functionality for generating cities, reading OSM data,
-clearing all objects, and adjusting the clipping distance in the 3D viewport.
+Operators include functionality for generating cities, reading OSM data, clearing all objects, and adjusting the clipping distance in the 3D viewport.
 """
 
 import bpy
@@ -13,10 +12,7 @@ from . import assets
 
 def clear_all() -> None:
     """
-    Remove all objects, node groups, and collections from the Blender scene.
-
-    This function iterates through all objects, node groups, and collections
-    in the Blender data and removes them to clear the scene.
+    Remove all objects, node groups, and collections from the Blender scene to reset it for debug purposes.
     """
     for obj in bpy.data.objects:
         bpy.data.objects.remove(obj, do_unlink=True)
@@ -28,9 +24,7 @@ def clear_all() -> None:
 
 def increase_clipping_distance() -> None:
     """
-    Increase the clipping distance for all 3D viewports in the Blender UI.
-
-    Sets the clip start to 0.1 and the clip end to 100,000.0 for all 3D viewports.
+    Increase the clipping distance for the 3D viewport in the current workspace. Neccessary to view large cities.
     """
     for area in bpy.context.screen.areas:
         if area.type == 'VIEW_3D':
@@ -42,12 +36,7 @@ def increase_clipping_distance() -> None:
 
 class OperatorGenerateCity(bpy.types.Operator):
     """
-    Operator to generate a city with the given parameters.
-
-    Attributes:
-        bl_idname (str): Unique identifier for the operator.
-        bl_label (str): Display name for the operator.
-        bl_options (set): Options for the operator, such as undo support.
+    Blender Operator to generate a city with the given parameters.
     """
     bl_idname: str = "villevite.generate_city"
     bl_label: str = "Generate City"

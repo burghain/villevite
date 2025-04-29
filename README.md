@@ -1,6 +1,6 @@
 # Villevite City Generator
 
-Villevite is a Blender add-on designed to procedurally generate cities, including buildings, streets, and trees. It provides tools for creating realistic urban environments and supports customization through assets and parameters.
+Villevite is a Blender add-on designed to procedurally generate cities for training data synthesis, including buildings, streets with variable width and intelligent crossroad calculation and vegetation. It provides tools for creating realistic urban environments and customization through assets and parameters.
 
 ## Features
 
@@ -13,7 +13,7 @@ Villevite is a Blender add-on designed to procedurally generate cities, includin
 
 ### Prerequisites
 
-- **Blender**: Ensure you have Blender installed. The add-on has been tested with Blender versions 4.3.2 and 4.4.0.
+- **Blender**: The add-on has been tested with Blender versions 4.3.2 and 4.4.0.
 - **Python**: Python 3.9 or later is required for development.
 
 ### Setting Up the Development Environment
@@ -52,7 +52,6 @@ Villevite includes a test suite to ensure the functionality of its components. T
 3. Use the provided operators to generate city elements:
    - **Generate City**: Creates a procedural city layout.
    - **Generate Street Mesh**: Generates street meshes based on OSM data.
-   - **Clear All**: Clears all generated elements from the scene.
 
 ## Architecture
 
