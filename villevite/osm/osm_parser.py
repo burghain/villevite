@@ -23,7 +23,7 @@ class OSMParser():
 
         def lat2y(lat):
             return math.log(math.tan(math.pi / 4 + math.radians(lat) / 2)) * R
-        
+
         def lon2x(lon):
             return math.radians(lon) * R
 
@@ -32,7 +32,6 @@ class OSMParser():
 
         if self.MIN_Y == None:
             self.MIN_Y = lat2y(map_bounds[1])
-
 
         lat = latlon[0]
         lon = latlon[1]
@@ -63,6 +62,7 @@ class OSMParser():
                         'tertiary', 'living_street', 'residential']
 
         # read osm xml
+
         tree = ET.parse(filename)
         root = tree.getroot()
 
@@ -73,7 +73,6 @@ class OSMParser():
                                float(bounds_tag.attrib['maxlon']),
                                float(bounds_tag.attrib['maxlat'])]
 
-
         # create node_to_coord dict
         for child in root:
             if child.tag == 'node':
@@ -82,7 +81,8 @@ class OSMParser():
                 node_id = child.attrib['id']
 
                 v = g.add_vertex()
-                v['coord'] = self.geo_coords_to_meter([lat, lon], self.map_bounds)
+                v['coord'] = self.geo_coords_to_meter(
+                    [lat, lon], self.map_bounds)
                 v['osm_id'] = node_id
 
         # build graph
@@ -91,27 +91,34 @@ class OSMParser():
             if child.tag == 'way':
                 is_desired_type = False
 
-                way_property_watcher = PropertyWatcher(edge_property_names, edge_property_defaults)
+                way_property_watcher = PropertyWatcher(
+                    edge_property_names, edge_property_defaults)
 
                 # check for ways' properties
                 for n in child:
                     if n.tag == 'tag':
                         if n.attrib['k'] == 'highway' and n.attrib['v'] in desired_type:
                             is_desired_type = True
-                            way_property_watcher.watch('Number Of Lanes', self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']])
+                            way_property_watcher.watch(
+                                'Number Of Lanes', self.DEFAULT_STREET_LANE_COUNT[n.attrib['v']])
 
-                        way_property_watcher.watch('Has Sidewalk', n.attrib['k'] == 'sidewalk')
-                        way_property_watcher.watch('Has Bike Lane', n.attrib['k'] == 'cycleway')
-                        way_property_watcher.watch('Has Parking Lots', n.attrib['k'] == 'parking:both')
+                        way_property_watcher.watch(
+                            'Has Sidewalk', n.attrib['k'] == 'sidewalk')
+                        way_property_watcher.watch(
+                            'Has Bike Lane', n.attrib['k'] == 'cycleway')
+                        way_property_watcher.watch(
+                            'Has Parking Lots', n.attrib['k'] == 'parking:both')
 
                 for n in child:
                     if n.tag == 'tag':
                         # capture the ways width
                         if n.attrib['k'] == 'width':
-                            way_property_watcher.watch('Number Of Lanes', max(math.floor(float(n.attrib['v']) / 5), 1))
+                            way_property_watcher.watch('Number Of Lanes', max(
+                                math.floor(float(n.attrib['v']) / 5), 1))
 
                         if n.attrib['k'] == 'lanes':
-                            way_property_watcher.watch('Number Of Lanes', int(n.attrib['v']))
+                            way_property_watcher.watch(
+                                'Number Of Lanes', int(n.attrib['v']))
 
                 if not is_desired_type:
                     continue
@@ -172,7 +179,6 @@ class OSMParser():
 
             buildings.append(building)
 
-
         # clear unconnected verts away
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
         g.delete_vertices(lonely_vertices)
@@ -196,7 +202,7 @@ class PropertyWatcher():
     def watch(self, name, value):
         if name in self.values:
             self.values[name] = self.values[name] if value == False else value
-        else:    
+        else:
             self.values[name] = value
 
     def get_values(self):
