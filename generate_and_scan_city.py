@@ -21,8 +21,8 @@ vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"
 #bpy.ops.preferences.addon_enable(module="villevite")
 
 # deal with villevite stuff
-osm_file = argv[2]
-bpy.data.scenes["Scene"].cityproperties.source_file = osm_file
+osm_coords = argv[2]
+bpy.data.scenes["Scene"].cityproperties.coordinates = osm_coords
 
 bpy.ops.villevite.clear_all()
 bpy.ops.villevite.generate_city()

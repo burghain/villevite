@@ -12,6 +12,8 @@ Expects a json named 'scan_params.json' with needed configuration.
 blender_dir.. path to the blender folder
 vlidar_zip.. path to the zip containing the vlidar addon
 pc_save_file.. path to where the point cloud should be saved
+osm_coords.. string with the coordinates of the map excerpt to use; format: 'minlon,minlat,maxlon,maxlat'
+blender_script.. path of the python file to be executed within blender
 '''
 
 if __name__ == '__main__':
@@ -23,10 +25,11 @@ if __name__ == '__main__':
 
         vlidar_zip = d['vlidar_zip']
 
-        osm_file = d['osm_file']
+        osm_coords = d['osm_coords']
 
         blender_script = d['blender_script']
 
+        # delete portable dir if exists to reset blender installation
         if os.path.isdir(blender_portable_dir):
             shutil.rmtree(blender_portable_dir)
 
@@ -58,6 +61,6 @@ if __name__ == '__main__':
                 "--",
                 point_cloud_save_file,
                 vlidar_zip,
-                osm_file
+                osm_coords
             ]
         )
