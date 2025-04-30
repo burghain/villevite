@@ -25,6 +25,8 @@ if __name__ == '__main__':
 
         osm_file = d['osm_file']
 
+        blender_script = d['blender_script']
+
         if os.path.isdir(blender_portable_dir):
             shutil.rmtree(blender_portable_dir)
 
@@ -33,7 +35,7 @@ if __name__ == '__main__':
         blender_executable = blender_dir + '/blender'
         point_cloud_save_file = d['pc_save_file']
 
-        build(fast=True)
+        build()
 
         subprocess.run(
             [
@@ -52,7 +54,7 @@ if __name__ == '__main__':
             [
                 blender_executable,
                 "--python",
-                "/home/simon/Dokumente/villevite/generate_and_scan_city.py",
+                blender_script,
                 "--",
                 point_cloud_save_file,
                 vlidar_zip,
