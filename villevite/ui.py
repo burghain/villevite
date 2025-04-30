@@ -29,9 +29,11 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
         layout = self.layout
 
         box = layout.box()
-        row = box.row()
-        row.prop(parameters, "source")
-        row.prop(parameters, "source_file")
+        row1 = box.row()
+        row2 = box.row()
+
+        row1.prop(parameters, "source")
+        row2.prop(parameters, "coordinates")
 
         layout.operator("villevite.generate_city", text="Generate City")
         layout.operator("villevite.generate_street_mesh",

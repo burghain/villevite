@@ -19,10 +19,10 @@ class CityProperties(types.PropertyGroup):
         ],
     )  # type: ignore
 
-    source_file: props.StringProperty(
-        name="Source File Location",
-        description="Location of the Source OSM File",
-        default="../Assets/default_map.osm",
+    coordinates: props.StringProperty(
+        name="Coordinates",
+        description="Coordinates of the map excerpt to use (format: 'minlon,minlat,maxlon,maxlat')",
+        default="13.0306900,52.3933300,13.0478100,52.3988800",
     )  # type: ignore
 
     roadway_vehicle_density: props.FloatProperty(

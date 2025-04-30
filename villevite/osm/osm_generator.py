@@ -7,17 +7,27 @@ from .osm_dl import OSMDownloader
 
 class OSMGenerator:
 
-    def __init__(self, file_path):
-        self.file_path = file_path
+    '''
+    Initialize the OSMGenerator with the coordinates of the map excerpt to generate
+
+    Use coords or stringcoords as keyword argument, depending of the format of the coordinates
+
+    coords.. 4-tuple of floats
+    stringcoords.. string with 4 floats separated by ','
+    '''
+    def __init__(self, **kwargs):
+        if 'coords' in kwargs:
+            self.coords = kwargs['coords']
+        else:
+            self.coords = [float(x) for x in kwargs['stringcoords'].split(',')]
 
     def generate(self):
         dl = OSMDownloader()
-        #dl.download_to_file([13.0306900,52.3933300,13.0478100,52.3988800], 'map.osm')
+        dl.download_to_file(self.coords, 'map.osm')
 
         print("Parsing OSM File...")
         parser = OSMParser()
-        #g, b = parser.parse(os.getcwd() + '/villevite/Assets/map.osm')
-        g, b = parser.parse(self.file_path)
+        g, b = parser.parse(os.getcwd() + '/villevite/Assets/map.osm')
         print("Parsed OSM File successfully")
 
         print("Generating Scan Path...")

@@ -77,7 +77,8 @@ class OperatorReadOSM(bpy.types.Operator):
         Execute the operator to generate street meshes from OSM data.
         """
         parameters = context.scene.cityproperties
-        OSMGenerator(parameters.source_file).generate()
+
+        OSMGenerator(stringcoords=parameters.coordinates).generate()
         return {"FINISHED"}
 
 
