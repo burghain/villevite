@@ -2,5 +2,6 @@
     "blender_dir": "/home/simon/bin/blender_4.4_scancam",
     "vlidar_zip": "/home/simon/Dokumente/pointCloudRender-bachelorThesis.zip",
     "pc_save_file": "/mnt/SUPERCOOL/pc_nimwegen.csv",
-    "osm_file": "/home/simon/Downloads/nimwegen.osm"
+    "osm_coords": "5.85264,51.84032,5.87088,51.85121",
+    "blender_script": "/home/simon/Dokumente/villevite/generate_and_scan_city.py"
 }

@@ -22,7 +22,7 @@ class CityGenerator:
         """
         self.set_parameters(properties)
         self.source = properties.source
-        self.source_file = properties.source_file
+        self.coordinates = properties.coordinates
         assets.import_assets()
 
     def set_parameters(self, parameters: bpy.types.PropertyGroup) -> None:
@@ -42,7 +42,7 @@ class CityGenerator:
         Retrieve the city map based on the data source.
         """
         if self.source == "OSM-Attributes":
-            city_map = OSMGenerator(self.source_file).generate()
+            city_map = OSMGenerator(stringcoords=self.coordinates).generate()
         elif self.source == "Generated":
             city_map = bpy.data.objects.get("Example Road Graph")
             if city_map:
