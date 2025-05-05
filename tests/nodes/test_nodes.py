@@ -1,6 +1,6 @@
 import bpy
 import pytest
-from bl_ext.user_default.villevite import assets, nodes
+from bl_ext.user_default.villevite import assets
 from ..fixtures import import_assets_and_tests
 
 
@@ -21,7 +21,7 @@ def evaluate_node_group(group_name):
         name='NewGeometryNodesTree', type='GeometryNodeTree')
     modifier.node_group = node_tree
 
-    input_node = node_tree.nodes.new('NodeGroupInput')
+    node_tree.nodes.new('NodeGroupInput')
 
     output_node = node_tree.nodes.new('NodeGroupOutput')
 
