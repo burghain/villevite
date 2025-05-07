@@ -56,6 +56,7 @@ if __name__ == '__main__':
         subprocess.run(
             [
                 blender_executable,
+                "-b",
                 "--python",
                 blender_script,
                 "--",

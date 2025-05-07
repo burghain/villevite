@@ -9,6 +9,29 @@ argv = argv[argv.index("--") + 1:]
 if len(argv) < 3:
     exit()
 
+
+bpy.data.scenes["Scene"].render.engine = 'CYCLES'
+
+# taken from https://blender.stackexchange.com/questions/156503/rendering-on-command-line-with-gpu
+preferences = bpy.context.preferences
+cycles_preferences = preferences.addons["cycles"].preferences
+cycles_preferences.refresh_devices()
+devices = cycles_preferences.devices
+
+if not devices:
+    raise RuntimeError("Unsupported device type")
+
+for device in devices:
+    if device.type == "CPU":
+        device.use = False
+    else:
+        device.use = True
+        print('activated gpu', device.name)
+
+cycles_preferences.compute_device_type = "CUDA"
+bpy.context.scene.cycles.device = "GPU"
+
+
 bpy.ops.preferences.addon_install(overwrite=True, target='DEFAULT', filepath=argv[1], filter_folder=True, filter_python=False, filter_glob="*.py;*.zip")
 bpy.ops.preferences.addon_enable(module="pointCloudRender")
 
