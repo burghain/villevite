@@ -73,3 +73,4 @@ Villevite includes a test suite to ensure the functionality of its components. T
 ### Assets
 
 - The vehicles were selected from the CADillac dataset and can be used under the Creative Commons Public License Version 4.0.
+- "Cyclist - racing position - free 3d printable" (https://skfb.ly/6TM97) by Andy Woodhead is licensed under Creative Commons Attribution

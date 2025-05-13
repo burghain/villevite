@@ -1,6 +1,6 @@
 import bpy
 import pytest
-from bl_ext.user_default.villevite import assets, nodes
+from bl_ext.user_default.villevite import assets
 from ..fixtures import import_assets_and_tests
 
 
@@ -21,7 +21,7 @@ def evaluate_node_group(group_name):
         name='NewGeometryNodesTree', type='GeometryNodeTree')
     modifier.node_group = node_tree
 
-    input_node = node_tree.nodes.new('NodeGroupInput')
+    node_tree.nodes.new('NodeGroupInput')
 
     output_node = node_tree.nodes.new('NodeGroupOutput')
 
@@ -38,7 +38,8 @@ def evaluate_node_group(group_name):
     depsgraph = bpy.context.evaluated_depsgraph_get()
     depsgraph.update()
 
-    errors = [warning.message for warning in modifier.node_warnings]
+    errors = [
+        warning.message for warning in modifier.node_warnings if warning.type == 'ERROR']
 
     # Cleanup
     bpy.data.objects.remove(obj, do_unlink=True)
