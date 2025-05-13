@@ -38,7 +38,8 @@ def evaluate_node_group(group_name):
     depsgraph = bpy.context.evaluated_depsgraph_get()
     depsgraph.update()
 
-    errors = [warning.message for warning in modifier.node_warnings]
+    errors = [
+        warning.message for warning in modifier.node_warnings if warning.type == 'ERROR']
 
     # Cleanup
     bpy.data.objects.remove(obj, do_unlink=True)
