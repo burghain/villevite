@@ -12,6 +12,26 @@ if len(argv) < 3:
 bpy.ops.preferences.addon_install(overwrite=True, target='DEFAULT', filepath=argv[1], filter_folder=True, filter_python=False, filter_glob="*.py;*.zip")
 bpy.ops.preferences.addon_enable(module="pointCloudRender")
 
+# Enable CUDA GPU
+preferences = bpy.context.preferences
+cycles_preferences = preferences.addons["cycles"].preferences
+cycles_preferences.compute_device_type = "CUDA"
+bpy.context.scene.cycles.device = "GPU"
+cycles_preferences.refresh_devices()
+devices = cycles_preferences.devices
+
+if not devices:
+    raise RuntimeError("Unsupported device type")
+
+for device in devices:
+    if device.type == "CPU":
+        device.use = False
+    else:
+        device.use = True
+        print('activated gpu', device.name)
+
+
+# Enable vLidar GPU Acceleration
 vLiDAR_preferences = bpy.context.preferences.addons["pointCloudRender"].preferences
 vLiDAR_preferences.backend_type = "GPUScanningBackend"
 vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"

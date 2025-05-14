@@ -10,6 +10,7 @@ Build and scan city model to a point cloud
 Expects a json named 'scan_params.json' with needed configuration.
 
 blender_dir.. path to the blender folder
+bpy_executable.. Path to Blender's python executable
 vlidar_zip.. path to the zip containing the vlidar addon
 pc_save_file.. path to where the point cloud should be saved
 osm_coords.. string with the coordinates of the map excerpt to use; format: 'minlon,minlat,maxlon,maxlat'
@@ -22,6 +23,8 @@ if __name__ == '__main__':
 
         blender_dir = d['blender_dir']
         blender_portable_dir = blender_dir + '/portable'
+
+        bpy_executable = d['bpy_executable']
 
         vlidar_zip = d['vlidar_zip']
 
@@ -50,6 +53,17 @@ if __name__ == '__main__':
                 "user_default",
                 "-e",
                 "villevite.zip"
+            ]
+        )
+
+        subprocess.run(
+            [
+                bpy_executable,
+                '-m',
+                'pip',
+                'install',
+                'openexr==3.2.4',
+                'openexr_numpy==0.0.6'
             ]
         )
 
