@@ -23,7 +23,7 @@ class CityGenerator:
         self.set_parameters(properties)
         self.source = properties.source
         self.coordinates = properties.coordinates
-        assets.import_assets()
+        assets.import_assets_and_nodes()
 
     def set_parameters(self, parameters: bpy.types.PropertyGroup) -> None:
         """
