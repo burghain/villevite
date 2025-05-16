@@ -1,9 +1,10 @@
 name: setup
 on:
   workflow_call:
-    secrets:
+    inputs:
       assets-gitlab-token:
         required: true
+        type: string
 
 
 jobs:
