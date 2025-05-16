@@ -6,56 +6,12 @@ on:
     branches: ["**"]
 
 jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+    secrets:
+      assets-gitlab-token: ${{ secrets.ASSETS_GITLAB_TOKEN }}
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          submodules: false
-          fetch-depth: 0
-      - name: Set up Git credentials for GitLab
-        run: |
-          git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
-
-      - name: Get submodule hash
-        id: sm-hash
-        run: |
-          HASH=$(git ls-tree HEAD villevite/Assets | awk '{print $3}')
-          echo "hash=$HASH" >> $GITHUB_OUTPUT
-
-      - name: Restore submodule Git metadata cache
-        uses: actions/cache@v4
-        with:
-          path: .git/modules/villevite/Assets
-          key: submodule-assets-${{ steps.sm-hash.outputs.hash }}
-          restore-keys: |
-            submodule-assets-
-
-      # 5) Ensure no stale working tree
-      - name: Clean out old submodule directory
-        run: rm -rf villevite/Assets
-
-      # 6) Initialize & update submodules (will now use the cached metadata)
-      - name: Init & update submodules
-        run: |
-          git submodule sync
-          git submodule update --init --recursive
-
-      - name: Cache Blender installations
-        id: blender-cache
-        uses: actions/cache@v4
-        with:
-          path: ./blender
-          key: ${{ runner.os }}-blender-${{ hashFiles('./dev.py') }}
-          restore-keys: |
-            ${{ runner.os }}-blender-
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-
-
       - name: Run tests
         run: python dev.py test
