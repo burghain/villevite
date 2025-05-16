@@ -15,7 +15,7 @@ jobs:
           submodules: true
           fetch-depth: 0
   run-setup:
-    uses: ./setup.yml
+    uses: ./.github/workflows/setup.yml
     secrets:
       assets-gitlab-token: ${{ secrets.ASSETS_GITLAB_TOKEN }}
   test:
