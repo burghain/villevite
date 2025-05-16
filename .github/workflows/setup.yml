@@ -11,9 +11,13 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
+      - name: Use the secret
+        run: |
+          echo "Using secret token: ${{ inputs.assets-gitlab-token }}"
+        shell: bash
       - name: Set up Git credentials for GitLab
         run: |
-          git config --global url."https://oauth2:${{ secrets.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+          git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
 
       - name: Get submodule hash
         id: sm-hash
