@@ -7,7 +7,7 @@ on:
 
 jobs:
   setup:
-    uses: ./.github/workflows/setup.yml
+    uses: ./setup.yml
     secrets:
       assets-gitlab-token: ${{ secrets.ASSETS_GITLAB_TOKEN }}
   test:
