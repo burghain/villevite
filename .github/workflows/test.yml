@@ -32,11 +32,13 @@ jobs:
           key: assets-submodule-${{ steps.submodule-hash.outputs.hash }}
           restore-keys: |
             assets-submodule-
-
-      - name: Init and update submodules (rebuild .git dirs)
+      - name: Sync submodule
         run: |
           git submodule sync
+      - name: Init and update submodules (rebuild .git dirs)
+        run: |
           git submodule update --init
+
       - name: Cache Blender installations
         id: blender-cache
         uses: actions/cache@v4
