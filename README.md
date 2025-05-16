@@ -21,8 +21,14 @@ Villevite is a Blender add-on designed to procedurally generate cities for train
 1. Clone the repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/burghain/villevite.git
    cd villevite
+   ```
+
+2. Initialze the Assets submodule:
+   ```bash
+   git submodule init
+   git submodule update
    ```
 
 2. Install the required Python dependencies:
