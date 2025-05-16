@@ -30,11 +30,13 @@ jobs:
         with:
           path: villevite/Assets
           key: assets-submodule-${{ steps.submodule-hash.outputs.hash }}
+          restore-keys: |
+            assets-submodule-
 
-      - name: Initialize and update submodules
+      - name: Init and update submodules (rebuild .git dirs)
         run: |
+          git submodule sync
           git submodule update --init
-
       - name: Cache Blender installations
         id: blender-cache
         uses: actions/cache@v4
