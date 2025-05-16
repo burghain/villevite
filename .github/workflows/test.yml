@@ -18,26 +18,30 @@ jobs:
         run: |
           git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
 
-      - name: Get submodule commit hash
-        id: submodule-hash
+      # 3) Compute the submodule commit hash for cache key
+      - name: Get submodule hash
+        id: sm-hash
         run: |
-          SUBMODULE_PATH="villevite/Assets"
-          HASH=$(git ls-tree HEAD $SUBMODULE_PATH | awk '{print $3}')
-          echo "hash=$HASH" >> $GITHUB_OUTPUT
+          echo "::set-output name=hash::$(git ls-tree HEAD villevite/Assets | awk '{print $3}')"
 
-      - name: Restore submodule cache
+      # 4) Restore the submodule’s .git/modules data
+      - name: Restore submodule Git metadata cache
         uses: actions/cache@v4
         with:
-          path: villevite/Assets
-          key: assets-submodule-${{ steps.submodule-hash.outputs.hash }}
+          path: .git/modules/villevite/Assets
+          key: submodule-assets-${{ steps.sm-hash.outputs.hash }}
           restore-keys: |
-            assets-submodule-
-      - name: Sync submodule
+            submodule-assets-
+
+      # 5) Ensure no stale working tree
+      - name: Clean out old submodule directory
+        run: rm -rf villevite/Assets
+
+      # 6) Initialize & update submodules (will now use the cached metadata)
+      - name: Init & update submodules
         run: |
           git submodule sync
-      - name: Init and update submodules (rebuild .git dirs)
-        run: |
-          git submodule update --init --force --recursive
+          git submodule update --init --recursive
 
       - name: Cache Blender installations
         id: blender-cache
