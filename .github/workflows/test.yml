@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - name: Set up Git credentials for GitLab
         run: |
-          git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.com/".insteadOf "https://gitlab.hpi.com/"
+          git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
       - name: Initialize and update submodules
         run: |
           git submodule update --init
