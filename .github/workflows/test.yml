@@ -18,13 +18,11 @@ jobs:
         run: |
           git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
 
-      # 3) Compute the submodule commit hash for cache key
       - name: Get submodule hash
         id: sm-hash
         run: |
           echo "::set-output name=hash::$(git ls-tree HEAD villevite/Assets | awk '{print $3}')"
 
-      # 4) Restore the submodule’s .git/modules data
       - name: Restore submodule Git metadata cache
         uses: actions/cache@v4
         with:
