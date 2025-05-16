@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: true
+          submodules: false
           fetch-depth: 0
       - name: Run setup workflow
         uses: ./.github/workflows/setup.yml
