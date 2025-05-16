@@ -37,7 +37,7 @@ jobs:
           git submodule sync
       - name: Init and update submodules (rebuild .git dirs)
         run: |
-          git submodule update --init
+          git submodule update --init --force --recursive
 
       - name: Cache Blender installations
         id: blender-cache
