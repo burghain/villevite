@@ -4,7 +4,6 @@ on:
     secrets:
       assets-gitlab-token:
         required: true
-        type: string
 
 
 jobs:
