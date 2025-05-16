@@ -17,6 +17,18 @@ jobs:
       - name: Set up Git credentials for GitLab
         run: |
           git config --global url."https://oauth2:${{ secrets.VILLEVITE_LFS_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+      - name: Get submodule commit hash
+        id: submodule-hash
+        run: |
+          SUBMODULE_PATH="villevite/Assets"
+          HASH=$(git ls-tree HEAD $SUBMODULE_PATH | awk '{print $3}')
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
+
+      - name: Restore submodule cache
+        uses: actions/cache@v4
+        with:
+          path: villevite/Assets
+          key: assets-submodule-${{ steps.submodule-hash.outputs.hash }}
       - name: Initialize and update submodules
         run: |
           git submodule update --init
