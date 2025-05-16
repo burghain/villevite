@@ -1,9 +1,6 @@
 name: setup
 on:
   workflow_call:
-    secrets:
-      assets-gitlab-token:
-        required: true
 
 
 jobs:
@@ -12,7 +9,7 @@ jobs:
     steps:
       - name: Set up Git credentials for GitLab
         run: |
-          git config --global url."https://oauth2:${{ secrets.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+          git config --global url."https://oauth2:${{ secrets.ASSETS_GITLAB_TOKEN }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
 
       - name: Get submodule hash
         id: sm-hash

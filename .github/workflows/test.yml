@@ -6,7 +6,7 @@ on:
     branches: ["**"]
 
 jobs:
-  checkout:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -14,12 +14,7 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
-  run-setup:
-    uses: ./.github/workflows/setup.yml
-    secrets:
-      assets-gitlab-token: ${{ secrets.ASSETS_GITLAB_TOKEN }}
-  test:
-    runs-on: ubuntu-latest
-    steps:
+      - name: Run setup workflow
+        uses: ./.github/workflows/setup.yml
       - name: Run tests
         run: python dev.py test
