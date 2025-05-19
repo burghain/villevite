@@ -14,7 +14,7 @@ jobs:
         with:
           submodules: false
           fetch-depth: 0
-      - name: Run setup workflow
+      - name: Setup running environment
         uses: ./.github/actions/setup
         with:
           assets-gitlab-token: ${{ secrets.ASSETS_GITLAB_TOKEN }}

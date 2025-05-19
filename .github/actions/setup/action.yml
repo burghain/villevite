@@ -1,9 +1,15 @@
 name: setup
+description: |
+  This action sets up the running environment for the city generation.
+  It loads the assets from the hpi gitlab, caches the Blender installations,
+  and sets up Python.
 inputs:
   assets-gitlab-token:
     required: true
     type: string
-
+    description: |
+      The GitLab token to access the assets repository.
+      This token should have read access to the assets repository.
 
 runs:
   using: composite
@@ -13,20 +19,21 @@ runs:
         git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
       shell: bash
 
-    - name: Get submodule hash
+    - name: Get submodule hash to get cache key
       id: sm-hash
       run: |
         HASH=$(git ls-tree HEAD villevite/Assets | awk '{print $3}')
         echo "hash=$HASH" >> $GITHUB_OUTPUT
       shell: bash
 
-    - name: Restore submodule Git metadata cache
+    - name: Restore submodule cache using hash as key
       uses: actions/cache@v4
       with:
         path: .git/modules/villevite/Assets
         key: submodule-assets-${{ steps.sm-hash.outputs.hash }}
         restore-keys: |
           submodule-assets-
+
     - name: Clean out old submodule directory
       run: rm -rf villevite/Assets
       shell: bash
@@ -37,7 +44,7 @@ runs:
         git submodule update --init --recursive
       shell: bash
 
-    - name: Cache Blender installations
+    - name: Restore Blender installation cache
       id: blender-cache
       uses: actions/cache@v4
       with:
