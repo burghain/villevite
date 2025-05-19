@@ -9,6 +9,8 @@ class OSMParser():
 
     MIN_X = None
     MIN_Y = None
+    MAX_X = None
+    MAX_Y = None
 
     DEFAULT_STREET_LANE_COUNT = {
         'primary': 6,
@@ -33,11 +35,17 @@ class OSMParser():
         if self.MIN_Y == None:
             self.MIN_Y = lat2y(map_bounds[1])
 
+        if self.MAX_X == None:
+            self.MAX_X = lon2x(map_bounds[2])
+
+        if self.MAX_Y == None:
+            self.MAX_Y = lat2y(map_bounds[3])
+
         lat = latlon[0]
         lon = latlon[1]
 
-        x = lon2x(lon) - self.MIN_X
-        y = lat2y(lat) - self.MIN_Y
+        x = lon2x(lon) - ((self.MIN_X + self.MAX_X) / 2)
+        y = lat2y(lat) - ((self.MIN_Y + self.MAX_Y) / 2)
 
         return (x, y, 0)
 
