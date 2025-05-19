@@ -1,3 +1,4 @@
 # Only needed for syntax highlighting
 fake-bpy-module
 igraph
+pytest

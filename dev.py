@@ -71,7 +71,7 @@ def run_tests(blender_executable: str) -> None:
             "--python-exit-code",
             "1",
             "--python",
-            "run_tests.py",
+            "./tests/run_tests.py",
         ], check=True
     )
 

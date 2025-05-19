@@ -10,12 +10,11 @@ def get_test_groups_names():
         ng.name for ng in bpy.data.node_groups if ng.name.startswith('.test: ')]
 
 
-def evaluate_node_group(group_name):
+def evaluate_node_group(group_name: str):
     test_group = bpy.data.node_groups[group_name]
     mesh = bpy.data.meshes.new("TestMesh")
     obj = bpy.data.objects.new("TestObject", mesh)
     bpy.context.collection.objects.link(obj)
-
     modifier = obj.modifiers.new(name="TestModifier", type='NODES')
     node_tree = bpy.data.node_groups.new(
         name='NewGeometryNodesTree', type='GeometryNodeTree')
@@ -49,7 +48,8 @@ def evaluate_node_group(group_name):
 
 
 @pytest.mark.parametrize("group_name", get_test_groups_names())
-def test_node_group(import_assets_and_tests, group_name):
+def test_node_group(group_name, import_assets_and_tests, ):
     results = evaluate_node_group(group_name)
+    print(f"Testing {group_name} with {len(results)} errors")
     assert len(
         results) == 0, str(results)

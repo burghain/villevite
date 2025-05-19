@@ -19,7 +19,7 @@ def import_assets():
     clear_all()
 
 
-@pytest.fixture
+@pytest.fixture(scope="module")
 def import_assets_and_tests():
     assets.import_assets_and_nodes()
     assets.import_tests()
