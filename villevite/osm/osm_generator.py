@@ -22,13 +22,15 @@ class OSMGenerator:
             self.coords = [float(x) for x in kwargs['stringcoords'].split(',')]
 
     def generate(self):
-        dl = OSMDownloader()
-        dl.download_to_file(self.coords, 'map.osm')
+        dl = OSMDownloader(self.coords, 'map.osm')
+        dl.download_to_file()
 
         print("Parsing OSM File...")
         parser = OSMParser()
         g, b = parser.parse(os.getcwd() + '/villevite/Assets/map.osm')
         print("Parsed OSM File successfully")
+
+        dl.clear()
 
         print("Generating Scan Path...")
         scan_path_gen = ScanPathGenerator(g)
