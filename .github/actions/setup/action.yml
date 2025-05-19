@@ -1,0 +1,52 @@
+name: setup
+inputs:
+  assets-gitlab-token:
+    required: true
+    type: string
+
+
+runs:
+  using: composite
+  steps:
+    - name: Use the secret
+      run: |
+        echo "Using secret token: ${{ inputs.assets-gitlab-token }}"
+      shell: bash
+    - name: Set up Git credentials for GitLab
+      run: |
+        git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+
+    - name: Get submodule hash
+      id: sm-hash
+      run: |
+        HASH=$(git ls-tree HEAD villevite/Assets | awk '{print $3}')
+        echo "hash=$HASH" >> $GITHUB_OUTPUT
+
+    - name: Restore submodule Git metadata cache
+      uses: actions/cache@v4
+      with:
+        path: .git/modules/villevite/Assets
+        key: submodule-assets-${{ steps.sm-hash.outputs.hash }}
+        restore-keys: |
+          submodule-assets-
+    - name: Clean out old submodule directory
+      run: rm -rf villevite/Assets
+
+    - name: Init & update submodules
+      run: |
+        git submodule sync
+        git submodule update --init --recursive
+
+    - name: Cache Blender installations
+      id: blender-cache
+      uses: actions/cache@v4
+      with:
+        path: ./blender
+        key: ${{ runner.os }}-blender-${{ hashFiles('./dev.py') }}
+        restore-keys: |
+          ${{ runner.os }}-blender-
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
