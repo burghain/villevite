@@ -41,7 +41,7 @@ runs:
     - name: Init & update submodules
       run: |
         git submodule sync
-        git submodule update --init --recursive
+        git submodule update --init
       shell: bash
 
     - name: Restore Blender installation cache
