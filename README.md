@@ -26,18 +26,19 @@ Villevite is a Blender add-on designed to procedurally generate cities for train
    ```
 
 2. Initialze the Assets submodule:
+
    ```bash
    git submodule init
    git submodule update
    ```
 
-2. Install the required Python dependencies:
+3. Install the required Python dependencies:
 
    ```bash
    pip install -r development_requirements.txt
    ```
 
-3. Set up Blender to recognize the Villevite Assets:
+4. Set up Blender to recognize the Villevite Assets:
    - Open Blender.
    - Go to `Edit > Preferences > File Paths > Asset Catalogs`.
    - Add the absolute path to the `./villevite/Assets` directory as an Asset Catalog.

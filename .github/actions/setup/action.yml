@@ -16,7 +16,7 @@ runs:
   steps:
     - name: Set up Git credentials for GitLab
       run: |
-        git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+        git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "git@gitlab.hpi.de:"
       shell: bash
 
     - name: Get submodule hash to get cache key
