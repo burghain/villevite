@@ -15,12 +15,14 @@ runs:
     - name: Set up Git credentials for GitLab
       run: |
         git config --global url."https://oauth2:${{ inputs.assets-gitlab-token }}@gitlab.hpi.de/".insteadOf "https://gitlab.hpi.de/"
+      shell: bash
 
     - name: Get submodule hash
       id: sm-hash
       run: |
         HASH=$(git ls-tree HEAD villevite/Assets | awk '{print $3}')
         echo "hash=$HASH" >> $GITHUB_OUTPUT
+      shell: bash
 
     - name: Restore submodule Git metadata cache
       uses: actions/cache@v4
@@ -31,11 +33,13 @@ runs:
           submodule-assets-
     - name: Clean out old submodule directory
       run: rm -rf villevite/Assets
+      shell: bash
 
     - name: Init & update submodules
       run: |
         git submodule sync
         git submodule update --init --recursive
+      shell: bash
 
     - name: Cache Blender installations
       id: blender-cache
