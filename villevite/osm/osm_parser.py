@@ -93,6 +93,8 @@ class OSMParser():
                     [lat, lon], self.map_bounds)
                 v['osm_id'] = node_id
 
+        street_id_gen = StreetIdGenerator()
+
         # build graph
         # building ways from node dict
         for child in root.findall("way"):
@@ -133,6 +135,16 @@ class OSMParser():
 
                 no_highways += 1
 
+                street_name = None
+
+                # Add name of highway to street id gen
+                # only after checking it is desired type
+                for n in child:
+                    if n.tag == 'tag':
+                        if n.attrib['k'] == 'name':
+                            street_name = n.attrib['v']
+
+
                 # iterate over osm_nodes that belong to the way and add them
                 # and their respective connections to other nodes to the graph
                 prev_vertex = None
@@ -151,7 +163,13 @@ class OSMParser():
                             for k, v in way_properties.items():
                                 e[k] = v
 
+                            # add edge and name to street id gen
+                            if street_name != None:
+                                street_id_gen.add_name(street_name, e)
+
                         prev_vertex = current_vertex
+
+        street_id_gen.write_streetid_to_graph()
 
         # parse buildings
         for child in root.findall("way"):
@@ -215,3 +233,24 @@ class PropertyWatcher():
 
     def get_values(self):
         return self.values
+
+class StreetIdGenerator():
+
+    def __init__(self):
+        self.street_name = []
+        self.edge_ref = []
+
+    def add_name(self, name, edge):
+        if name in self.street_name:
+            i = self.street_name.index(name)
+            self.edge_ref[i].append(edge)
+        else:
+            self.street_name.append(name)
+            self.edge_ref.append([edge])
+        
+    def write_streetid_to_graph(self):
+        for i, ers in enumerate(self.edge_ref):
+            for er in ers:
+                er['Street ID'] = i
+        
+        print(self.street_name)
