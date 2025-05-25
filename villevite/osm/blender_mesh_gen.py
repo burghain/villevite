@@ -44,12 +44,13 @@ class BlenderMeshGen:
 
         # iterate through components
         # build blender mesh for every subgraph
-        for subgraph in components.subgraphs():
-            # gather vertex and edge info
-            vertices = []
-            edges = []
+        vertices = []
+        edges = []
 
-            sorter = EdgePropertySorter(edge_property_names)
+        sorter = EdgePropertySorter(edge_property_names)
+
+        for subgraph in components.subgraphs():
+            print("new subgraph")
 
             # fill in vertices
             for v in subgraph.vs:
@@ -68,22 +69,19 @@ class BlenderMeshGen:
 
                 sorter.add_element(e)
 
-            # create mesh
-            new_mesh = bpy.data.meshes.new('mesh')
-            new_mesh.from_pydata(vertices, edges, [])
-            new_mesh.update()
+        # create mesh
+        new_mesh = bpy.data.meshes.new('mesh')
+        new_mesh.from_pydata(vertices, edges, [])
+        new_mesh.update()
 
-            # add edge properties
-            for name, dtype in zip(edge_property_names, edge_property_dtype):
-                edge_attr = new_mesh.attributes.new(
-                    name=name, type=dtype, domain='EDGE')
-                edge_attr.data.foreach_set('value', sorter.get_property(name))
+        # add edge properties
+        for name, dtype in zip(edge_property_names, edge_property_dtype):
+            edge_attr = new_mesh.attributes.new(
+                name=name, type=dtype, domain='EDGE')
+            edge_attr.data.foreach_set('value', sorter.get_property(name))
 
-            # make object from mesh
-            new_object = bpy.data.objects.new('Roads', new_mesh)
-
-            print("Subgraph generation done")
-            return new_mesh
+        print("Subgraph generation done")
+        return new_mesh
 
     def generate_buildings(self):
         b = self.b
@@ -103,12 +101,12 @@ class BlenderMeshGen:
             for i in range(v_start_id, v_end_id):
                 edges.append((i, i+1))
 
-            faces.append(range(v_start_id, v_end_id + 1))
+                faces.append(range(v_start_id, v_end_id + 1))
 
-            floors.append(building.levels)
+                floors.append(building.levels)
 
-        # create mesh
-        new_mesh = bpy.data.meshes.new('mesh')
+            # create mesh
+            new_mesh = bpy.data.meshes.new('mesh')
         new_mesh.from_pydata(vertices, edges, faces)
         new_mesh.update()
 
