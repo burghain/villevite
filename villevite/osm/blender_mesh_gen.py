@@ -1,7 +1,6 @@
 import bpy
 import bmesh
 import igraph as ig
-from .edge_properties import *
 
 
 def merge_meshes(name: str, meshes: list) -> bpy.types.Object:
@@ -16,9 +15,10 @@ def merge_meshes(name: str, meshes: list) -> bpy.types.Object:
 
 class BlenderMeshGen:
 
-    def __init__(self, graph, buildings):
+    def __init__(self, graph, buildings, prop_reg):
         self.g = graph
         self.b = buildings
+        self.prop_reg = prop_reg
 
     def generate(self):
 
@@ -47,7 +47,7 @@ class BlenderMeshGen:
         vertices = []
         edges = []
 
-        sorter = EdgePropertySorter(edge_property_names)
+        sorter = EdgePropertySorter(self.prop_reg.get_prop_names())
 
         for subgraph in components.subgraphs():
             print("new subgraph")
@@ -75,7 +75,7 @@ class BlenderMeshGen:
         new_mesh.update()
 
         # add edge properties
-        for name, dtype in zip(edge_property_names, edge_property_dtype):
+        for name, dtype in zip(self.prop_reg.get_prop_names(), self.prop_reg.get_prop_dtypes()):
             edge_attr = new_mesh.attributes.new(
                 name=name, type=dtype, domain='EDGE')
             edge_attr.data.foreach_set('value', sorter.get_property(name))

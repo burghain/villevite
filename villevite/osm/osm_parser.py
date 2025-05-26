@@ -3,13 +3,12 @@ import igraph as ig
 import pandas as pd
 from .extractors.node_extractor import NodeExtractor
 from .extractors.highway_extractor import HighwayExtractor
-
 class OSMParser():
 
-    def parse(self, filename):
+    def parse(self, with_props):
         g = ig.Graph(directed=False)
 
-        osm = OSM('/mnt/SUPERCOOL/osm-pbf/paris.pbf')
+        osm = OSM('/mnt/SUPERCOOL/osm-pbf/babelsberg.pbf')
 
         df_nodes, _ = osm.get_network(nodes=True, network_type='all')
         df_ways = osm.get_data_by_custom_criteria({'highway': ['primary', 'secondary', 'tertiary', 'residential', 'living_street', 'motorway', 'trunk']})
@@ -21,7 +20,7 @@ class OSMParser():
         node_extractor.write_to_graph(g)
 
         hw_extractor = HighwayExtractor(df_ways)
-        hw_extractor.write_to_graph(g)
+        hw_extractor.write_to_graph(g, with_props)
 
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
         print(f"delete {len(lonely_vertices)}")
