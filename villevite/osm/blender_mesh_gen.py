@@ -105,8 +105,8 @@ class BlenderMeshGen:
 
                 floors.append(building.levels)
 
-            # create mesh
-            new_mesh = bpy.data.meshes.new('mesh')
+        # create mesh
+        new_mesh = bpy.data.meshes.new('mesh')
         new_mesh.from_pydata(vertices, edges, faces)
         new_mesh.update()
 
