@@ -12,4 +12,4 @@ class NodeExtractor(GraphExtractor):
             v = g.add_vertex()
 
             v['osm_id'] = row['id']
-            v['coord'] = self.ctm_conv.geo_coords_to_meter( (float(row['lat']), float(row['lon'])) )
+            v['coord'] = self.ctm_conv.geo_coords_to_meter( (float(row['lon']), float(row['lat'])) )

@@ -10,9 +10,9 @@ class CoordToMeterConverter():
         self.MAX_X = self._lon2x(map_bounds[2])
         self.MAX_Y = self._lat2y(map_bounds[3])
 
-    def geo_coords_to_meter(self, latlon):
-            lat = latlon[0]
-            lon = latlon[1]
+    def geo_coords_to_meter(self, lonlat):
+            lon = lonlat[0]
+            lat = lonlat[1]
 
             x = self._lon2x(lon) - ((self.MIN_X + self.MAX_X) / 2)
             y = self._lat2y(lat) - ((self.MIN_Y + self.MAX_Y) / 2)

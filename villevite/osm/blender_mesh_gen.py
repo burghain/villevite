@@ -113,10 +113,7 @@ class BlenderMeshGen:
         face_attr = new_mesh.attributes.new(
             name='Number Of Floors', type='INT8', domain='FACE')
         face_attr.data.foreach_set('value', floors)
-
-        # make object from mesh
-        new_object = bpy.data.objects.new('Buildings', new_mesh)
-
+        
         return new_mesh
 
 
