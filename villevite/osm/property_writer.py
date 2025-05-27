@@ -45,3 +45,22 @@ class HasSidewalkWriter(BasicPropertyWriter):
 
     def process_prop(self, row):
         self.prop = row['sidewalk'] != None
+
+class StreetIDWriter(BasicPropertyWriter):
+
+    def __init__(self, name, default, dtype):
+        super().__init__(name, default, dtype)
+
+        self.street_names = []
+
+    def process_prop(self, row):
+        if 'name' in row:
+            street_name = row['name']
+        else:
+            street_name = ''
+
+        if street_name in self.street_names:
+            self.prop = self.street_names.index(street_name)
+        else:
+            self.prop = len(self.street_names)
+            self.street_names.append(street_name)

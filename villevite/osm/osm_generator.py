@@ -29,7 +29,8 @@ class OSMGenerator:
             NumberOfLanesWriter('Number Of Lanes', 1, 'INT8'),
             HasParkingLotsWriter('Has Parking Lots', False, 'BOOLEAN'),
             HasBikeLaneWriter('Has Bike Lane', False, 'BOOLEAN'),
-            HasSidewalkWriter('Has Sidewalk', False, 'BOOLEAN')
+            HasSidewalkWriter('Has Sidewalk', False, 'BOOLEAN'),
+            StreetIDWriter('Street ID', -1, 'INT')
         ])
 
         print("Parsing OSM File...")
