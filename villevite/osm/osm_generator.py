@@ -25,7 +25,12 @@ class OSMGenerator:
 
     def generate(self):
         prop_reg = PropertyRegister()
-        prop_reg.register_writers([NumberOfLanesWriter('Number Of Lanes', 1, 'INT8')])
+        prop_reg.register_writers([
+            NumberOfLanesWriter('Number Of Lanes', 1, 'INT8'),
+            HasParkingLotsWriter('Has Parking Lots', False, 'BOOLEAN'),
+            HasBikeLaneWriter('Has Bike Lane', False, 'BOOLEAN'),
+            HasSidewalkWriter('Has Sidewalk', False, 'BOOLEAN')
+        ])
 
         print("Parsing OSM File...")
         parser = OSMParser()

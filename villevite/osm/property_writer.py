@@ -1,4 +1,5 @@
 import math
+import json
 
 class BasicPropertyWriter():
 
@@ -11,8 +12,8 @@ class BasicPropertyWriter():
         raise NotImplementedError
 
     def write_prop(self, edge):
-        raise NotImplementedError
-    
+        edge[self.name] = self.prop
+
 class NumberOfLanesWriter(BasicPropertyWriter):
 
     def process_prop(self, row):
@@ -28,5 +29,19 @@ class NumberOfLanesWriter(BasicPropertyWriter):
 
         self.prop = self.default
 
-    def write_prop(self, edge):
-        edge[self.name] = self.prop
+class HasParkingLotsWriter(BasicPropertyWriter):
+
+    def process_prop(self, row):
+        tags = json.loads(row['tags'])
+
+        self.prop = 'parking:both' in tags
+
+class HasBikeLaneWriter(BasicPropertyWriter):
+
+    def process_prop(self, row):
+        self.prop = row['cycleway'] != None
+
+class HasSidewalkWriter(BasicPropertyWriter):
+
+    def process_prop(self, row):
+        self.prop = row['sidewalk'] != None
