@@ -15,10 +15,10 @@ def merge_meshes(name: str, meshes: list) -> bpy.types.Object:
 
 class BlenderMeshGen:
 
-    def __init__(self, graph, buildings, prop_reg):
+    def __init__(self, graph, buildings, edge_prop_reg):
         self.g = graph
         self.b = buildings
-        self.prop_reg = prop_reg
+        self.edge_prop_reg = edge_prop_reg
 
     def generate(self):
 
@@ -47,7 +47,7 @@ class BlenderMeshGen:
         vertices = []
         edges = []
 
-        sorter = EdgePropertySorter(self.prop_reg.get_prop_names())
+        sorter = EdgePropertySorter(self.edge_prop_reg.get_prop_names())
 
         for subgraph in components.subgraphs():
             print("new subgraph")
@@ -75,7 +75,7 @@ class BlenderMeshGen:
         new_mesh.update()
 
         # add edge properties
-        for name, dtype in zip(self.prop_reg.get_prop_names(), self.prop_reg.get_prop_dtypes()):
+        for name, dtype in zip(self.edge_prop_reg.get_prop_names(), self.edge_prop_reg.get_prop_dtypes()):
             edge_attr = new_mesh.attributes.new(
                 name=name, type=dtype, domain='EDGE')
             edge_attr.data.foreach_set('value', sorter.get_property(name))
@@ -113,7 +113,7 @@ class BlenderMeshGen:
         face_attr = new_mesh.attributes.new(
             name='Number Of Floors', type='INT8', domain='FACE')
         face_attr.data.foreach_set('value', floors)
-        
+
         return new_mesh
 
 

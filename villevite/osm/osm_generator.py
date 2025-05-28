@@ -3,7 +3,7 @@ from .blender_mesh_gen import BlenderMeshGen
 from .scan_path_generator import ScanPathGenerator
 from .osm_parser import OSMParser
 from .osm_dl import OSMDownloader
-from .property_register import PropertyRegister
+from .property_register import *
 from .property_writer import *
 
 
@@ -24,8 +24,8 @@ class OSMGenerator:
             self.coords = [float(x) for x in kwargs['stringcoords'].split(',')]
 
     def generate(self):
-        prop_reg = PropertyRegister()
-        prop_reg.register_writers([
+        edge_prop_reg = EdgePropertyRegister()
+        edge_prop_reg.register_writers([
             NumberOfLanesWriter('Number Of Lanes', 1, 'INT8'),
             HasParkingLotsWriter('Has Parking Lots', False, 'BOOLEAN'),
             HasBikeLaneWriter('Has Bike Lane', False, 'BOOLEAN'),
@@ -33,9 +33,12 @@ class OSMGenerator:
             StreetIDWriter('Street ID', -1, 'INT')
         ])
 
+        b_prop_reg = BasicPropertyRegister()
+        b_prop_reg.register_writers([LevelWriter(1)])
+
         print("Parsing OSM File...")
         parser = OSMParser()
-        g, b = parser.parse(prop_reg)
+        g, b = parser.parse(edge_prop_reg, b_prop_reg)
         print("Parsed OSM File successfully")
 
         # print("Generating Scan Path...")
@@ -44,7 +47,7 @@ class OSMGenerator:
         # print("Scan Path generated successfully")
 
         print("Generating Blender Mesh...")
-        bmgen = BlenderMeshGen(g, b, prop_reg)
+        bmgen = BlenderMeshGen(g, b, edge_prop_reg)
         city_map = bmgen.generate()
         print("Blender Mesh Generated successfully")
         return city_map

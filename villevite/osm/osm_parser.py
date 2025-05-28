@@ -7,7 +7,7 @@ from .extractors.building_extractor import BuildingExtractor
 
 class OSMParser():
 
-    def parse(self, with_props):
+    def parse(self, with_edge_props, with_b_props):
         g = ig.Graph(directed=False)
         b = []
 
@@ -27,10 +27,10 @@ class OSMParser():
         node_extractor.write_to_graph(g)
 
         hw_extractor = HighwayExtractor(df_highways)
-        hw_extractor.write_to_graph(g, with_props)
+        hw_extractor.write_to_graph(g, with_edge_props)
 
         building_extractor = BuildingExtractor(df_buildings, map_bounds)
-        building_extractor.write_to_array(b)
+        building_extractor.write_to_array(b, with_b_props)
 
         lonely_vertices = g.vs.select(lambda v: v.degree() == 0)
         print(f"delete {len(lonely_vertices)}")
