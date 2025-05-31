@@ -52,7 +52,8 @@ class HasBikeLaneWriter(EdgePropertyWriter):
 class HasSidewalkWriter(EdgePropertyWriter):
 
     def process_prop(self, row):
-        self.prop = row['sidewalk'] != None
+        if row['sidewalk'] != None:
+            self.prop = row['sidewalk'] in ['both', 'separate']
 
 class StreetIDWriter(EdgePropertyWriter):
 
