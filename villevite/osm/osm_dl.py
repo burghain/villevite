@@ -1,5 +1,6 @@
 import subprocess
 import os
+import osmium
 
 
 '''
@@ -15,7 +16,9 @@ class OSMDownloader():
     '''
     def __init__(self, coords, filename):
         self.coords = coords
-        self.filepath = f'{os.getcwd()}/villevite/Assets/{filename}'
+        self.dir = f'{os.getcwd()}/villevite/Assets/'
+        self.filepath_xml = f'{self.dir}{filename}.osm'
+        self.filepath_pbf = f'{self.dir}{filename}.pbf'
 
     '''
     Downloads a map excerpt to the specified file in the Assets folder
@@ -23,11 +26,17 @@ class OSMDownloader():
     def download_to_file(self):
         subprocess.run(['wget',
                        '-O',
-                       self.filepath,
+                       self.filepath_xml,
                        f'https://www.openstreetmap.org/api/0.6/map?bbox={self.coords[0]},{self.coords[1]},{self.coords[2]},{self.coords[3]}'])
+        
+        with osmium.SimpleWriter(self.filepath_pbf) as writer:
+            for o in osmium.FileProcessor(self.filepath_xml):
+                writer.add(o)
+
     
     '''
     Delete the downloaded data
     '''
     def clear(self):
-        os.remove(self.filepath)
+        os.remove(self.filepath_xml)
+        os.remove(self.filepath_pbf)
