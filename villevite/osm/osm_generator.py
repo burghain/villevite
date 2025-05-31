@@ -24,6 +24,9 @@ class OSMGenerator:
             self.coords = [float(x) for x in kwargs['stringcoords'].split(',')]
 
     def generate(self):
+        dl = OSMDownloader(self.coords, 'map')
+        dl.download_to_file()
+
         edge_prop_reg = EdgePropertyRegister()
         edge_prop_reg.register_writers([
             NumberOfLanesWriter('Number Of Lanes', 1, 'INT8'),
@@ -38,16 +41,14 @@ class OSMGenerator:
 
         print("Parsing OSM File...")
         parser = OSMParser()
-        g, b = parser.parse(edge_prop_reg, b_prop_reg)
+        g, b = parser.parse('map', edge_prop_reg, b_prop_reg)
         print("Parsed OSM File successfully")
 
-        # print("Generating Scan Path...")
-        # scan_path_gen = ScanPathGenerator(g)
-        # scan_path_gen.generate_path()
-        # print("Scan Path generated successfully")
+        dl.clear()
 
         print("Generating Blender Mesh...")
         bmgen = BlenderMeshGen(g, b, edge_prop_reg)
         city_map = bmgen.generate()
         print("Blender Mesh Generated successfully")
+
         return city_map

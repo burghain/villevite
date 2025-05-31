@@ -56,7 +56,8 @@ wheels = [
    "./wheels/shapely-2.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
    "./wheels/six-1.17.0-py2.py3-none-any.whl",
    "./wheels/texttable-1.7.0-py2.py3-none-any.whl",
-   "./wheels/tzdata-2025.2-py2.py3-none-any.whl"
+   "./wheels/tzdata-2025.2-py2.py3-none-any.whl",
+   "./wheels/osmium-4.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 ]
 
 # Optional: add-ons can list which resources they will require:

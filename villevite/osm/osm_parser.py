@@ -1,4 +1,5 @@
 from pyrosm import OSM
+import os
 import igraph as ig
 import pandas as pd
 from .extractors.node_extractor import NodeExtractor
@@ -7,11 +8,11 @@ from .extractors.building_extractor import BuildingExtractor
 
 class OSMParser():
 
-    def parse(self, with_edge_props, with_b_props):
+    def parse(self, filename, with_edge_props, with_b_props):
         g = ig.Graph(directed=False)
         b = []
 
-        osm = OSM('/mnt/SUPERCOOL/osm-pbf/babelsberg.pbf')
+        osm = OSM(f'{os.getcwd()}/villevite/Assets/{filename}.pbf')
 
         map_bounds = osm.get_boundaries(boundary_type='all').total_bounds
 
