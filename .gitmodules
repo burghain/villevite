@@ -1,3 +1,4 @@
 [submodule "villevite/Assets"]
 	path = villevite/Assets
 	url = git@gitlab.hpi.de:simon.venzlaff/villevite-lfs.git
+	branch = main
