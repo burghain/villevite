@@ -22,7 +22,7 @@ runs:
     - name: Get submodule hash to get cache key
       id: sm-hash
       run: |
-        HASH=$(git ls-tree HEAD villevite/Assets | awk '{print $3}')
+        HASH=$(git ls-tree HEAD .git/modules/villevite/Assets | awk '{print $3}')
         echo "hash=$HASH" >> $GITHUB_OUTPUT
       shell: bash
 
