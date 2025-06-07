@@ -4,7 +4,7 @@ import json
 class BasicPropertyWriter():
 
     def __init__(self, default):
-        self.default = default
+        self.prop = default
 
     def write_prop(self):
         raise NotImplementedError
@@ -34,8 +34,6 @@ class NumberOfLanesWriter(EdgePropertyWriter):
                 if row['width'] != None:
                     self.prop = max(math.floor(float(row['width']) / 5), 1)
                     return
-
-        self.prop = self.default
 
 class HasParkingLotsWriter(EdgePropertyWriter):
 
@@ -86,9 +84,10 @@ class LevelWriter(BasicBuildingPropertyWriter):
 
     def process_prop(self, row):
         if 'building:levels' in row and row['building:levels'] != None:
-            self.prop = math.ceil(float(row['building:levels']))
-        else:
-            self.prop = self.default
+            try:
+                self.prop = math.ceil(float(row['building:levels']))
+            except ValueError:
+                pass
 
     def write_prop(self, e):
         e.levels = self.prop
