@@ -34,9 +34,30 @@ license = ["SPDX:GPL-2.0-or-later"]
 # Other supported platforms: "windows-arm64", "macos-x64"
 
 wheels = [
+   "./wheels/certifi-2025.4.26-py3-none-any.whl",
+   "./wheels/cykhash-2.0.1-cp311-cp311-linux_x86_64.whl",
+   "./wheels/cython-3.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/geopandas-1.0.1-py3-none-any.whl",
    "./wheels/igraph-0.11.8-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/jinja2-3.1.6-py3-none-any.whl",
+   "./wheels/MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/networkx-3.4.2-py3-none-any.whl",
+   "./wheels/numpy-2.2.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/packaging-25.0-py3-none-any.whl",
+   "./wheels/pandas-2.2.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/pyogrio-0.11.0-cp311-cp311-manylinux_2_28_x86_64.whl",
+   "./wheels/pyproj-3.7.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/pyrobuf-0.9.3-cp311-cp311-linux_x86_64.whl",
+   "./wheels/pyrosm-0.6.2-cp311-cp311-linux_x86_64.whl",
+   "./wheels/python_dateutil-2.9.0.post0-py2.py3-none-any.whl",
+   "./wheels/python_rapidjson-1.20-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/pytz-2025.2-py2.py3-none-any.whl",
+   "./wheels/setuptools-80.8.0-py3-none-any.whl",
+   "./wheels/shapely-2.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+   "./wheels/six-1.17.0-py2.py3-none-any.whl",
    "./wheels/texttable-1.7.0-py2.py3-none-any.whl",
-   "./wheels/networkx-3.4.2-py3-none-any.whl"
+   "./wheels/tzdata-2025.2-py2.py3-none-any.whl",
+   "./wheels/osmium-4.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
 ]
 
 # Optional: add-ons can list which resources they will require:
