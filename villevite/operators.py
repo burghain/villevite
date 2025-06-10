@@ -100,7 +100,45 @@ class OperatorSurprise(bpy.types.Operator):
         Returns:
             set[str]: A set containing the execution status.
         """
-        assets.import_tests()
+        bpy.ops.object.select_all(action='DESELECT')
+
+
+        obj = bpy.data.objects.get("City")
+        bpy.context.view_layer.objects.active = obj
+        obj.select_set(True)
+        # Apply the visual geometry to objects operator
+        bpy.ops.object.visual_geometry_to_objects()
+
+        # Join all objects with 'Wall' in their name
+        wall_objs = [obj for obj in bpy.data.objects if "Wall" in obj.name]
+        if wall_objs:
+            # Deselect all, then select only wall objects
+            for obj in bpy.data.objects:
+                obj.select_set(False)
+            for obj in wall_objs:
+                obj.select_set(True)
+            context.view_layer.objects.active = wall_objs[0]
+            bpy.ops.object.join()
+
+        # Organize all other objects into collections by the name before the first '.'
+        for obj in bpy.data.objects:
+            if "Wall" in obj.name:
+                continue  # Skip the joined wall object
+            # Use the part before the first '.' as the collection name
+            col_name = obj.name.split('.', 1)[0]
+            if col_name not in bpy.data.collections:
+                new_col = bpy.data.collections.new(col_name)
+                bpy.context.scene.collection.children.link(new_col)
+            else:
+                new_col = bpy.data.collections[col_name]
+            # Remove from all collections except the new one
+            for col in obj.users_collection:
+                if col != new_col:
+                    col.objects.unlink(obj)
+            # Link to the new collection if not already linked
+            if obj.name not in new_col.objects:
+                new_col.objects.link(obj)
+
         return {"FINISHED"}
 
 
