@@ -55,7 +55,18 @@ class OperatorGenerateCity(bpy.types.Operator):
         """
         parameters = context.scene.cityproperties
         citygen = CityGenerator(parameters)
-        citygen.generate()
+        result = citygen.generate_for_scanning()
+
+        if not result:
+            self.report({'WARNING'}, "Failed to generate city for scanning.")
+            return {'CANCELLED'}
+
+        # Check for scan paths
+        scan_paths = result.get(f"{citygen.SCAN_PATH_NAME}s")
+        if scan_paths and len(scan_paths.objects) > 0:
+            self.report({'INFO'}, f"Successfully created {len(scan_paths.objects)} scan path(s)")
+        else:
+            self.report({'WARNING'}, "No scan paths were created!")
         return {"FINISHED"}
 
 
@@ -84,7 +95,7 @@ class OperatorReadOSM(bpy.types.Operator):
 
 class OperatorSurprise(bpy.types.Operator):
     """
-    Operator to execute a surprise action, such as importing test assets.
+    Operator to execute a surprise action, which converts a city to real objects for scanning.
     """
     bl_idname: str = "villevite.surprise"
     bl_label: str = "Surprise me!"
@@ -100,10 +111,10 @@ class OperatorSurprise(bpy.types.Operator):
         Returns:
             set[str]: A set containing the execution status.
         """
-        assets.import_tests()
+        parameters = context.scene.cityproperties
+        citygen = CityGenerator(parameters)
+        result = citygen.generate()
         return {"FINISHED"}
-
-
 class OperatorClearAll(bpy.types.Operator):
     """
     Operator to clear all objects, node groups, and collections from the scene.
