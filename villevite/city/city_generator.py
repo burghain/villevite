@@ -383,7 +383,6 @@ class CityGenerator:
         # will be linked to instances_collection in the cleanup phase
 
         object_collections[base_name] = collection
-        print(f"Created collection for '{collection_name}'")
 
     def _create_collection(self, name: str) -> bpy.types.Collection:
         """
