@@ -18,6 +18,7 @@ class CityGenerator:
     """
     # Constants for object and collection names
     SCAN_PATH_NAME: str = "Scan Path"
+    SCAN_PATH_COLLECTION_NAME: str = "Scan Paths"
     CITY_NAME: str = "City"
 
     def __init__(self, properties: bpy.types.PropertyGroup) -> None:
@@ -232,24 +233,16 @@ class CityGenerator:
         Returns:
             bpy.types.Collection: The scan path collection.
         """
-        # Create a collection for scan path curves
-        print(f"Creating collection for {self.SCAN_PATH_NAME} objects")
-        collection_name = f"{self.SCAN_PATH_NAME}s"
-        scan_path_collection = self._create_collection(collection_name)
 
-        count = 0
+        print(f"Creating collection named {self.SCAN_PATH_COLLECTION_NAME} for {self.SCAN_PATH_NAME} objects")
+        scan_path_collection = self._create_collection(self.SCAN_PATH_COLLECTION_NAME)
+
         for obj in new_objects:
             base_name = obj.name.split('.')[0]
             if base_name == self.SCAN_PATH_NAME:
-                # Move curve objects into the scan path collection
-                if self._move_object_to_collection(obj, scan_path_collection):
-                    count += 1
+                self._move_object_to_collection(obj, scan_path_collection)
 
-                    # Rename to standard name if it has a suffix
-                    if obj.name != self.SCAN_PATH_NAME:
-                        obj.name = self.SCAN_PATH_NAME
-
-        print(f"Found and organized {count} scan path objects")
+        print(f"Found and organized {len(scan_path_collection.objects)} scan path objects")
         return scan_path_collection
 
     def _create_instance_collections(self, new_objects: List[bpy.types.Object]) -> bpy.types.Collection:
