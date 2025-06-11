@@ -9,16 +9,6 @@ class CityProperties(types.PropertyGroup):
     """
     A class representing properties for city generation in Blender.
     """
-
-    source: props.EnumProperty(
-        name="Data Source",
-        description="Source of the city data",
-        items=[
-            ("OSM-Attributes", "Read from OSM", "OpenStreetMap"),
-            ("Generated", "Generated", "Generated"),
-        ],
-    )  # type: ignore
-
     coordinates: props.StringProperty(
         name="Coordinates",
         description="Coordinates of the map excerpt to use (format: 'minlon,minlat,maxlon,maxlat')",
