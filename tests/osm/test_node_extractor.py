@@ -9,7 +9,7 @@ def test_simple(create_igraph_graph, create_osm_node_dataframe):
 
     node_extractor.write_to_graph(create_igraph_graph)
 
-    assert len(create_igraph_graph.vs) == 1
+    assert len(create_igraph_graph.vs) == 2
     assert create_igraph_graph.vs[0]['osm_id'] == '1'
 
 def test_coords(create_igraph_graph, create_osm_node_dataframe):

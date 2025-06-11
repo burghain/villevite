@@ -31,9 +31,9 @@ def import_assets_and_tests():
 
 @pytest.fixture
 def create_osm_node_dataframe():
-    d = {'id': ['1'],
-         'lat': ['52.3961586'],
-         'lon': ['13.0360831']}
+    d = {'id': ['1', '2'],
+         'lat': ['52.3961586', '52.3961589'],
+         'lon': ['13.0360831', '13.0360832']}
     
     return pd.DataFrame(data=d)
 
@@ -50,3 +50,21 @@ def create_big_osm_node_dataframe():
 @pytest.fixture
 def create_igraph_graph():
     return ig.Graph(directed=False)
+
+@pytest.fixture
+def create_osm_highway_dataframe():
+    d = {'nodes': [['1', '2']]}
+
+    return pd.DataFrame(data=d)
+
+@pytest.fixture
+def create_igraph_node_graph():
+    g = ig.Graph(directed=False)
+
+    v = g.add_vertex()
+    v['osm_id'] = '1'
+    
+    v = g.add_vertex()
+    v['osm_id'] = '2'
+
+    return g
