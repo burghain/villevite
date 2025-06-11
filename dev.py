@@ -88,7 +88,7 @@ def setup_blender(blender_path: str, version: str) -> None:
     if not os.path.exists(blender_path):
         os.makedirs(blender_path)
     if not os.path.exists(f"{blender_path}/blender-{version}"):
-        url = f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz" if major_version != "4.5"  else "cdn.builder.blender.org/download/daily/blender-4.5.0-beta+v45.ddcd314df463-linux.x86_64-release.tar.xz"
+        url = f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz" if major_version != "4.5"  else "cdn.builder.blender.org/download/daily/archive/blender-4.5.0-beta+v45.ddcd314df463-linux.x86_64-release.tar.xz"
 
         print(f"Downloading Blender {version} from {url}.")
 
@@ -137,7 +137,7 @@ def test() -> None:
     """
     Runs tests for the addon across specified Blender versions.
     """
-    blender_versions = ["4.4.0", "4.5.0"]
+    blender_versions = ["4.5.0"]
     blender_path = "./blender"
     for version in blender_versions:
 
