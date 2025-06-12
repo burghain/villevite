@@ -1,7 +1,14 @@
 import bpy
-
 import math
 import sys
+
+'''
+Takes in a .blend file, opens it and scans all scan paths within the 'Scan Paths' collection
+
+argv[0].. path to .blend
+argv[1].. path to folder to save point clouds to
+argv[2].. path to vlidar zip
+'''
 
 argv = sys.argv
 argv = argv[argv.index("--") + 1:] 
@@ -9,9 +16,12 @@ argv = argv[argv.index("--") + 1:]
 if len(argv) < 3:
     exit()
 
-bpy.ops.preferences.addon_install(overwrite=True, target='DEFAULT', filepath=argv[1], filter_folder=True, filter_python=False, filter_glob="*.py;*.zip")
+print("installing vlidar from " + argv[2])
+# install vlidar plugin
+bpy.ops.preferences.addon_install(overwrite=True, target='DEFAULT', filepath=argv[2], filter_folder=True, filter_python=False, filter_glob="*.py;*.zip")
+print("enable vlidar")
 bpy.ops.preferences.addon_enable(module="pointCloudRender")
-
+print("vlidar installed")
 # Enable CUDA GPU
 preferences = bpy.context.preferences
 cycles_preferences = preferences.addons["cycles"].preferences
@@ -28,7 +38,7 @@ for device in devices:
         device.use = False
     else:
         device.use = True
-        print('activated gpu', device.name)
+        print('Activated GPU', device.name)
 
 
 # Enable vLidar GPU Acceleration
@@ -36,22 +46,15 @@ vLiDAR_preferences = bpy.context.preferences.addons["pointCloudRender"].preferen
 vLiDAR_preferences.backend_type = "GPUScanningBackend"
 vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"
 
-
-#bpy.ops.wm.open_mainfile(filepath=blend_file_path)
-#bpy.ops.preferences.addon_enable(module="villevite")
-
-# deal with villevite stuff
-osm_coords = argv[2]
-bpy.data.scenes["Scene"].cityproperties.coordinates = osm_coords
-
-bpy.ops.villevite.clear_all()
-bpy.ops.villevite.generate_city()
-
-print("\nPreparing Scanning...")
-
-point_cloud_file_path = argv[0]
-
+print("add scanner")
+# configure vlidar
 bpy.ops.pcscanner.add_scanner()
+
+with bpy.data.libraries.load(argv[0]) as (data_from, data_to):
+    for attr in dir(data_to):
+        setattr(data_to, attr, getattr(data_from, attr))
+
+print("assign ids")
 bpy.ops.pcscanner.assign_unique_material_ids()
 
 laser_scanner = bpy.data.objects.get("LaserScanner")
@@ -59,15 +62,7 @@ laser_scanner.rotation_euler[0] = math.radians(60)
 laser_scanner.rotation_euler[2] = math.radians(-30)
 
 vLiDAR_scanner = bpy.data.scenes["Scene"].pointCloudRenderProperties.laser_scanners[0]
-vLiDAR_scanner.file_path = point_cloud_file_path
 vLiDAR_scanner.scanner_type = "mobile_mapping_scanner"
-
-path = bpy.data.objects.get("Scan Path")
-
-if path:
-    vLiDAR_scanner.path.path_object = path
-
-    bpy.ops.pcscanner.update_path_length()
 
 velocity = 8.33  # 8.33 m/s corresponds to 30 km/h
 
@@ -77,6 +72,16 @@ vLiDAR_scanner.mobile_mapping_AV = 72000.0
 vLiDAR_scanner.mobile_mapping_velocity = velocity
 vLiDAR_scanner.save_material_ids = True
 
-print("\nScanning...")
+print("Scanning objects...")
 
-bpy.ops.render.render_point_cloud()
+for obj in bpy.data.collections['Scan Paths'].all_objects:
+    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{obj.name}.csv'
+    # TODO: Use splines instead of curves
+    vLiDAR_scanner.path.path_object = obj
+    bpy.ops.pcscanner.update_path_length()
+
+    print(f'\nScanning path {obj.path}...')
+
+    bpy.ops.render.render_point_cloud()
+
+print(f'Scanned {len(bpy.data.collections["Scan Paths"].all_objects)} paths to {argv[1]}')

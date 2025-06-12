@@ -1,8 +1,10 @@
 {
-    "blender_dir": "/mnt/SUPERCOOL/bin/blender_4.4_scancam",
-    "bpy_executable": "",
+    "blender_scancam_dir": "/mnt/SUPERCOOL/bin/blender_4.4_scancam",
+    "bpy_scancam_executable": "/mnt/SUPERCOOL/bin/blender_4.4_scancam/4.4/python/bin/python3.11",
+    "blender_45_dir": "/mnt/SUPERCOOL/Dokumente/villevite/blender/blender-4.5.0",
     "vlidar_zip": "/mnt/SUPERCOOL/Dokumente/pointCloudRender-bachelorThesis.zip",
-    "pc_save_file": "/mnt/SUPERCOOL/pc_nimwegen.csv",
+    "pc_save_folder": "/mnt/SUPERCOOL/pc_nimwegen/",
     "osm_coords": "5.85264,51.84032,5.87088,51.85121",
-    "blender_script": "/mnt/SUPERCOOL/Dokumente/villevite/generate_and_scan_city.py"
+    "generate_script": "/mnt/SUPERCOOL/Dokumente/villevite/generate_city.py",
+    "scan_script": "/mnt/SUPERCOOL/Dokumente/villevite/scan_city.py"
 }

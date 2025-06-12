@@ -17,35 +17,47 @@ osm_coords.. string with the coordinates of the map excerpt to use; format: 'min
 blender_script.. path of the python file to be executed within blender
 '''
 
+def reset_blender(dir, portable_dir):
+    if os.path.isdir(portable_dir):
+        shutil.rmtree(portable_dir)
+        
+    os.mkdir(dir + '/portable')
+
 if __name__ == '__main__':
     with open('scan_config.json') as f:
         d = json.load(f)
 
-        blender_dir = d['blender_dir']
-        blender_portable_dir = blender_dir + '/portable'
+        blender_sc_dir = d['blender_scancam_dir']
+        blender_sc_portable_dir = blender_sc_dir + '/portable'
+        blender_sc_executable = blender_sc_dir + '/blender'
 
-        bpy_executable = d['bpy_executable']
+        bpy_sc_executable = d['bpy_scancam_executable']
+
+        blender_45_dir = d['blender_45_dir']
+        blender_45_portable_dir = blender_45_dir + '/portable'
+        blender_45_executable = blender_45_dir + '/blender'
 
         vlidar_zip = d['vlidar_zip']
 
         osm_coords = d['osm_coords']
 
-        blender_script = d['blender_script']
+        generate_script = d['generate_script']
+        scan_script = d['scan_script']
 
-        # delete portable dir if exists to reset blender installation
-        if os.path.isdir(blender_portable_dir):
-            shutil.rmtree(blender_portable_dir)
+        # reset blender installs
+        reset_blender(blender_45_dir, blender_45_portable_dir)
+        reset_blender(blender_sc_dir, blender_sc_portable_dir)
 
-        os.mkdir(blender_dir + '/portable')
+        point_cloud_save_folder = d['pc_save_folder']
 
-        blender_executable = blender_dir + '/blender'
-        point_cloud_save_file = d['pc_save_file']
+        blend_savefile = f'{os.getcwd()}/city.blend'
 
         build()
 
+        # install villevite into blender 4.5
         subprocess.run(
             [
-                blender_executable,
+                blender_45_executable,
                 "--command",
                 "extension",
                 "install-file",
@@ -56,9 +68,10 @@ if __name__ == '__main__':
             ]
         )
 
+        # install vlidar deps into blender sc
         subprocess.run(
             [
-                bpy_executable,
+                bpy_sc_executable,
                 '-m',
                 'pip',
                 'install',
@@ -67,14 +80,27 @@ if __name__ == '__main__':
             ]
         )
 
+        # run villevite in blender 45
         subprocess.run(
             [
-                blender_executable,
+                blender_45_executable,
                 "--python",
-                blender_script,
+                generate_script,
                 "--",
-                point_cloud_save_file,
-                vlidar_zip,
+                blend_savefile,
                 osm_coords
+            ]
+        )
+
+        # scan in blender sc
+        subprocess.run(
+            [
+                blender_sc_executable,
+                "--python",
+                scan_script,
+                "--",
+                blend_savefile,
+                point_cloud_save_folder,
+                vlidar_zip
             ]
         )
