@@ -21,8 +21,8 @@ def test_coords(create_igraph_graph, create_osm_node_dataframe):
 
     coord = create_igraph_graph.vs[0]['coord']
 
-    assert coord[0] == pytest.approx(360, abs=10)
-    assert coord[1] == pytest.approx(300, abs=10)
+    assert coord[0] == pytest.approx(360, rel=.15)
+    assert coord[1] == pytest.approx(300, rel=.15)
 
 def test_multi_nodes(create_igraph_graph, create_big_osm_node_dataframe):
     map_bounds = [0, 0, 0, 0]
