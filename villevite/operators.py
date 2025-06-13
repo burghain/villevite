@@ -111,9 +111,9 @@ class OperatorSurprise(bpy.types.Operator):
         Returns:
             set[str]: A set containing the execution status.
         """
-        parameters = context.scene.cityproperties
-        citygen = CityGenerator(parameters)
-        result = citygen.generate()
+
+        curve = bpy.data.objects["Curve"]
+        print(dir(curve.data))
         return {"FINISHED"}
 class OperatorClearAll(bpy.types.Operator):
     """
