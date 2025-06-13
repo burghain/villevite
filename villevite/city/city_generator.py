@@ -241,6 +241,11 @@ class CityGenerator:
             base_name = obj.name.split('.')[0]
             if base_name == self.SCAN_PATH_NAME:
                 self._move_object_to_collection(obj, scan_path_collection)
+                # Convert object to mesh and then back to curve to create a legacy "Curve" object, not curves
+                bpy.ops.object.select_all(action='DESELECT')
+                obj.select_set(True)
+                bpy.ops.object.convert(target='MESH')
+                bpy.ops.object.convert(target='CURVE')
 
         print(f"Found and organized {len(scan_path_collection.objects)} scan path objects")
         return scan_path_collection
