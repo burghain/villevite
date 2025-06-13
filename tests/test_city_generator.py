@@ -9,4 +9,4 @@ def test_city_collections_exist():
 
     assert len(scan_path_collection.objects) > 0, "Collection 'Scan Paths' should not be empty"
     for obj in scan_path_collection.objects:
-        assert obj.type == "CURVES", f"Object {obj.name} in 'Scan Paths' should be a CURVE, found {obj.type}"
+        assert obj.type == "CURVE", f"Object {obj.name} in 'Scan Paths' should be a CURVE, found {obj.type}"
