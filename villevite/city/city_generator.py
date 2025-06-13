@@ -237,31 +237,38 @@ class CityGenerator:
         print(f"Creating collection named {self.SCAN_PATH_COLLECTION_NAME} for {self.SCAN_PATH_NAME} objects")
         scan_path_collection = self._create_collection(self.SCAN_PATH_COLLECTION_NAME)
 
+        bpy.ops.object.select_all(action='DESELECT')
+
         for obj in new_objects:
             base_name = obj.name.split('.')[0]
             if base_name == self.SCAN_PATH_NAME:
                 self._move_object_to_collection(obj, scan_path_collection)
-                # Convert object to mesh and then back to curve to create a legacy "Curve" object, not curves
-                bpy.ops.object.select_all(action='DESELECT')
+                # Select curve if fitting
                 obj.select_set(True)
-                bpy.ops.object.convert(target='MESH')
-                bpy.ops.object.convert(target='CURVE')
-                curve = obj.data
-                poly_spline = curve.splines[0]
 
-                # Create new Bezier spline
-                bez_spline = curve.splines.new(type='BEZIER')
-                bez_spline.bezier_points.add(count=len(poly_spline.points) - 1)  # already has 1 point
+        bpy.ops.object.convert(target='MESH')
+        bpy.ops.object.convert(target='CURVE')
 
-                curve.dimensions = '3D'
-                curve.resolution_u = 2
-                for i, point in enumerate(poly_spline.points):
-                    bez_point = bez_spline.bezier_points[i]
-                    position = (point.co.x, point.co.y, 2.5)
-                    bez_point.co = position
-                    bez_point.handle_left_type = 'ALIGNED'
-                    bez_point.handle_right_type = 'ALIGNED'
-                curve.splines.remove(poly_spline)
+        bpy.ops.object.select_all(action='DESELECT')
+
+        for obj in scan_path_collection.objects:
+            curve = obj.data
+            poly_spline = curve.splines[0]
+
+            curve.dimensions = '3D'
+            curve.resolution_u = 2
+
+            # Create new Bezier spline
+            bez_spline = curve.splines.new(type='BEZIER')
+            bez_spline.bezier_points.add(count=len(poly_spline.points) - 1)  # already has 1 point
+
+            for i, point in enumerate(poly_spline.points):
+                bez_point = bez_spline.bezier_points[i]
+                position = (point.co.x, point.co.y, 2.5)
+                bez_point.co = position
+                bez_point.handle_left_type = 'ALIGNED'
+                bez_point.handle_right_type = 'ALIGNED'
+            curve.splines.remove(poly_spline)
 
         print(f"Found and organized {len(scan_path_collection.objects)} scan path objects")
         return scan_path_collection

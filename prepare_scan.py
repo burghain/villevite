@@ -25,6 +25,8 @@ def reset_blender(dir, portable_dir):
 
 if __name__ == '__main__':
     with open('scan_config.json') as f:
+        BYPASS_GEN = False
+
         d = json.load(f)
 
         blender_sc_dir = d['blender_scancam_dir']
@@ -52,21 +54,34 @@ if __name__ == '__main__':
 
         blend_savefile = f'{os.getcwd()}/city.blend'
 
-        build()
+        if not BYPASS_GEN:
+            build()
 
-        # install villevite into blender 4.5
-        subprocess.run(
-            [
-                blender_45_executable,
-                "--command",
-                "extension",
-                "install-file",
-                "-r",
-                "user_default",
-                "-e",
-                "villevite.zip"
-            ]
-        )
+            # install villevite into blender 4.5
+            subprocess.run(
+                [
+                    blender_45_executable,
+                    "--command",
+                    "extension",
+                    "install-file",
+                    "-r",
+                    "user_default",
+                    "-e",
+                    "villevite.zip"
+                ]
+            )
+
+            # run villevite in blender 45
+            subprocess.run(
+                [
+                    blender_45_executable,
+                    "--python",
+                    generate_script,
+                    "--",
+                    blend_savefile,
+                    osm_coords
+                ]
+            )
 
         # install vlidar deps into blender sc
         subprocess.run(
@@ -77,18 +92,6 @@ if __name__ == '__main__':
                 'install',
                 'openexr==3.2.4',
                 'openexr_numpy==0.0.6'
-            ]
-        )
-
-        # run villevite in blender 45
-        subprocess.run(
-            [
-                blender_45_executable,
-                "--python",
-                generate_script,
-                "--",
-                blend_savefile,
-                osm_coords
             ]
         )
 
