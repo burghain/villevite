@@ -85,9 +85,9 @@ vLiDAR_scanner.save_material_ids = True
 print("Scanning objects...")
 Path(argv[1]).mkdir(parents=True, exist_ok=True)
 
-for obj in bpy.data.collections['Scan Paths'].all_objects:
+for i, obj in enumerate(bpy.data.collections['Scan Paths'].objects):
 
-    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{obj.name}.csv'
+    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{i}.csv'
     
     vLiDAR_scanner.path.path_object = obj
     bpy.ops.pcscanner.update_path_length()
