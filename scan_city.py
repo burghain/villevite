@@ -97,4 +97,4 @@ for i, obj in enumerate(bpy.data.collections['Scan Paths'].objects):
 
     bpy.ops.render.render_point_cloud()
 
-print(f'Scanned {len(bpy.data.collections["Scan Paths"].all_objects)} paths to {argv[1]}')
+print(f'Scanned {len(bpy.data.collections["Scan Paths"].objects)} paths to {argv[1]}')
