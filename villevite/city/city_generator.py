@@ -252,23 +252,21 @@ class CityGenerator:
         bpy.ops.object.select_all(action='DESELECT')
 
         for obj in scan_path_collection.objects:
-            curve = obj.data
-            poly_spline = curve.splines[0]
+            obj.select_set(True)
+            bpy.context.view_layer.objects.active = obj
 
-            curve.dimensions = '3D'
-            curve.resolution_u = 2
+            bpy.ops.object.editmode_toggle()
 
-            # Create new Bezier spline
-            bez_spline = curve.splines.new(type='BEZIER')
-            bez_spline.bezier_points.add(count=len(poly_spline.points) - 1)  # already has 1 point
+            bpy.ops.curve.select_all(action='SELECT')
+            bpy.ops.curve.spline_type_set(type='BEZIER')
 
-            for i, point in enumerate(poly_spline.points):
-                bez_point = bez_spline.bezier_points[i]
-                position = (point.co.x, point.co.y, 2.5)
-                bez_point.co = position
-                bez_point.handle_left_type = 'ALIGNED'
-                bez_point.handle_right_type = 'ALIGNED'
-            curve.splines.remove(poly_spline)
+            bpy.ops.object.editmode_toggle()
+
+            for spline in obj.data.splines:
+                for point in spline.bezier_points:
+                    point.co.z = 2.5
+
+            obj.select_set(False)
 
         print(f"Found and organized {len(scan_path_collection.objects)} scan path objects")
         return scan_path_collection
