@@ -1,10 +1,10 @@
 {
-    "blender_scancam_dir": "/mnt/SUPERCOOL/bin/blender_4.4_scancam",
-    "bpy_scancam_executable": "/mnt/SUPERCOOL/bin/blender_4.4_scancam/4.4/python/bin/python3.11",
-    "blender_45_dir": "/mnt/SUPERCOOL/Dokumente/villevite/blender/blender-4.5.0",
-    "vlidar_zip": "/mnt/SUPERCOOL/Dokumente/pointCloudRender-bachelorThesis.zip",
-    "pc_save_folder": "/mnt/SUPERCOOL/pc_nimwegen/",
+    "blender_scancam_dir": "/home/ubuntu/blender",
+    "bpy_scancam_executable": "/home/ubuntu/blender/4.4/python/bin/python3.11",
+    "blender_45_dir": "/home/ubuntu/villevite/blender/blender-4.5.0",
+    "vlidar_zip": "/home/ubuntu/pointCloudRender-bachelorThesis.zip",
+    "pc_save_folder": "/home/ubuntu/output/",
     "osm_coords": "13.03154,52.39333,13.04747,52.39899",
-    "generate_script": "/mnt/SUPERCOOL/Dokumente/villevite/generate_city.py",
-    "scan_script": "/mnt/SUPERCOOL/Dokumente/villevite/scan_city.py"
+    "generate_script": "/home/ubuntu/villevite/generate_city.py",
+    "scan_script": "/home/ubuntu/villevite/scan_city.py"
 }
