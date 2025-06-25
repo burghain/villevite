@@ -25,7 +25,7 @@ def reset_blender(dir, portable_dir):
 
 if __name__ == '__main__':
     with open('scan_config.json') as f:
-        BYPASS_GEN = True
+        BYPASS_GEN = False
 
         d = json.load(f)
 
