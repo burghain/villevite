@@ -55,8 +55,6 @@ if __name__ == '__main__':
         blend_savefile = f'{os.getcwd()}/city.blend'
 
         if not BYPASS_GEN:
-            build()
-
             # install villevite into blender 4.5
             subprocess.run(
                 [
