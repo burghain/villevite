@@ -14,8 +14,6 @@ class OSMParser():
 
         osm = OSM(f'{os.getcwd()}/villevite/Assets/{filename}.pbf')
 
-        map_bounds = osm.get_boundaries(boundary_type='all').total_bounds
-
         df_nodes, _ = osm.get_network(nodes=True, network_type='all')
         df_highways = osm.get_data_by_custom_criteria({'highway': ['primary', 'secondary', 'tertiary', 'residential', 'living_street', 'motorway', 'trunk']})
         df_buildings = osm.get_buildings()
@@ -23,6 +21,8 @@ class OSMParser():
         df_way_nodes = pd.DataFrame(osm._way_records).set_index('id')['nodes']
 
         df_highways = df_highways.merge(df_way_nodes, on='id')
+
+        map_bounds = df_nodes.total_bounds
 
         node_extractor = NodeExtractor(df_nodes, map_bounds)
         node_extractor.write_to_graph(g)

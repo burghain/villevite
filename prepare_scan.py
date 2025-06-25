@@ -25,7 +25,7 @@ def reset_blender(dir, portable_dir):
 
 if __name__ == '__main__':
     with open('scan_config.json') as f:
-        BYPASS_GEN = False
+        BYPASS_GEN = True
 
         d = json.load(f)
 
@@ -35,9 +35,11 @@ if __name__ == '__main__':
 
         bpy_sc_executable = d['bpy_scancam_executable']
 
-        blender_45_dir = d['blender_45_dir']
-        blender_45_portable_dir = blender_45_dir + '/portable'
-        blender_45_executable = blender_45_dir + '/blender'
+        if not BYPASS_GEN:
+            blender_45_dir = d['blender_45_dir']
+            blender_45_portable_dir = blender_45_dir + '/portable'
+            blender_45_executable = blender_45_dir + '/blender'
+            reset_blender(blender_45_dir, blender_45_portable_dir)
 
         vlidar_zip = d['vlidar_zip']
 
@@ -46,8 +48,6 @@ if __name__ == '__main__':
         generate_script = d['generate_script']
         scan_script = d['scan_script']
 
-        # reset blender installs
-        reset_blender(blender_45_dir, blender_45_portable_dir)
         reset_blender(blender_sc_dir, blender_sc_portable_dir)
 
         point_cloud_save_folder = d['pc_save_folder']
@@ -92,7 +92,8 @@ if __name__ == '__main__':
                 'pip',
                 'install',
                 'openexr==3.2.4',
-                'openexr_numpy==0.0.6'
+                'openexr_numpy==0.0.6',
+                'laspy==2.5.4'
             ]
         )
 

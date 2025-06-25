@@ -45,6 +45,7 @@ for device in devices:
 # Enable vLidar GPU Acceleration
 vLiDAR_preferences = bpy.context.preferences.addons["pointCloudRender"].preferences
 vLiDAR_preferences.backend_type = "GPUScanningBackend"
+vLiDAR_preferences.writer_type = "LasSampleWriter"
 vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"
 
 # clear scene
@@ -86,9 +87,8 @@ print("Scanning objects...")
 Path(argv[1]).mkdir(parents=True, exist_ok=True)
 
 for i, obj in enumerate(bpy.data.collections['Scan Paths'].objects):
+    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{i}.las'
 
-    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{i}.csv'
-    
     vLiDAR_scanner.path.path_object = obj
     bpy.ops.pcscanner.update_path_length()
     vLiDAR_scanner.scan_duration = vLiDAR_scanner.path.length / velocity

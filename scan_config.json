@@ -4,7 +4,7 @@
     "blender_45_dir": "/mnt/SUPERCOOL/Dokumente/villevite/blender/blender-4.5.0",
     "vlidar_zip": "/mnt/SUPERCOOL/Dokumente/pointCloudRender-bachelorThesis.zip",
     "pc_save_folder": "/mnt/SUPERCOOL/pc_nimwegen/",
-    "osm_coords": "5.85264,51.84032,5.87088,51.85121",
+    "osm_coords": "13.03154,52.39333,13.04747,52.39899",
     "generate_script": "/mnt/SUPERCOOL/Dokumente/villevite/generate_city.py",
     "scan_script": "/mnt/SUPERCOOL/Dokumente/villevite/scan_city.py"
 }
