@@ -45,6 +45,7 @@ for device in devices:
 # Enable vLidar GPU Acceleration
 vLiDAR_preferences = bpy.context.preferences.addons["pointCloudRender"].preferences
 vLiDAR_preferences.backend_type = "GPUScanningBackend"
+vLiDAR_preferences.writer_type = "LasSampleWriter"
 vLiDAR_preferences.GPUScanningBackendSettings.camera_type = "ScannerCamera"
 
 # clear scene
