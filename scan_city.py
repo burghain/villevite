@@ -86,9 +86,8 @@ print("Scanning objects...")
 Path(argv[1]).mkdir(parents=True, exist_ok=True)
 
 for i, obj in enumerate(bpy.data.collections['Scan Paths'].objects):
+    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{i}.las'
 
-    vLiDAR_scanner.file_path = f'{argv[1]}/pc-{i}.csv'
-    
     vLiDAR_scanner.path.path_object = obj
     bpy.ops.pcscanner.update_path_length()
     vLiDAR_scanner.scan_duration = vLiDAR_scanner.path.length / velocity
