@@ -88,7 +88,7 @@ def setup_blender(blender_path: str, version: str) -> None:
     if not os.path.exists(blender_path):
         os.makedirs(blender_path)
     if not os.path.exists(f"{blender_path}/blender-{version}"):
-        url = f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz" if major_version != "4.5"  else "cdn.builder.blender.org/download/daily/archive/blender-4.5.0-beta+v45.ddcd314df463-linux.x86_64-release.tar.xz"
+        url = f"https://download.blender.org/release/Blender{major_version}/blender-{version}-linux-x64.tar.xz"
 
         print(f"Downloading Blender {version} from {url}.")
 
@@ -99,13 +99,9 @@ def setup_blender(blender_path: str, version: str) -> None:
                 url,
             ], check=True
         )
-        if major_version == "4.5":
-            os.rename("blender-4.5.0-beta+v45.ddcd314df463-linux.x86_64-release.tar.xz",
-                      f"blender-{version}-linux-x64.tar.xz")
+        
         shutil.unpack_archive(f"blender-{version}-linux-x64.tar.xz")
-        if major_version == "4.5":
-            os.rename("blender-4.5.0-beta+v45.ddcd314df463-linux.x86_64-release",
-                        f"blender-{version}-linux-x64")
+        
         shutil.move(f"blender-{version}-linux-x64",
                     f"{blender_path}/blender-{version}")
         os.remove(f"blender-{version}-linux-x64.tar.xz")
