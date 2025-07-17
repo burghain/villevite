@@ -6,7 +6,7 @@ from ..utils import CoordToMeterConverter
 class BuildingExtractor(BasicExtractor):
 
     def __init__(self, df, map_bounds):
-        super().__init__(df)
+        super().__init__(df.explode())
 
         self.map_bounds = map_bounds
         self.ctm_conv = CoordToMeterConverter(map_bounds)
