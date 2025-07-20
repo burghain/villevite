@@ -1,6 +1,7 @@
 import bpy
 import math
 import sys
+import json
 from pathlib import Path
 
 '''
@@ -10,6 +11,30 @@ argv[0].. path to .blend
 argv[1].. path to folder to save point clouds to
 argv[2].. path to vlidar zip
 '''
+
+MAT_DICT = {
+    "Building/Foundation": 0,
+    "Building/Roof": 1,
+    "Building/Walls": 2,
+    "Lot/Lot Surface": 3,
+    "Lot/Lot Surface.001": 4,
+    "Street/Road Marking": 5,
+    "Street/Road Marking.001": 6,
+    "Street/Road Surface": 7,
+    "Street/Road Surface.001": 8,
+    "Street/Sidewalk": 9,
+    "Street/Sidewalk.001": 10,
+    "Street/Streetlight": 11,
+    "Street/Streetlight.001": 12,
+    "Street/Traffic Light": 13,
+    "Street/Vehicle": 14,
+    "Street/Vehicle.001": 15,
+    "Vegetation/Tree-Branches": 16,
+    "Vegetation/Tree-Branches.001": 17,
+    "Vegetation/Tree-Leaves": 18,
+    "Vegetation/Tree-Leaves.001": 19,
+    "Vegetation/Tree-Stem": 20,
+}
 
 argv = sys.argv
 argv = argv[argv.index("--") + 1:] 
@@ -66,8 +91,14 @@ with bpy.data.libraries.load(argv[0]) as (data_from, data_to):
 for c_name in new_collections:
     bpy.context.scene.collection.children.link(c_name)
 
+# assign material ids
 print("assign ids")
-bpy.ops.pcscanner.assign_unique_material_ids()
+
+for material in bpy.data.materials:
+    if material.name in MAT_DICT:
+        material.vLiDAR_material_id = MAT_DICT[material.name]
+    else:
+        material.vLiDAR_material_id = len(MAT_DICT)
 
 laser_scanner = bpy.data.objects.get("LaserScanner")
 laser_scanner.rotation_euler[0] = math.radians(60)
