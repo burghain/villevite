@@ -12,7 +12,7 @@ argv[1].. path to folder to save point clouds to
 argv[2].. path to vlidar zip
 '''
 
-MAT_DICT = [
+MAT_LIST = [
     "Building/Foundation",
     "Building/Roof",
     "Building/Walls",
@@ -87,10 +87,10 @@ for c_name in new_collections:
 print("assign ids")
 
 for material in bpy.data.materials:
-    if material.name in MAT_DICT:
-        material.vLiDAR_material_id = MAT_DICT.index(material.name)
+    if material.name in MAT_LIST:
+        material.vLiDAR_material_id = MAT_LIST.index(material.name)
     else:
-        material.vLiDAR_material_id = len(MAT_DICT)
+        material.vLiDAR_material_id = len(MAT_LIST)
 
 laser_scanner = bpy.data.objects.get("LaserScanner")
 laser_scanner.rotation_euler[0] = math.radians(60)
