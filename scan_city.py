@@ -12,29 +12,21 @@ argv[1].. path to folder to save point clouds to
 argv[2].. path to vlidar zip
 '''
 
-MAT_DICT = {
-    "Building/Foundation": 0,
-    "Building/Roof": 1,
-    "Building/Walls": 2,
-    "Lot/Lot Surface": 3,
-    "Lot/Lot Surface.001": 4,
-    "Street/Road Marking": 5,
-    "Street/Road Marking.001": 6,
-    "Street/Road Surface": 7,
-    "Street/Road Surface.001": 8,
-    "Street/Sidewalk": 9,
-    "Street/Sidewalk.001": 10,
-    "Street/Streetlight": 11,
-    "Street/Streetlight.001": 12,
-    "Street/Traffic Light": 13,
-    "Street/Vehicle": 14,
-    "Street/Vehicle.001": 15,
-    "Vegetation/Tree-Branches": 16,
-    "Vegetation/Tree-Branches.001": 17,
-    "Vegetation/Tree-Leaves": 18,
-    "Vegetation/Tree-Leaves.001": 19,
-    "Vegetation/Tree-Stem": 20,
-}
+MAT_DICT = [
+    "Building/Foundation",
+    "Building/Roof",
+    "Building/Walls",
+    "Lot/Lot Surface",
+    "Street/Road Marking",
+    "Street/Road Surface",
+    "Street/Sidewalk",
+    "Street/Streetlight",
+    "Street/Traffic Light",
+    "Street/Vehicle",
+    "Vegetation/Tree-Branches",
+    "Vegetation/Tree-Leaves",
+    "Vegetation/Tree-Stem"
+]
 
 argv = sys.argv
 argv = argv[argv.index("--") + 1:] 
@@ -96,7 +88,7 @@ print("assign ids")
 
 for material in bpy.data.materials:
     if material.name in MAT_DICT:
-        material.vLiDAR_material_id = MAT_DICT[material.name]
+        material.vLiDAR_material_id = MAT_DICT.index(material.name)
     else:
         material.vLiDAR_material_id = len(MAT_DICT)
 
