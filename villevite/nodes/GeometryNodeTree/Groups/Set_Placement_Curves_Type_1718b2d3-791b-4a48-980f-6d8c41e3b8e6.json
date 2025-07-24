@@ -1,0 +1,148 @@
+{
+    "name": "Set Placement Curves Type",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "name": "Set Placement Curves Type",
+        "uuid": "1718b2d3-791b-4a48-980f-6d8c41e3b8e6",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    730.7142944335938,
+                    -60.71428680419922
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -732.1428833007812,
+                    -77.85714721679688
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Trees",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Store Named Attribute": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    130.71429443359375,
+                    19.285717010498047
+                ],
+                "name": "Store Named Attribute",
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Object Type",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    -129.28570556640625,
+                    119.28571319580078
+                ],
+                "name": "Menu Switch",
+                "data_type": "INT",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Trees"
+                    ],
+                    [
+                        "Streetlights"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Trees",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Placement Curves",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Placement Curves",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Type",
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Trees",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

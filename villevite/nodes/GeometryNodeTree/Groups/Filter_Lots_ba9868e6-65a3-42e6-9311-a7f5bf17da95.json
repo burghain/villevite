@@ -1,0 +1,515 @@
+{
+    "name": "Filter Lots",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Filter Lots",
+        "uuid": "ba9868e6-65a3-42e6-9311-a7f5bf17da95",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    842.3076782226562,
+                    -26.153852462768555
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -967.6923217773438,
+                    -26.153852462768555
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Delete Geometry.003",
+                            "Attribute Statistic"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Delete Geometry": {
+                "bl_idname": "GeometryNodeDeleteGeometry",
+                "location": [
+                    372.30767822265625,
+                    173.84616088867188
+                ],
+                "name": "Delete Geometry",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Delete Geometry.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Vertex Neighbors": {
+                "bl_idname": "GeometryNodeInputMeshVertexNeighbors",
+                "location": [
+                    -47.692291259765625,
+                    -66.15384674072266
+                ],
+                "name": "Vertex Neighbors",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Compare": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    152.30770874023438,
+                    13.846148490905762
+                ],
+                "name": "Compare",
+                "data_type": "INT",
+                "operation": "LESS_THAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Delete Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Delete Geometry.001": {
+                "bl_idname": "GeometryNodeDeleteGeometry",
+                "location": [
+                    652.3076782226562,
+                    153.84616088867188
+                ],
+                "name": "Delete Geometry.001",
+                "domain": "FACE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Face Area": {
+                "bl_idname": "GeometryNodeInputMeshFaceArea",
+                "location": [
+                    252.30770874023438,
+                    -186.15383911132812
+                ],
+                "name": "Face Area",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Compare.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare.001": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    452.30767822265625,
+                    -26.153852462768555
+                ],
+                "name": "Compare.001",
+                "operation": "LESS_THAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 10000.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Delete Geometry.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Merge by Distance": {
+                "bl_idname": "GeometryNodeMergeByDistance",
+                "location": [
+                    72.30770874023438,
+                    233.84616088867188
+                ],
+                "mute": true,
+                "name": "Merge by Distance",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 2.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Delete Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Delete Geometry.003": {
+                "bl_idname": "GeometryNodeDeleteGeometry",
+                "location": [
+                    -127.69229125976562,
+                    133.84616088867188
+                ],
+                "mute": true,
+                "name": "Delete Geometry.003",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Merge by Distance"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Attribute Statistic": {
+                "bl_idname": "GeometryNodeAttributeStatistic",
+                "location": [
+                    -577.6923217773438,
+                    -46.15385055541992
+                ],
+                "name": "Attribute Statistic",
+                "domain": "FACE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Compare.002"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Face Area.001": {
+                "bl_idname": "GeometryNodeInputMeshFaceArea",
+                "location": [
+                    -767.6923217773438,
+                    -286.1538391113281
+                ],
+                "name": "Face Area.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2,
+                            1
+                        ],
+                        "to_node": [
+                            "Attribute Statistic",
+                            "Compare.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare.002": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    -307.69232177734375,
+                    -46.15385055541992
+                ],
+                "name": "Compare.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 10000.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Delete Geometry.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

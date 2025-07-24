@@ -1,0 +1,136 @@
+{
+    "name": "Edge Length",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Edge Length",
+        "uuid": "5583a683-fdfc-4bcf-950c-48128929014c",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    200.0,
+                    0.0
+                ],
+                "name": "Group Output"
+            },
+            "Edge Vertices": {
+                "bl_idname": "GeometryNodeInputMeshEdgeVertices",
+                "location": [
+                    -210.0,
+                    -50.0
+                ],
+                "name": "Edge Vertices",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Vector Math"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Vector Math"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Vector Math": {
+                "bl_idname": "ShaderNodeVectorMath",
+                "location": [
+                    10.0,
+                    50.0
+                ],
+                "name": "Vector Math",
+                "operation": "DISTANCE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Value",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

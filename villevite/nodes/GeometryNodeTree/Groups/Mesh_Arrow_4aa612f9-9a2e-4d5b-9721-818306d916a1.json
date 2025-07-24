@@ -1,0 +1,495 @@
+{
+    "name": "Mesh Arrow",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Mesh Arrow",
+        "uuid": "4aa612f9-9a2e-4d5b-9721-818306d916a1",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    814.5454711914062,
+                    67.2727279663086
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -685.4545288085938,
+                    -352.7272644042969
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1,
+                            0
+                        ],
+                        "to_node": [
+                            "Curve Line",
+                            "Vector Math.001"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Curve Line",
+                            "Vector Math.001"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Set Curve Radius": {
+                "bl_idname": "GeometryNodeSetCurveRadius",
+                "location": [
+                    554.5454711914062,
+                    67.2727279663086
+                ],
+                "name": "Set Curve Radius",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Curve Line": {
+                "bl_idname": "GeometryNodeCurvePrimitiveLine",
+                "location": [
+                    -165.4545440673828,
+                    -32.727272033691406
+                ],
+                "name": "Curve Line",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Resample Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Index": {
+                "bl_idname": "GeometryNodeInputIndex",
+                "location": [
+                    -145.4545440673828,
+                    -252.72727966308594
+                ],
+                "name": "Index",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    154.5454559326172,
+                    -132.72727966308594
+                ],
+                "name": "Compare",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Set Curve Radius"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Curve Radius.001": {
+                "bl_idname": "GeometryNodeSetCurveRadius",
+                "location": [
+                    194.5454559326172,
+                    67.2727279663086
+                ],
+                "name": "Set Curve Radius.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.10000000149011612,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Curve Radius"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    -165.4545440673828,
+                    307.2727355957031
+                ],
+                "name": "Math",
+                "operation": "MULTIPLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.10000000149011612,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Set Curve Radius"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Vector Math.001": {
+                "bl_idname": "ShaderNodeVectorMath",
+                "location": [
+                    -405.45452880859375,
+                    147.27272033691406
+                ],
+                "name": "Vector Math.001",
+                "operation": "DISTANCE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Math",
+                            "Math.001"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Math.001": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    -165.4545440673828,
+                    147.27272033691406
+                ],
+                "name": "Math.001",
+                "operation": "MULTIPLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.009999999776482582,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Set Curve Radius.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Resample Curve": {
+                "bl_idname": "GeometryNodeResampleCurve",
+                "location": [
+                    14.54543685913086,
+                    -32.727272033691406
+                ],
+                "name": "Resample Curve",
+                "keep_last_segment": true,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 10,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.10000000149011612,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Curve Radius.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Start",
+                "force_non_field": true,
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "TRANSLATION",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "End",
+                "force_non_field": true,
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    1.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "TRANSLATION",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

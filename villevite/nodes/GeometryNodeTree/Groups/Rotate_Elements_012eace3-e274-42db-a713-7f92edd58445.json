@@ -1,0 +1,234 @@
+{
+    "name": "Rotate Elements",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Rotate Elements",
+        "uuid": "012eace3-e274-42db-a713-7f92edd58445",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    500.0,
+                    -84.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -530.0,
+                    -84.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Position"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Vector Rotate"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Vector Rotate"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Vector Rotate": {
+                "bl_idname": "ShaderNodeVectorRotate",
+                "location": [
+                    70.0,
+                    156.0
+                ],
+                "name": "Vector Rotate",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorEuler",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Set Position"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Position": {
+                "bl_idname": "GeometryNodeSetPosition",
+                "location": [
+                    270.0,
+                    -64.0
+                ],
+                "name": "Set Position",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Position": {
+                "bl_idname": "GeometryNodeInputPosition",
+                "location": [
+                    -310.0,
+                    76.0
+                ],
+                "name": "Position",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Vector Rotate"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Axis",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "dimensions": 3,
+                "max_value": 1.0,
+                "min_value": -1.0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "Angle",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "ANGLE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,347 @@
+{
+    "name": "Assets On Points.001",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Assets On Points.001",
+        "uuid": "08353a88-9a26-417a-b65f-50c2076a98f5",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    583.9261474609375,
+                    21.688156127929688
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -795.6402587890625,
+                    89.51493835449219
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Instance on Points"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2,
+                            0
+                        ],
+                        "to_node": [
+                            "Instance on Points",
+                            "Domain Size"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.10000000149011612,
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Random Value.002"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Instance on Points"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Instance on Points"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Instance on Points": {
+                "bl_idname": "GeometryNodeInstanceOnPoints",
+                "location": [
+                    321.3895263671875,
+                    49.4122200012207
+                ],
+                "name": "Instance on Points",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Random Value.001": {
+                "bl_idname": "FunctionNodeRandomValue",
+                "location": [
+                    95.75138854980469,
+                    -176.0223846435547
+                ],
+                "name": "Random Value.001",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 100,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.5,
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Instance on Points"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Domain Size": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -122.71340942382812,
+                    -232.2964630126953
+                ],
+                "name": "Domain Size",
+                "component": "INSTANCES",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Random Value.001"
+                        ],
+                        "index": 5
+                    }
+                ]
+            },
+            "Random Value.002": {
+                "bl_idname": "FunctionNodeRandomValue",
+                "location": [
+                    -82.71340942382812,
+                    247.7035369873047
+                ],
+                "name": "Random Value.002",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 100,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.10000000149011612,
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Instance on Points"
+                        ],
+                        "index": 3
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Instances",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Points",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Asset Instances",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Probability",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "default_value": 0.10000000149011612,
+                "max_value": 1.0,
+                "min_value": 0.0,
+                "subtype": "FACTOR",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Rotation",
+                "socket_type": "NodeSocketRotation",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "bl_idname": "NodeTreeInterfaceSocketRotation"
+            },
+            {
+                "name": "Scale",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    1.0,
+                    1.0,
+                    1.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "XYZ",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

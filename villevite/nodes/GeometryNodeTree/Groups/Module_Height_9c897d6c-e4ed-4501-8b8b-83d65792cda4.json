@@ -1,0 +1,69 @@
+{
+    "name": "Module Height",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Module Height",
+        "uuid": "9c897d6c-e4ed-4501-8b8b-83d65792cda4",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    193.3333282470703,
+                    0.0
+                ],
+                "name": "Group Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 3.0,
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -196.6666717529297,
+                    0.0
+                ],
+                "name": "Group Input"
+            },
+            "Value": {
+                "bl_idname": "ShaderNodeValue",
+                "location": [
+                    3.333343267440796,
+                    0.0
+                ],
+                "name": "Value",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 3.0,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Module Height",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "default_value": 3.0,
+                "max_value": 3.4028234663852886e+38,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

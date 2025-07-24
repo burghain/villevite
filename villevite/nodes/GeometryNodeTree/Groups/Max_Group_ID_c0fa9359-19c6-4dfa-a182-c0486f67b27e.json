@@ -1,0 +1,111 @@
+{
+    "name": "Max Group ID",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Max Group ID",
+        "uuid": "c0fa9359-19c6-4dfa-a182-c0486f67b27e",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    386.8695983886719,
+                    19.67645263671875
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -451.864990234375,
+                    55.840293884277344
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Attribute Statistic": {
+                "bl_idname": "GeometryNodeAttributeStatistic",
+                "location": [
+                    18.964712142944336,
+                    126.30821228027344
+                ],
+                "name": "Attribute Statistic",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Named Attribute.001": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -182.9340362548828,
+                    -215.13316345214844
+                ],
+                "name": "Named Attribute.001",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Group ID",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Max Group ID",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

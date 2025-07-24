@@ -1,0 +1,192 @@
+{
+    "name": "Spline Endpoint Position",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Spline Endpoint Position",
+        "uuid": "52474e1f-24b4-4fa0-a9a5-ddaa5796f8cd",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    222.5,
+                    15.0
+                ],
+                "name": "Group Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -287.5,
+                    -45.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Sample Curve",
+                            "Sample Curve.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Curve": {
+                "bl_idname": "GeometryNodeSampleCurve",
+                "location": [
+                    32.5,
+                    185.0
+                ],
+                "name": "Sample Curve",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Sample Curve.001": {
+                "bl_idname": "GeometryNodeSampleCurve",
+                "location": [
+                    32.5,
+                    -155.0
+                ],
+                "name": "Sample Curve.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 1.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Position 0",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "Position 1",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "Curves",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

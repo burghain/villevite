@@ -1,0 +1,113 @@
+{
+    "name": ".Set Building Constants",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": ".Set Building Constants",
+        "uuid": "4c2cc4e0-6dc4-4d9a-8805-a398be535788",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    220.0,
+                    0.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -220.0,
+                    0.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Module Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Module Height",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Number Of Module Types",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "min_value": 0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Module Width",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Module Height",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Number Of Module Types",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "default_value": 3,
+                "min_value": 0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,165 @@
+{
+    "name": "Raycast Target Mesh",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Raycast Target Mesh",
+        "uuid": "39859b1b-9237-423e-a0a9-dde4dca1d886",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    726.489990234375,
+                    -101.38016510009766
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -555.9530639648438,
+                    33.03626251220703
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Extrude Mesh": {
+                "bl_idname": "GeometryNodeExtrudeMesh",
+                "location": [
+                    185.0701904296875,
+                    55.799598693847656
+                ],
+                "name": "Extrude Mesh",
+                "mode": "EDGES",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 4
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Vector": {
+                "bl_idname": "FunctionNodeInputVector",
+                "location": [
+                    -76.52790832519531,
+                    -75.63187408447266
+                ],
+                "name": "Vector",
+                "vector": [
+                    0.0,
+                    0.0,
+                    10.0
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Extrude Mesh"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -279.0792236328125,
+                    88.17618560791016
+                ],
+                "name": "Group.003",
+                "node_tree": "5ea8cb41-1d2e-4b7b-acf8-6ae58150d007",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": -5.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Extrude Mesh"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Edges",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

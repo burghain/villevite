@@ -1,0 +1,382 @@
+{
+    "name": "Vertex Where Integer Attribute Equal To",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Vertex Where Integer Attribute Equal To",
+        "uuid": "b43302f1-8eb4-4c93-b3ca-a59ac8ac0ef6",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    733.4150390625,
+                    110.42291259765625
+                ],
+                "name": "Group Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -779.3413696289062,
+                    0.5855991840362549
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.002"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "ID",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Named Attribute"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Compare": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    30.363035202026367,
+                    -115.47853088378906
+                ],
+                "name": "Compare",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1,
+                            2
+                        ],
+                        "to_node": [
+                            "Separate Geometry",
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Index": {
+                "bl_idname": "GeometryNodeInputIndex",
+                "location": [
+                    -695.5671997070312,
+                    -249.1891326904297
+                ],
+                "name": "Index",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Separate Geometry": {
+                "bl_idname": "GeometryNodeSeparateGeometry",
+                "location": [
+                    199.13401794433594,
+                    65.69155883789062
+                ],
+                "name": "Separate Geometry",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -130.22972106933594,
+                    313.29278564453125
+                ],
+                "name": "Store Named Attribute",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Index",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    425.4683532714844,
+                    254.9390411376953
+                ],
+                "name": "Group.001",
+                "width": 211.0096435546875,
+                "node_tree": "68a8c8c0-a2d4-4f52-b0a3-fdc75b2e8815",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Point",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Index",
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    466.987548828125,
+                    -133.55699157714844
+                ],
+                "name": "Group.002",
+                "node_tree": "15ae2f7c-9360-4c97-abfe-b0f397170443",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -250.22972106933594,
+                    -246.7072296142578
+                ],
+                "name": "Named Attribute",
+                "data_type": "INT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Index",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Position",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "Selection",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Value",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Index (If there are multiple)",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Attribute Name",
+                "socket_type": "NodeSocketString",
+                "default_value": "ID",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,96 @@
+{
+    "name": "Boolean Field to Value",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Boolean Field to Value",
+        "uuid": "bf979a07-c259-4558-8d28-6275d35ba4df",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    333.5290222167969,
+                    -40.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -346.7645263671875,
+                    -20.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Attribute Statistic": {
+                "bl_idname": "GeometryNodeAttributeStatistic",
+                "location": [
+                    13.235503196716309,
+                    60.0
+                ],
+                "name": "Attribute Statistic",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Boolean",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Boolean Field",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

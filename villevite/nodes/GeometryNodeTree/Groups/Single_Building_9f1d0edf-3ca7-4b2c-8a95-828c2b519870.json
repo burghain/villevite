@@ -1,0 +1,136 @@
+{
+    "name": "Single Building",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Single Building",
+        "is_modifier": true,
+        "uuid": "9f1d0edf-3ca7-4b2c-8a95-828c2b519870",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    887.4207763671875,
+                    37.91619873046875
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -573.7103881835938,
+                    -98.95809936523438
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -313.71038818359375,
+                    61.041900634765625
+                ],
+                "name": "Group.004",
+                "width": 180.0,
+                "node_tree": "732abe95-3aab-4276-a476-a344ca870002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Roof",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Walls",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Foundation",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Floor Plan",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Foundation Height",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "default_value": 1.0,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

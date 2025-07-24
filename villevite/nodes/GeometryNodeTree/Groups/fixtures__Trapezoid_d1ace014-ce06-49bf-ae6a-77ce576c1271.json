@@ -1,0 +1,322 @@
+{
+    "name": "fixtures: Trapezoid",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "fixtures: Trapezoid",
+        "uuid": "d1ace014-ce06-49bf-ae6a-77ce576c1271",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    650.0,
+                    32.5
+                ],
+                "name": "Group Output"
+            },
+            "Mesh Line": {
+                "bl_idname": "GeometryNodeMeshLine",
+                "location": [
+                    -140.0,
+                    412.5
+                ],
+                "name": "Mesh Line",
+                "mode": "END_POINTS",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 9,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            10.0,
+                            10.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh Line.001": {
+                "bl_idname": "GeometryNodeMeshLine",
+                "location": [
+                    -140.0,
+                    92.5
+                ],
+                "name": "Mesh Line.001",
+                "mode": "END_POINTS",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            10.0,
+                            10.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            10.0,
+                            -10.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh Line.002": {
+                "bl_idname": "GeometryNodeMeshLine",
+                "location": [
+                    -140.0,
+                    -547.5
+                ],
+                "name": "Mesh Line.002",
+                "mode": "END_POINTS",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 10,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            -10.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh Line.003": {
+                "bl_idname": "GeometryNodeMeshLine",
+                "location": [
+                    -140.0,
+                    -227.5
+                ],
+                "name": "Mesh Line.003",
+                "mode": "END_POINTS",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            10.0,
+                            -10.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            -10.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Geometry": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    120.0,
+                    112.5
+                ],
+                "name": "Join Geometry",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Merge by Distance"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Merge by Distance": {
+                "bl_idname": "GeometryNodeMergeByDistance",
+                "location": [
+                    360.0,
+                    132.5
+                ],
+                "name": "Merge by Distance",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.0010000000474974513,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -570.0,
+                    -7.5
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 9,
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Mesh Line",
+                            "Mesh Line.001",
+                            "Mesh Line.003",
+                            "Mesh Line.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Number Of Vertices Per Side",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "default_value": 2,
+                "max_value": 10000,
+                "min_value": 2,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

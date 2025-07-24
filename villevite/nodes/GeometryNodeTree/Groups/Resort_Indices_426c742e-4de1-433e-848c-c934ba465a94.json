@@ -1,0 +1,109 @@
+{
+    "name": "Resort Indices",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Resort Indices",
+        "uuid": "426c742e-4de1-433e-848c-c934ba465a94",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    316.7861633300781,
+                    -4.770209312438965
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -328.8208312988281,
+                    -20.721569061279297
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Mesh to Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh to Curve": {
+                "bl_idname": "GeometryNodeMeshToCurve",
+                "location": [
+                    -114.75148010253906,
+                    0.26198863983154297
+                ],
+                "name": "Mesh to Curve",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Curve to Mesh"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Curve to Mesh": {
+                "bl_idname": "GeometryNodeCurveToMesh",
+                "location": [
+                    126.78616333007812,
+                    25.22978973388672
+                ],
+                "name": "Curve to Mesh",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Mesh",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

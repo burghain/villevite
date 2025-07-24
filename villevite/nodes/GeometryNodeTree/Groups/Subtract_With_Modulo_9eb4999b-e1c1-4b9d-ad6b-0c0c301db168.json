@@ -1,0 +1,149 @@
+{
+    "name": "Subtract With Modulo",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "CONVERTER",
+        "name": "Subtract With Modulo",
+        "uuid": "9eb4999b-e1c1-4b9d-ad6b-0c0c301db168",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    302.5,
+                    2.5
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -347.5,
+                    -17.5
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Integer Math"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Integer Math.003"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Integer Math": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    -67.5,
+                    82.5
+                ],
+                "name": "Integer Math",
+                "operation": "SUBTRACT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math.003": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    112.5,
+                    -67.5
+                ],
+                "name": "Integer Math.003",
+                "operation": "FLOORED_MODULO",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Value",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Minuend",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Subtrahend",
+                "socket_type": "NodeSocketInt",
+                "default_value": 2,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Modulo",
+                "socket_type": "NodeSocketInt",
+                "default_value": 2,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

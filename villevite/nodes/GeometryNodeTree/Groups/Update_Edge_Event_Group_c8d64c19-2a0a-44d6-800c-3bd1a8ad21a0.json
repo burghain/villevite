@@ -1,0 +1,333 @@
+{
+    "name": "Update Edge Event Group",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Update Edge Event Group",
+        "uuid": "c8d64c19-2a0a-44d6-800c-3bd1a8ad21a0",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1507.7286376953125,
+                    253.99172973632812
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1592.2713623046875,
+                    -86.00826263427734
+                ],
+                "name": "Group Input",
+                "width": 166.38818359375,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.002",
+                            "Group.003"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.008"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Group.008": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -632.2714233398438,
+                    -466.0082702636719
+                ],
+                "name": "Group.008",
+                "width": 275.7689208984375,
+                "node_tree": "d6755612-4d28-451c-b620-0957ee58abc1",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    307.72857666015625,
+                    413.9917297363281
+                ],
+                "name": "Group.003",
+                "width": 270.07464599609375,
+                "node_tree": "a1c0339c-3c87-4a3b-a078-5670ad3ab346",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    307.72857666015625,
+                    133.99172973632812
+                ],
+                "name": "Group",
+                "width": 275.1669921875,
+                "node_tree": "945c0449-c67f-44a8-a079-bf56e95cf204",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.007",
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -152.27139282226562,
+                    -186.00827026367188
+                ],
+                "name": "Group.002",
+                "width": 380.18212890625,
+                "node_tree": "50b1f82d-7074-442e-96e1-abff5835fef4",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -772.2714233398438,
+                    -26.008258819580078
+                ],
+                "name": "Group.001",
+                "node_tree": "34f37684-bfe2-485a-b992-6860aca9f052",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3,
+                            3,
+                            2
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group.002",
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    607.7285766601562,
+                    -86.00826263427734
+                ],
+                "name": "Group.007",
+                "width": 340.0,
+                "node_tree": "e0c4d999-dd29-4ced-91d6-c97cf6dfb869",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -1272.2713623046875,
+                    -446.0082702636719
+                ],
+                "name": "Group.006",
+                "width": 245.989501953125,
+                "node_tree": "fb7f5477-985b-4adc-8dde-06f0b2e68374",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2,
+                            2,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group.002",
+                            "Group",
+                            "Group.008"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    1067.7286376953125,
+                    253.99172973632812
+                ],
+                "name": "Group.004",
+                "width": 260.0,
+                "node_tree": "9a4a5032-2d30-44d4-b8fd-49ce8b3f00f0",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Base Polygon",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Shrink Polygon",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Skeleton Points",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Base Polygon",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Shrink Polygon",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Skeleton Points",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Event Points",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

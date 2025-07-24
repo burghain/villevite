@@ -1,0 +1,309 @@
+{
+    "name": "Walls",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Walls",
+        "uuid": "eece2375-7214-4de8-8551-24641e28fec8",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1289.0909423828125,
+                    47.27273178100586
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1630.9090576171875,
+                    -332.727294921875
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -30.909133911132812,
+                    -32.72726821899414
+                ],
+                "name": "Group",
+                "width": 206.2576904296875,
+                "node_tree": "abbfe588-befe-45db-a9af-295a09c312b5",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    569.0909423828125,
+                    -52.72726821899414
+                ],
+                "name": "Group.003",
+                "width": 218.562744140625,
+                "node_tree": "e552ec4e-3d02-4676-a4a2-ab7fecebd844",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    269.09088134765625,
+                    -92.7272720336914
+                ],
+                "name": "Group.001",
+                "width": 174.07537841796875,
+                "node_tree": "2bc7d81c-4962-45a9-b057-1c27da5b05a1",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "For Each Geometry Element Input": {
+                "bl_idname": "GeometryNodeForeachGeometryElementInput",
+                "location": [
+                    -870.9090576171875,
+                    207.27273559570312
+                ],
+                "name": "For Each Geometry Element Input",
+                "paired_output": "For Each Geometry Element Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1,
+                            0
+                        ],
+                        "to_node": [
+                            "Group",
+                            "Group.002",
+                            "Group.006"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "For Each Geometry Element Output": {
+                "bl_idname": "GeometryNodeForeachGeometryElementOutput",
+                "location": [
+                    1069.0909423828125,
+                    107.2727279663086
+                ],
+                "name": "For Each Geometry Element Output",
+                "domain": "FACE",
+                "generation_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ]
+                ],
+                "input_items": [],
+                "main_items": [],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -370.90911865234375,
+                    -152.72726440429688
+                ],
+                "name": "Group.002",
+                "width": 200.0,
+                "node_tree": "68a8c8c0-a2d4-4f52-b0a3-fdc75b2e8815",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Face",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Floors",
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -1250.9090576171875,
+                    -72.7272720336914
+                ],
+                "name": "Group.004",
+                "width": 280.0,
+                "node_tree": "2998355d-30a6-4042-9bc4-c1b8f3fed935",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Geometry": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    889.0909423828125,
+                    107.2727279663086
+                ],
+                "name": "Join Geometry",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    69.09086608886719,
+                    267.272705078125
+                ],
+                "name": "Group.006",
+                "node_tree": "800d20b8-ac4c-4111-96c3-5bc26f4f03cc",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Walls",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Floor Plan",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Foundation Height",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "default_value": 0.5,
+                "max_value": 10000.0,
+                "min_value": -10000.0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

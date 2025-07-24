@@ -1,0 +1,331 @@
+{
+    "name": "Vector Attribute At",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "default_group_node_width": 200,
+        "name": "Vector Attribute At",
+        "uuid": "9d0c3d30-5621-4214-8a04-21d0441d80c7",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    711.4285888671875,
+                    148.57142639160156
+                ],
+                "name": "Group Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -508.5714416503906,
+                    -31.428564071655273
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.002",
+                            "Group.003",
+                            "Group.004"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2,
+                            2,
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.002",
+                            "Group.003",
+                            "Group.004"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Vertex Index 1",
+                        "to_socket_index": [
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.002",
+                            "Group.003",
+                            "Group.004"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    471.4285583496094,
+                    168.57142639160156
+                ],
+                "name": "Menu Switch",
+                "data_type": "VECTOR",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Point"
+                    ],
+                    [
+                        "Edge"
+                    ],
+                    [
+                        "Face"
+                    ],
+                    [
+                        "Spline"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -168.57142639160156,
+                    188.57142639160156
+                ],
+                "name": "Group.001",
+                "width": 220.0,
+                "node_tree": "a7e39011-9d34-405d-997a-ccf7d51f5d8b",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -168.57142639160156,
+                    28.571435928344727
+                ],
+                "name": "Group.002",
+                "width": 220.0,
+                "node_tree": "a5173169-11dd-4fed-9b45-1b8e3b8d41d3",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -168.57142639160156,
+                    -171.42857360839844
+                ],
+                "name": "Group.003",
+                "width": 220.0,
+                "node_tree": "261ed2e6-d90d-4b65-a880-9e6ecc0c65b6",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -168.57142639160156,
+                    -331.4285888671875
+                ],
+                "name": "Group.004",
+                "width": 220.0,
+                "node_tree": "118628c7-bdbe-4c03-a592-77e3367173f1",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Vector",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            },
+            {
+                "name": "Domain",
+                "force_non_field": true,
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Point",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Index",
+                "socket_type": "NodeSocketInt",
+                "min_value": 0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "socket_type": "NodeSocketString",
+                "default_value": "Name",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,218 @@
+{
+    "name": ".True For One Face",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "CONVERTER",
+        "name": ".True For One Face",
+        "uuid": "b6d85f1f-1f78-4690-b73a-81a01bfb1496",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    494.9999694824219,
+                    -3.3333256244659424
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -615.0,
+                    -3.3333256244659424
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Attribute Statistic.004",
+                            "Domain Size.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Attribute Statistic.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Attribute Statistic.004": {
+                "bl_idname": "GeometryNodeAttributeStatistic",
+                "location": [
+                    -134.99996948242188,
+                    176.66665649414062
+                ],
+                "name": "Attribute Statistic.004",
+                "domain": "FACE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Boolean Math.003": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    305.0,
+                    76.66666412353516
+                ],
+                "name": "Boolean Math.003",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare.007": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    84.99998474121094,
+                    -63.33332824707031
+                ],
+                "name": "Compare.007",
+                "data_type": "INT",
+                "operation": "GREATER_THAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Domain Size.003": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -134.99996948242188,
+                    -183.33334350585938
+                ],
+                "name": "Domain Size.003",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Compare.007"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Boolean",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Boolean",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

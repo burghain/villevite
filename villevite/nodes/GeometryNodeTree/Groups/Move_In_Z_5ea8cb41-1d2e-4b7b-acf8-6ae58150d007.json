@@ -1,0 +1,168 @@
+{
+    "name": "Move In Z",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Move In Z",
+        "uuid": "5ea8cb41-1d2e-4b7b-acf8-6ae58150d007",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    284.21197509765625,
+                    7.055210113525391
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -305.78802490234375,
+                    7.055210113525391
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Position"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Set Position"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Combine XYZ"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Set Position": {
+                "bl_idname": "GeometryNodeSetPosition",
+                "location": [
+                    94.21200561523438,
+                    67.05520629882812
+                ],
+                "name": "Set Position",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Combine XYZ": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    -72.63595581054688,
+                    -81.1656265258789
+                ],
+                "name": "Combine XYZ",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 10.299999237060547,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Set Position"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Selection",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Z",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10000.0,
+                "min_value": -10000.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,209 @@
+{
+    "name": "Make Foundation",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Make Foundation",
+        "uuid": "e618acb1-4faa-42db-a3e1-61f92309f1c1",
+        "nodes": {
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -683.3333129882812,
+                    60.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Extrude Mesh"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Combine XYZ"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    676.6666870117188,
+                    60.0
+                ],
+                "name": "Group Output"
+            },
+            "Extrude Mesh": {
+                "bl_idname": "GeometryNodeExtrudeMesh",
+                "location": [
+                    -103.33333587646484,
+                    -60.0
+                ],
+                "name": "Extrude Mesh",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Combine XYZ": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    -363.3333435058594,
+                    -200.0
+                ],
+                "name": "Combine XYZ",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Extrude Mesh"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    356.6666564941406,
+                    60.0
+                ],
+                "name": "Group",
+                "node_tree": "fda0a599-7a5d-4175-b775-73e90684bfd2",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    116.66666412353516,
+                    80.0
+                ],
+                "name": "Group.001",
+                "node_tree": "ce1a6b81-5bab-4ce3-8538-8acfdc5413a0",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Foundation",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Foundation Height",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "default_value": 1.0,
+                "max_value": 10000.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

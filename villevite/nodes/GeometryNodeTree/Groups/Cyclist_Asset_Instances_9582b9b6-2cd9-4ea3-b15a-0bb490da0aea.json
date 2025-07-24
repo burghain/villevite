@@ -1,0 +1,164 @@
+{
+    "name": "Cyclist Asset Instances",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Cyclist Asset Instances",
+        "uuid": "9582b9b6-2cd9-4ea3-b15a-0bb490da0aea",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    374.0,
+                    0.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -396.0,
+                    0.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Switch.002"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketCollection",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Collection Info.001"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Collection Info.001": {
+                "bl_idname": "GeometryNodeCollectionInfo",
+                "location": [
+                    -196.0,
+                    0.0
+                ],
+                "name": "Collection Info.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Bounding Box.001",
+                            "Switch.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Switch.002": {
+                "bl_idname": "GeometryNodeSwitch",
+                "location": [
+                    174.0,
+                    120.0
+                ],
+                "name": "Switch.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Bounding Box.001": {
+                "bl_idname": "GeometryNodeBoundBox",
+                "location": [
+                    44.0,
+                    -120.0
+                ],
+                "name": "Bounding Box.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Switch.002"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Cyclist Instances",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Preview",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Collection",
+                "socket_type": "NodeSocketCollection",
+                "bl_idname": "NodeTreeInterfaceSocketCollection"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

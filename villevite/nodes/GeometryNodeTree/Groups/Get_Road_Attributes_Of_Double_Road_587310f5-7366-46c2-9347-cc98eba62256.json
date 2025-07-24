@@ -1,0 +1,777 @@
+{
+    "name": "Get Road Attributes Of Double Road",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Get Road Attributes Of Double Road",
+        "uuid": "587310f5-7366-46c2-9347-cc98eba62256",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1392.800048828125,
+                    133.60000610351562
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1947.199951171875,
+                    333.6000061035156
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Split to Instances"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "For Each Geometry Element Input": {
+                "bl_idname": "GeometryNodeForeachGeometryElementInput",
+                "location": [
+                    -1267.199951171875,
+                    -66.4000015258789
+                ],
+                "name": "For Each Geometry Element Input",
+                "paired_output": "For Each Geometry Element Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Realize Instances"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "For Each Geometry Element Output": {
+                "bl_idname": "GeometryNodeForeachGeometryElementOutput",
+                "location": [
+                    192.79998779296875,
+                    253.60000610351562
+                ],
+                "name": "For Each Geometry Element Output",
+                "domain": "INSTANCE",
+                "generation_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ],
+                    [
+                        "INT",
+                        "Number Of Lanes"
+                    ],
+                    [
+                        "BOOLEAN",
+                        "Has Bike Lane"
+                    ],
+                    [
+                        "BOOLEAN",
+                        "Has Parking Lots"
+                    ],
+                    [
+                        "BOOLEAN",
+                        "Has Sidewalk"
+                    ]
+                ],
+                "input_items": [],
+                "main_items": [],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Sample Index",
+                            "Sample Index.001",
+                            "Sample Index.003",
+                            "Sample Index.004",
+                            "Sample Index.005",
+                            "Sample Index.006",
+                            "Sample Index.007",
+                            "Sample Index.008"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Sample Index",
+                            "Sample Index.001"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Sample Index.003",
+                            "Sample Index.004"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Sample Index.005",
+                            "Sample Index.006"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Sample Index.007",
+                            "Sample Index.008"
+                        ],
+                        "index": 6
+                    }
+                ]
+            },
+            "Split to Instances": {
+                "bl_idname": "GeometryNodeSplitToInstances",
+                "location": [
+                    -1467.199951171875,
+                    -86.4000015258789
+                ],
+                "name": "Split to Instances",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh Island.002": {
+                "bl_idname": "GeometryNodeInputMeshIsland",
+                "location": [
+                    -1687.199951171875,
+                    -286.3999938964844
+                ],
+                "name": "Mesh Island.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Split to Instances"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Realize Instances": {
+                "bl_idname": "GeometryNodeRealizeInstances",
+                "location": [
+                    -987.2000122070312,
+                    73.5999984741211
+                ],
+                "name": "Realize Instances",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group.004",
+                            "Group.005",
+                            "Group.006",
+                            "Mesh to Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -287.20001220703125,
+                    453.6000061035156
+                ],
+                "name": "Group.003",
+                "width": 280.0,
+                "node_tree": "29f7ef31-6b75-4f90-a0c2-ca95a5fda209",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Lanes",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -287.20001220703125,
+                    273.6000061035156
+                ],
+                "name": "Group.004",
+                "width": 280.0,
+                "node_tree": "dd46b498-1bc8-4353-86f4-74d381a45c58",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Sidewalk",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -287.20001220703125,
+                    -86.4000015258789
+                ],
+                "name": "Group.005",
+                "width": 280.0,
+                "node_tree": "dd46b498-1bc8-4353-86f4-74d381a45c58",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Parki",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -287.20001220703125,
+                    93.5999984741211
+                ],
+                "name": "Group.006",
+                "width": 280.0,
+                "node_tree": "dd46b498-1bc8-4353-86f4-74d381a45c58",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Sidewalk",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -847.2000122070312,
+                    -166.39999389648438
+                ],
+                "name": "Group.007",
+                "width": 180.0,
+                "node_tree": "c6aaa8ec-f2dc-41c9-9d6d-0512bcd10851",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Sample Index": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    673.5999755859375
+                ],
+                "name": "Sample Index",
+                "data_type": "INT",
+                "domain": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.001": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    453.6000061035156
+                ],
+                "name": "Sample Index.001",
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Integer Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    832.7999877929688,
+                    513.5999755859375
+                ],
+                "name": "Integer Math",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.003": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    213.60000610351562
+                ],
+                "name": "Sample Index.003",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.004": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    -6.400000095367432
+                ],
+                "name": "Sample Index.004",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    852.7999877929688,
+                    93.5999984741211
+                ],
+                "name": "Boolean Math",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.005": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    -246.39999389648438
+                ],
+                "name": "Sample Index.005",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.006": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    -466.3999938964844
+                ],
+                "name": "Sample Index.006",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    852.7999877929688,
+                    -366.3999938964844
+                ],
+                "name": "Boolean Math.001",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.007": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    -686.4000244140625
+                ],
+                "name": "Sample Index.007",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Index.008": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    572.7999877929688,
+                    -906.4000244140625
+                ],
+                "name": "Sample Index.008",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.002": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    852.7999877929688,
+                    -806.4000244140625
+                ],
+                "name": "Boolean Math.002",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh to Curve": {
+                "bl_idname": "GeometryNodeMeshToCurve",
+                "location": [
+                    -207.20001220703125,
+                    613.5999755859375
+                ],
+                "name": "Mesh to Curve",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Total Number Of Lanes",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Has Bike Lanes",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Has Parking Lots",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Has Sidewalk",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Double Road",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

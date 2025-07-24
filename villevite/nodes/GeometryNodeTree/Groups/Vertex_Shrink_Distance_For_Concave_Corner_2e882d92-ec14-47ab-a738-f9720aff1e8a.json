@@ -1,0 +1,493 @@
+{
+    "name": "Vertex Shrink Distance For Concave Corner",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Vertex Shrink Distance For Concave Corner",
+        "uuid": "2e882d92-ec14-47ab-a738-f9720aff1e8a",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1105.420654296875,
+                    -43.881248474121094
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1020.79248046875,
+                    -252.96539306640625
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Math.002"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    1050.1302490234375,
+                    -46.12677001953125
+                ],
+                "name": "Group.001",
+                "parent": "Frame",
+                "node_tree": "a0450b50-5a35-479b-bce5-6678d3b3ee52",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Position": {
+                "bl_idname": "GeometryNodeInputPosition",
+                "location": [
+                    580.0850830078125,
+                    -301.2242126464844
+                ],
+                "name": "Position",
+                "parent": "Frame",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Vector Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    275.25262451171875,
+                    -224.4569549560547
+                ],
+                "name": "Group.003",
+                "parent": "Frame",
+                "node_tree": "ce22a211-0f15-4114-8f92-223439897968",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Mesh",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Index": {
+                "bl_idname": "GeometryNodeInputIndex",
+                "location": [
+                    30.11181640625,
+                    -245.75112915039062
+                ],
+                "name": "Index",
+                "parent": "Frame",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    475.0060729980469,
+                    -39.678131103515625
+                ],
+                "name": "Group.004",
+                "parent": "Frame",
+                "node_tree": "15ae2f7c-9360-4c97-abfe-b0f397170443",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Vector Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Vector Math": {
+                "bl_idname": "ShaderNodeVectorMath",
+                "location": [
+                    835.1022338867188,
+                    -230.08413696289062
+                ],
+                "name": "Vector Math",
+                "parent": "Frame",
+                "operation": "SUBTRACT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    1299.525634765625,
+                    -47.303070068359375
+                ],
+                "name": "Math",
+                "parent": "Frame",
+                "operation": "SUBTRACT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Math.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math.001": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    1039.8206787109375,
+                    -195.9823760986328
+                ],
+                "name": "Math.001",
+                "parent": "Frame",
+                "operation": "MULTIPLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 3.1415927410125732,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math.002": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    30.32904052734375,
+                    -40.28843688964844
+                ],
+                "name": "Math.002",
+                "parent": "Frame.001",
+                "operation": "DIVIDE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math.003": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    1490.3701171875,
+                    -52.7978515625
+                ],
+                "name": "Math.003",
+                "parent": "Frame",
+                "operation": "COSINE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Frame": {
+                "bl_idname": "NodeFrame",
+                "height": 395.0,
+                "label": "cos (Angle Bisector -- Edge) -90)= cos beta",
+                "location": [
+                    -890.9361572265625,
+                    203.35397338867188
+                ],
+                "name": "Frame",
+                "width": 1660.0,
+                "label_size": 20
+            },
+            "Frame.001": {
+                "bl_idname": "NodeFrame",
+                "height": 218.0,
+                "label": "cos beta = Edge Distance / Vertex Distance",
+                "location": [
+                    828.0638427734375,
+                    -109.64602661132812
+                ],
+                "name": "Frame.001",
+                "width": 200.0,
+                "label_size": 20
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Vertex Distance",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Polygon",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Edge Distance",
+                "socket_type": "NodeSocketFloat",
+                "default_value": 0.5,
+                "max_value": 10000.0,
+                "min_value": -10000.0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Bisector",
+                "socket_type": "NodeSocketVector",
+                "default_value": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "dimensions": 3,
+                "max_value": 10000.0,
+                "min_value": -10000.0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketVector"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

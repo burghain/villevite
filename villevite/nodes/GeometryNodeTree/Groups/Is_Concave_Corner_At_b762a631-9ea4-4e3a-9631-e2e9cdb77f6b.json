@@ -1,0 +1,115 @@
+{
+    "name": "Is Concave Corner At",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Is Concave Corner At",
+        "uuid": "b762a631-9ea4-4e3a-9631-e2e9cdb77f6b",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    345.0,
+                    -15.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -395.0,
+                    45.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group",
+                            "Is Convex Corner At"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Is Convex Corner At"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -105.0,
+                    -125.0
+                ],
+                "name": "Group",
+                "width": 209.14288330078125,
+                "node_tree": "e87a9b77-ed69-4a09-a8c5-176c4f9929c6",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Is Convex Corner At"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Is Convex Corner At": {
+                "bl_idname": "GeometryNodeSampleIndex",
+                "location": [
+                    155.0,
+                    95.0
+                ],
+                "name": "Is Convex Corner At",
+                "data_type": "BOOLEAN",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Value",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Index",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

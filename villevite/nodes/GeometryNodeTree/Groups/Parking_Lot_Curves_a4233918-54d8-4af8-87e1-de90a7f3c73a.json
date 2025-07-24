@@ -1,0 +1,403 @@
+{
+    "name": "Parking Lot Curves",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Parking Lot Curves",
+        "uuid": "a4233918-54d8-4af8-87e1-de90a7f3c73a",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1867.0081787109375,
+                    89.85343933105469
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1737.312744140625,
+                    58.04912185668945
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Duplicate Elements.002": {
+                "bl_idname": "GeometryNodeDuplicateElements",
+                "location": [
+                    -63.403255462646484,
+                    215.142822265625
+                ],
+                "name": "Duplicate Elements.002",
+                "domain": "SPLINE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.018",
+                            "Boolean Math"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.018": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    209.5192413330078,
+                    -103.72083282470703
+                ],
+                "name": "Group.018",
+                "width": 268.21722412109375,
+                "node_tree": "72418126-7f2f-42bb-b125-32e0c5c6df9c",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -602.0181884765625,
+                    207.16650390625
+                ],
+                "name": "Group.004",
+                "width": 200.0,
+                "node_tree": "d3ea864c-5e5f-460a-934a-54de387195a1",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Spline",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Roadway Width",
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.018"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    817.9818115234375,
+                    7.166493892669678
+                ],
+                "name": "Group.003",
+                "width": 234.04693603515625,
+                "node_tree": "6ed10dd8-2635-4830-b426-f50044ab9015",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Reverse Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -614.1229248046875,
+                    -187.66928100585938
+                ],
+                "name": "Group.005",
+                "width": 200.0,
+                "node_tree": "5d79bc86-41fa-4791-8b74-e496aee52018",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Spline",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Parking Lots",
+                        "index": 3
+                    }
+                ]
+            },
+            "For Each Geometry Element Input.001": {
+                "bl_idname": "GeometryNodeForeachGeometryElementInput",
+                "location": [
+                    -1436.467041015625,
+                    -49.74549102783203
+                ],
+                "name": "For Each Geometry Element Input.001",
+                "paired_output": "For Each Geometry Element Output.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Duplicate Elements.002",
+                            "Group.005",
+                            "Group.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "For Each Geometry Element Output.001": {
+                "bl_idname": "GeometryNodeForeachGeometryElementOutput",
+                "location": [
+                    1495.435791015625,
+                    200.71051025390625
+                ],
+                "name": "For Each Geometry Element Output.001",
+                "domain": "CURVE",
+                "generation_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ]
+                ],
+                "input_items": [],
+                "main_items": [],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Reverse Curve": {
+                "bl_idname": "GeometryNodeReverseCurve",
+                "location": [
+                    1251.4517822265625,
+                    94.38070678710938
+                ],
+                "name": "Reverse Curve",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    897.9818115234375,
+                    207.16650390625
+                ],
+                "name": "Boolean Math",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Reverse Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -282.0181884765625,
+                    -332.83349609375
+                ],
+                "name": "Group",
+                "node_tree": "0cbe3954-561a-481b-b37c-44e58dae51e3",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Math"
+                        ],
+                        "index": 6
+                    }
+                ]
+            },
+            "Math": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    -82.01815032958984,
+                    -252.83349609375
+                ],
+                "name": "Math",
+                "operation": "MULTIPLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.018"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -1722.0181884765625,
+                    -152.83349609375
+                ],
+                "name": "Named Attribute",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Parking Lots",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Parking Lot Curves",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Roads",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

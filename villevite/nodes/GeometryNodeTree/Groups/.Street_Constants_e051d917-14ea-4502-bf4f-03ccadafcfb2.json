@@ -1,0 +1,614 @@
+{
+    "name": ".Street Constants",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": ".Street Constants",
+        "uuid": "e051d917-14ea-4502-bf4f-03ccadafcfb2",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    320.0,
+                    40.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -320.0,
+                    -40.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            7
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            8
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            10
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            11
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            12
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            13
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            15
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            16
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 12
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            17
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 13
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            18
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 14
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            19
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 15
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            20
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 16
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            21
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 17
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "General",
+                "hide_value": true,
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketMenu",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Road End Straightening Distance",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Corner Radius",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Corner Resolution",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "max_value": 20,
+                "min_value": 0,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Roadway",
+                "hide_value": true,
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketMenu",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Lane Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Parking Lot Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Bike Lane Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Traffic Light Crossing Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Sidewalk",
+                "hide_value": true,
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketMenu",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Base Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Curbstone Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Wide Sidewalk Width",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Sidewalk Height",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 10.0,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Road Markings",
+                "hide_value": true,
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketMenu",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Height",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Width Thin",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "min_value": 0.0,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Width Regular",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Width Thick",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Length Narrow",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Length Wide",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Fence Height",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "item_type": "PANEL",
+                "name": "General",
+                "items": [
+                    {
+                        "name": "Road End Straightening Distance",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 3.4028234663852886e+38,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 22,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Corner Radius",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 22,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Corner Resolution",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketInt",
+                        "max_value": 20,
+                        "min_value": 0,
+                        "subtype": "NONE",
+                        "parent_index": 22,
+                        "bl_idname": "NodeTreeInterfaceSocketInt"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Roadway",
+                "items": [
+                    {
+                        "name": "Lane Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 26,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Parking Lot Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 26,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Bike Lane Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 26,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Traffic Light Crossing Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 3.4028234663852886e+38,
+                        "subtype": "DISTANCE",
+                        "parent_index": 26,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Sidewalk",
+                "items": [
+                    {
+                        "name": "Sidewalk Base Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 31,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Curbstone Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 31,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Wide Sidewalk Width",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 31,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Sidewalk Height",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 10.0,
+                        "min_value": 0.0,
+                        "subtype": "DISTANCE",
+                        "parent_index": 31,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "item_type": "PANEL",
+                        "name": "Road Markings",
+                        "items": [
+                            {
+                                "name": "Marking Height",
+                                "force_non_field": true,
+                                "socket_type": "NodeSocketFloat",
+                                "max_value": 3.4028234663852886e+38,
+                                "min_value": 0.0,
+                                "subtype": "DISTANCE",
+                                "parent_index": 36,
+                                "bl_idname": "NodeTreeInterfaceSocketFloat"
+                            },
+                            {
+                                "item_type": "PANEL",
+                                "name": "Marking Width",
+                                "items": [
+                                    {
+                                        "name": "Thin",
+                                        "force_non_field": true,
+                                        "socket_type": "NodeSocketFloat",
+                                        "max_value": 3.4028234663852886e+38,
+                                        "min_value": 0.0,
+                                        "subtype": "DISTANCE",
+                                        "parent_index": 38,
+                                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                                    },
+                                    {
+                                        "name": "Regular",
+                                        "force_non_field": true,
+                                        "socket_type": "NodeSocketFloat",
+                                        "max_value": 3.4028234663852886e+38,
+                                        "subtype": "DISTANCE",
+                                        "parent_index": 38,
+                                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                                    },
+                                    {
+                                        "name": "Thick",
+                                        "force_non_field": true,
+                                        "socket_type": "NodeSocketFloat",
+                                        "max_value": 3.4028234663852886e+38,
+                                        "subtype": "DISTANCE",
+                                        "parent_index": 38,
+                                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                                    },
+                                    {
+                                        "item_type": "PANEL",
+                                        "name": "Segment Length",
+                                        "items": [
+                                            {
+                                                "name": "Narrow",
+                                                "force_non_field": true,
+                                                "socket_type": "NodeSocketFloat",
+                                                "max_value": 3.4028234663852886e+38,
+                                                "subtype": "DISTANCE",
+                                                "parent_index": 42,
+                                                "bl_idname": "NodeTreeInterfaceSocketFloat"
+                                            },
+                                            {
+                                                "name": "Wide",
+                                                "force_non_field": true,
+                                                "socket_type": "NodeSocketFloat",
+                                                "max_value": 3.4028234663852886e+38,
+                                                "subtype": "DISTANCE",
+                                                "parent_index": 42,
+                                                "bl_idname": "NodeTreeInterfaceSocketFloat"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Plots",
+                "items": [
+                    {
+                        "name": "Fence Height",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "max_value": 3.4028234663852886e+38,
+                        "subtype": "DISTANCE",
+                        "parent_index": 45,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    }
+                ]
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,285 @@
+{
+    "name": "Connect All Merged With Adjacent Roads",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Connect All Merged With Adjacent Roads",
+        "uuid": "482520f1-30e4-45f3-90d5-769bc9410ebf",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1533.91357421875,
+                    -33.185184478759766
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1326.08642578125,
+                    -253.1851806640625
+                ],
+                "name": "Group Input",
+                "width": 200.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Repeat Input",
+                            "Group.011"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Domain Size",
+                            "Group.008"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.016"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Repeat Input": {
+                "bl_idname": "GeometryNodeRepeatInput",
+                "location": [
+                    -726.08642578125,
+                    -33.185184478759766
+                ],
+                "name": "Repeat Input",
+                "paired_output": "Repeat Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.008"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.016"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Repeat Output": {
+                "bl_idname": "GeometryNodeRepeatOutput",
+                "location": [
+                    693.91357421875,
+                    -13.185185432434082
+                ],
+                "name": "Repeat Output",
+                "repeat_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ]
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.011"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Domain Size": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -898.697509765625,
+                    136.1481475830078
+                ],
+                "name": "Domain Size",
+                "component": "POINTCLOUD",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Repeat Input"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.016": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -186.08642578125,
+                    26.8148136138916
+                ],
+                "name": "Group.016",
+                "width": 300.0,
+                "node_tree": "368be7fb-9c54-4655-a971-87d910152aee",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.010": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    333.91357421875,
+                    66.8148193359375
+                ],
+                "name": "Group.010",
+                "width": 280.0,
+                "node_tree": "c1fb7e26-3885-448d-8005-607db53b8d70",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Repeat Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.008": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -478.6975402832031,
+                    136.1481475830078
+                ],
+                "name": "Group.008",
+                "width": 200.0,
+                "node_tree": "68a8c8c0-a2d4-4f52-b0a3-fdc75b2e8815",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Point",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Street ID",
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.016"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.011": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    1053.91357421875,
+                    -33.185184478759766
+                ],
+                "name": "Group.011",
+                "width": 400.0,
+                "node_tree": "fcb42034-bac7-44f5-be0e-3502a4a343a2",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Road Graph",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Road Graph",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Street ID Points",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "All Roads Before Merging",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

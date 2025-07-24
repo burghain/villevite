@@ -1,0 +1,116 @@
+{
+    "name": ".tests: Geometry Operators",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": ".tests: Geometry Operators",
+        "uuid": "e303c4d9-c588-4014-bb1a-f9b16beeb30a",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    486.3999938964844,
+                    -41.599998474121094
+                ],
+                "name": "Group Output"
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    206.39999389648438,
+                    58.400001525878906
+                ],
+                "name": "Group.007",
+                "node_tree": "b9861b0e-b652-4f9a-9773-f0d8bbd1af54",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -193.60000610351562,
+                    118.4000015258789
+                ],
+                "name": "Group.002",
+                "width": 236.72235107421875,
+                "node_tree": "3ef63176-98cd-4135-b304-08bfd5bb62c7",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -189.60000610351562,
+                    2.400001049041748
+                ],
+                "name": "Group",
+                "width": 234.66436767578125,
+                "node_tree": "e9b25c79-4283-47ab-8636-a06076e4819a",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -309.6000061035156,
+                    -137.60000610351562
+                ],
+                "name": "Group.003",
+                "width": 366.7451171875,
+                "node_tree": "6ab823a6-ad64-4f5d-a0b1-9b34c1b9f7e3",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Error",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

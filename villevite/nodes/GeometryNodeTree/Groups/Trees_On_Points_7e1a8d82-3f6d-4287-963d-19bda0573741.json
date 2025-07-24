@@ -1,0 +1,672 @@
+{
+    "name": "Trees On Points",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Trees On Points",
+        "uuid": "7e1a8d82-3f6d-4287-963d-19bda0573741",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1575.5555419921875,
+                    238.55555725097656
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1984.4444580078125,
+                    78.5555648803711
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Instance on Points",
+                            "Instance on Points.001",
+                            "Instance on Points.002",
+                            "Instance on Points.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketCollection",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Switch.002"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Instance on Points": {
+                "bl_idname": "GeometryNodeInstanceOnPoints",
+                "location": [
+                    155.55557250976562,
+                    398.5555419921875
+                ],
+                "name": "Instance on Points",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Material"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Instance on Points.001": {
+                "bl_idname": "GeometryNodeInstanceOnPoints",
+                "location": [
+                    115.55557250976562,
+                    118.5555648803711
+                ],
+                "name": "Instance on Points.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Material.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Geometry": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    1375.5555419921875,
+                    238.55555725097656
+                ],
+                "name": "Join Geometry",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math.001": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    -304.4444580078125,
+                    -101.4444351196289
+                ],
+                "name": "Integer Math.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Instance on Points.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Material": {
+                "bl_idname": "GeometryNodeSetMaterial",
+                "location": [
+                    475.5555419921875,
+                    358.5555419921875
+                ],
+                "name": "Set Material",
+                "width": 240.0,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMaterial",
+                        "default_value": "b7258aa4-b20c-4e27-8f02-729e2da1a038",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Material.001": {
+                "bl_idname": "GeometryNodeSetMaterial",
+                "location": [
+                    435.5555419921875,
+                    138.55555725097656
+                ],
+                "name": "Set Material.001",
+                "width": 280.0,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMaterial",
+                        "default_value": "9b06318b-307b-4742-9ccd-636055c24487",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Switch.002": {
+                "bl_idname": "GeometryNodeSwitch",
+                "location": [
+                    635.5555419921875,
+                    -441.4444580078125
+                ],
+                "name": "Switch.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Instance on Points.002": {
+                "bl_idname": "GeometryNodeInstanceOnPoints",
+                "location": [
+                    335.5555419921875,
+                    -641.4444580078125
+                ],
+                "name": "Instance on Points.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Switch.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Object Info": {
+                "bl_idname": "GeometryNodeObjectInfo",
+                "location": [
+                    -44.44442367553711,
+                    -741.4444580078125
+                ],
+                "name": "Object Info",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketObject",
+                        "default_value": "4947a6a7-98f5-413e-837f-57ad25d7d9c3",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Instance on Points.002"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -584.4444580078125,
+                    -1.4444315433502197
+                ],
+                "name": "Group",
+                "node_tree": "4d24a98f-22bc-450c-9455-2d0d9e97da8b",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2,
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Instance on Points.001",
+                            "Instance on Points",
+                            "Instance on Points.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0,
+                            4,
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math.001",
+                            "Instance on Points",
+                            "Integer Math.002"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Named Attribute": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -404.4444580078125,
+                    258.5555419921875
+                ],
+                "name": "Named Attribute",
+                "data_type": "QUATERNION",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Rotation",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            5,
+                            5,
+                            5,
+                            5
+                        ],
+                        "to_node": [
+                            "Instance on Points",
+                            "Instance on Points.001",
+                            "Instance on Points.002",
+                            "Instance on Points.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute.001": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -484.4444580078125,
+                    438.5555419921875
+                ],
+                "name": "Named Attribute.001",
+                "data_type": "FLOAT_VECTOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Scale",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            6,
+                            6,
+                            6
+                        ],
+                        "to_node": [
+                            "Instance on Points",
+                            "Instance on Points.001",
+                            "Instance on Points.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Instance on Points.003": {
+                "bl_idname": "GeometryNodeInstanceOnPoints",
+                "location": [
+                    255.55557250976562,
+                    -141.44444274902344
+                ],
+                "name": "Instance on Points.003",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketRotation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorXYZ",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Material.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Material.002": {
+                "bl_idname": "GeometryNodeSetMaterial",
+                "location": [
+                    535.5555419921875,
+                    -121.4444351196289
+                ],
+                "name": "Set Material.002",
+                "width": 240.0,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMaterial",
+                        "default_value": "cb50dce0-b4fb-44d3-b512-db4043ae000d",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math.002": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    -284.4444580078125,
+                    -261.4444580078125
+                ],
+                "name": "Integer Math.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Instance on Points.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Instances",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Placement Points",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Tree Collection",
+                "socket_type": "NodeSocketCollection",
+                "bl_idname": "NodeTreeInterfaceSocketCollection"
+            },
+            {
+                "name": "Preview",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Add Tree Props",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

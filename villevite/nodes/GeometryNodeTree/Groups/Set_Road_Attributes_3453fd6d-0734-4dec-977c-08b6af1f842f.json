@@ -1,0 +1,1225 @@
+{
+    "name": "Set Road Attributes",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "name": "Set Road Attributes",
+        "uuid": "3453fd6d-0734-4dec-977c-08b6af1f842f",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1840.9864501953125,
+                    -738.5882568359375
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1639.71630859375,
+                    400.1763000488281
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.002"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            8,
+                            8
+                        ],
+                        "to_node": [
+                            "Random Value.001",
+                            "Random Value.002"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Random Value.001": {
+                "bl_idname": "FunctionNodeRandomValue",
+                "location": [
+                    -719.7161865234375,
+                    380.1763000488281
+                ],
+                "name": "Random Value.001",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 5,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.800000011920929,
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Compare.001": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    -139.71620178222656,
+                    40.17625045776367
+                ],
+                "name": "Compare.001",
+                "data_type": "INT",
+                "operation": "GREATER_EQUAL",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Random Value.004": {
+                "bl_idname": "FunctionNodeRandomValue",
+                "location": [
+                    -339.7162170410156,
+                    -79.82374572753906
+                ],
+                "name": "Random Value.004",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 100,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.24166667461395264,
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    80.28376770019531,
+                    -79.82374572753906
+                ],
+                "name": "Boolean Math",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute.004": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -539.7161865234375,
+                    -79.82374572753906
+                ],
+                "name": "Named Attribute.004",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Lanes",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2,
+                            0
+                        ],
+                        "to_node": [
+                            "Compare.002",
+                            "Reroute.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -139.71620178222656,
+                    -179.82374572753906
+                ],
+                "name": "Boolean Math.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare.002": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    -339.7162170410156,
+                    -279.8236999511719
+                ],
+                "name": "Compare.002",
+                "data_type": "INT",
+                "operation": "GREATER_EQUAL",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.004": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    320.9864807128906,
+                    121.41170501708984
+                ],
+                "name": "Store Named Attribute.004",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Lane Markings",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.005": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    700.9865112304688,
+                    -78.58829498291016
+                ],
+                "name": "Store Named Attribute.005",
+                "width": 202.2974853515625,
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Lanes Forward",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    120.98648071289062,
+                    -278.5882873535156
+                ],
+                "name": "Named Attribute",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Lanes",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math",
+                            "Integer Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.006": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    960.9865112304688,
+                    -158.5883026123047
+                ],
+                "name": "Store Named Attribute.006",
+                "width": 202.2974853515625,
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Number Of Lanes Backward",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.010"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    300.9864807128906,
+                    -158.5883026123047
+                ],
+                "name": "Integer Math",
+                "operation": "DIVIDE_CEIL",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Integer Math.001": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    380.9864807128906,
+                    -298.5882873535156
+                ],
+                "name": "Integer Math.001",
+                "operation": "DIVIDE_FLOOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.010": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    1440.9864501953125,
+                    -618.5882568359375
+                ],
+                "name": "Store Named Attribute.010",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Roadway Width",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.011"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.011": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    1640.9864501953125,
+                    -738.5882568359375
+                ],
+                "name": "Store Named Attribute.011",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Street Width",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    1060.9864501953125,
+                    -778.5882568359375
+                ],
+                "name": "Group.001",
+                "width": 220.0,
+                "node_tree": "0d3cd467-43c8-49a6-843c-0c5c77b233c9",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            3,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.010",
+                            "Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    1060.9864501953125,
+                    -938.5882568359375
+                ],
+                "name": "Group.002",
+                "width": 220.0,
+                "node_tree": "db9b3f76-3264-4c59-8b6d-8bcdbb6b2495",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    1340.9864501953125,
+                    -858.5882568359375
+                ],
+                "name": "Math",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.011"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "For Each Geometry Element Input": {
+                "bl_idname": "GeometryNodeForeachGeometryElementInput",
+                "location": [
+                    -1250.718994140625,
+                    708.0830688476562
+                ],
+                "name": "For Each Geometry Element Input",
+                "paired_output": "For Each Geometry Element Output",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "For Each Geometry Element Output": {
+                "bl_idname": "GeometryNodeForeachGeometryElementOutput",
+                "location": [
+                    -1060.7188720703125,
+                    708.0830688476562
+                ],
+                "name": "For Each Geometry Element Output",
+                "domain": "CURVE",
+                "generation_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ]
+                ],
+                "input_items": [],
+                "main_items": [
+                    [
+                        "INT",
+                        "Index"
+                    ]
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Store Named Attribute": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -870.7188720703125,
+                    708.0830688476562
+                ],
+                "name": "Store Named Attribute",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Road Index",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.001": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -668.2188720703125,
+                    708.0830688476562
+                ],
+                "name": "Store Named Attribute.001",
+                "data_type": "INT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Point Index",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Index.001": {
+                "bl_idname": "GeometryNodeInputIndex",
+                "location": [
+                    -879.7161865234375,
+                    440.1763000488281
+                ],
+                "name": "Index.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3,
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.001",
+                            "Store Named Attribute.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.003": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -465.7189025878906,
+                    608.0830688476562
+                ],
+                "name": "Store Named Attribute.003",
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Index",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.007": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -139.71620178222656,
+                    560.1763305664062
+                ],
+                "name": "Store Named Attribute.007",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Trees",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.008"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.001": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -339.7162170410156,
+                    -59.82374954223633
+                ],
+                "name": "Reroute.001",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Compare.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Random Value.002": {
+                "bl_idname": "FunctionNodeRandomValue",
+                "location": [
+                    -399.7162170410156,
+                    200.17625427246094
+                ],
+                "name": "Random Value.002",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 5,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.8999999761581421,
+                        "index": 6
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.008"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Store Named Attribute.008": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    20.283796310424805,
+                    380.1763000488281
+                ],
+                "name": "Store Named Attribute.008",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Streetlights",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Named Attribute.001": {
+                "bl_idname": "GeometryNodeInputNamedAttribute",
+                "location": [
+                    -939.7161865234375,
+                    80.17625427246094
+                ],
+                "name": "Named Attribute.001",
+                "data_type": "BOOLEAN",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Sidewalk",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.002": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -399.7162170410156,
+                    360.1763000488281
+                ],
+                "name": "Boolean Math.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.002": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -1460.0,
+                    580.0
+                ],
+                "name": "Store Named Attribute.002",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Has Sidewalk",
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Roads",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Roads",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Seed",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "max_value": 10000,
+                "min_value": -10000,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

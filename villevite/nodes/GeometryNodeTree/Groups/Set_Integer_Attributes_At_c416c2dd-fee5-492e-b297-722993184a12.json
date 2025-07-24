@@ -1,0 +1,199 @@
+{
+    "name": "Set Integer Attributes At",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "name": "Set Integer Attributes At",
+        "uuid": "c416c2dd-fee5-492e-b297-722993184a12",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    428.7764587402344,
+                    -113.06855773925781
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -463.2391662597656,
+                    -9.611701965332031
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.010",
+                            "Group.013"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Reference ID",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Parent Index",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.013"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.013"
+                        ],
+                        "index": 5
+                    }
+                ]
+            },
+            "Group.010": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -138.17947387695312,
+                    132.6641387939453
+                ],
+                "name": "Group.010",
+                "width": 206.13427734375,
+                "node_tree": "1c63b4fc-535b-45ac-8267-a5f7818a9bf5",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Parent Index",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.013"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.013": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    172.64218139648438,
+                    -9.983879089355469
+                ],
+                "name": "Group.013",
+                "width": 206.13427734375,
+                "node_tree": "1c63b4fc-535b-45ac-8267-a5f7818a9bf5",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Reference ID",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Index",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Attribute Name 1",
+                "socket_type": "NodeSocketString",
+                "default_value": "Reference ID",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Integer 1",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Attribute Name 2",
+                "socket_type": "NodeSocketString",
+                "default_value": "Parent Index",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Integer 2",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

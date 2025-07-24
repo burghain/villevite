@@ -1,0 +1,295 @@
+{
+    "name": "Neighbouring Indices",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Neighbouring Indices",
+        "uuid": "ce22a211-0f15-4114-8f92-223439897968",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    578.026123046875,
+                    188.35816955566406
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -601.973876953125,
+                    168.35816955566406
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Mesh",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Domain Size",
+                            "Domain Size.001",
+                            "Domain Size.002"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.002",
+                            "Group.004"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Domain Size": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -241.9739227294922,
+                    -31.6418399810791
+                ],
+                "name": "Domain Size",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    298.0260925292969,
+                    88.35816192626953
+                ],
+                "name": "Group.002",
+                "node_tree": "498128a4-3ff8-4a21-8cf2-30467c0a4594",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    309.61993408203125,
+                    285.8387145996094
+                ],
+                "name": "Group.004",
+                "node_tree": "9eb4999b-e1c1-4b9d-ad6b-0c0c301db168",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    -21.973920822143555,
+                    -91.64183807373047
+                ],
+                "name": "Menu Switch",
+                "data_type": "INT",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Mesh"
+                    ],
+                    [
+                        "Point Cloud"
+                    ],
+                    [
+                        "Curve Points"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Mesh",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Reroute"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    164.1974334716797,
+                    -44.345848083496094
+                ],
+                "name": "Reroute",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Group.002",
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Domain Size.001": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -241.9739227294922,
+                    -211.64183044433594
+                ],
+                "name": "Domain Size.001",
+                "component": "POINTCLOUD",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Domain Size.002": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -241.9739227294922,
+                    -351.641845703125
+                ],
+                "name": "Domain Size.002",
+                "component": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Previous Index",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Next Index",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Domain",
+                "force_non_field": true,
+                "hide_in_modifier": true,
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Mesh",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Mesh",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Index",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

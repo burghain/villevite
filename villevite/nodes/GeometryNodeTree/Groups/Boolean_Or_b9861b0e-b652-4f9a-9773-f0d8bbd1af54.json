@@ -1,0 +1,323 @@
+{
+    "name": "Boolean Or",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "CONVERTER",
+        "name": "Boolean Or",
+        "uuid": "b9861b0e-b652-4f9a-9773-f0d8bbd1af54",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    532.0598754882812,
+                    -106.11111450195312
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -398.3067932128906,
+                    84.88888549804688
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 7
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -161.9345703125,
+                    371.3888854980469
+                ],
+                "name": "Boolean Math",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -161.9345703125,
+                    180.38888549804688
+                ],
+                "name": "Boolean Math.001",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.002": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    95.97098541259766,
+                    -10.611101150512695
+                ],
+                "name": "Boolean Math.002",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.003": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -161.9345703125,
+                    -10.611101150512695
+                ],
+                "name": "Boolean Math.003",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.004": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -161.9345703125,
+                    -201.61111450195312
+                ],
+                "name": "Boolean Math.004",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.005": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    95.97098541259766,
+                    -201.61111450195312
+                ],
+                "name": "Boolean Math.005",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.006": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    322.043212890625,
+                    -106.11111450195312
+                ],
+                "name": "Boolean Math.006",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Boolean",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Boolean",
+                "force_non_field": true,
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

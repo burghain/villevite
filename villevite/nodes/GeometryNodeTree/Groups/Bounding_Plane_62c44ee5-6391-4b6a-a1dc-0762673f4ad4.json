@@ -1,0 +1,380 @@
+{
+    "name": "Bounding Plane",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Bounding Plane",
+        "uuid": "62c44ee5-6391-4b6a-a1dc-0762673f4ad4",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    750.9091186523438,
+                    -20.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -739.0908813476562,
+                    -60.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Bounding Box.001",
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    390.9090881347656,
+                    110.0
+                ],
+                "name": "Group.004",
+                "node_tree": "d4bc7306-4f50-4abe-868c-b7cfbae002a2",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Bounding Box.001": {
+                "bl_idname": "GeometryNodeBoundBox",
+                "location": [
+                    -349.0909118652344,
+                    -50.0
+                ],
+                "name": "Bounding Box.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate XYZ.001"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate XYZ.002"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Separate XYZ.001": {
+                "bl_idname": "ShaderNodeSeparateXYZ",
+                "location": [
+                    -129.09091186523438,
+                    50.0
+                ],
+                "name": "Separate XYZ.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Combine XYZ.001",
+                            "Combine XYZ.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Combine XYZ.002",
+                            "Combine XYZ.001"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Separate XYZ.002": {
+                "bl_idname": "ShaderNodeSeparateXYZ",
+                "location": [
+                    -129.09091186523438,
+                    -110.0
+                ],
+                "name": "Separate XYZ.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Combine XYZ.002",
+                            "Combine XYZ.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Combine XYZ.004",
+                            "Combine XYZ.003"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Combine XYZ.001": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    130.90908813476562,
+                    190.0
+                ],
+                "name": "Combine XYZ.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Combine XYZ.002": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    130.90908813476562,
+                    50.0
+                ],
+                "name": "Combine XYZ.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Combine XYZ.003": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    130.90908813476562,
+                    -90.0
+                ],
+                "name": "Combine XYZ.003",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Combine XYZ.004": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    130.90908813476562,
+                    -230.0
+                ],
+                "name": "Combine XYZ.004",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -319.0909118652344,
+                    160.0
+                ],
+                "name": "Group",
+                "node_tree": "ce1a6b81-5bab-4ce3-8538-8acfdc5413a0",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2,
+                            2,
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Combine XYZ.001",
+                            "Combine XYZ.002",
+                            "Combine XYZ.003",
+                            "Combine XYZ.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

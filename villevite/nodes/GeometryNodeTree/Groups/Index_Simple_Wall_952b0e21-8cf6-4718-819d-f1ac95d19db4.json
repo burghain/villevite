@@ -1,0 +1,58 @@
+{
+    "name": "Index Simple Wall",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Index Simple Wall",
+        "uuid": "952b0e21-8cf6-4718-819d-f1ac95d19db4",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    193.83180236816406,
+                    2.244337558746338
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -196.16819763183594,
+                    2.244337558746338
+                ],
+                "name": "Group Input"
+            },
+            "Index Simple Wall": {
+                "bl_idname": "FunctionNodeInputInt",
+                "location": [
+                    2.336395502090454,
+                    -4.488675117492676
+                ],
+                "name": "Index Simple Wall",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Integer",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

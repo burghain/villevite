@@ -1,0 +1,355 @@
+{
+    "name": "Connect Merged With Adjacent Roads",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Connect Merged With Adjacent Roads",
+        "uuid": "c1fb7e26-3885-448d-8005-607db53b8d70",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1253.3333740234375,
+                    8.333333969116211
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1206.6666259765625,
+                    -131.6666717529297
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Mesh to Curve"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Join Geometry": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    -346.66668701171875,
+                    -111.66666412353516
+                ],
+                "name": "Join Geometry",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Merge by Distance.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Mesh to Curve": {
+                "bl_idname": "GeometryNodeMeshToCurve",
+                "location": [
+                    -986.6666259765625,
+                    108.33333587646484
+                ],
+                "name": "Mesh to Curve",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Resample Curve"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Resample Curve": {
+                "bl_idname": "GeometryNodeResampleCurve",
+                "location": [
+                    -806.6666259765625,
+                    148.3333282470703
+                ],
+                "name": "Resample Curve",
+                "keep_last_segment": true,
+                "mode": "LENGTH",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 10,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 2.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Curve to Mesh"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Curve to Mesh": {
+                "bl_idname": "GeometryNodeCurveToMesh",
+                "location": [
+                    -606.6666259765625,
+                    -11.666666030883789
+                ],
+                "name": "Curve to Mesh",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Merge by Distance.001": {
+                "bl_idname": "GeometryNodeMergeByDistance",
+                "location": [
+                    -86.66668701171875,
+                    28.33333396911621
+                ],
+                "name": "Merge by Distance.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.008"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.008": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    153.33331298828125,
+                    48.33333206176758
+                ],
+                "name": "Group.008",
+                "width": 200.0,
+                "node_tree": "e0f26851-97a3-49c6-ba23-e89b2b48dc30",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.01745329238474369,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Merge by Distance.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Merge by Distance.002": {
+                "bl_idname": "GeometryNodeMergeByDistance",
+                "location": [
+                    473.33331298828125,
+                    128.3333282470703
+                ],
+                "name": "Merge by Distance.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 5.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Nearest": {
+                "bl_idname": "GeometryNodeSampleNearest",
+                "location": [
+                    653.3333740234375,
+                    8.333333969116211
+                ],
+                "name": "Sample Nearest",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Edge Vertices": {
+                "bl_idname": "GeometryNodeInputMeshEdgeVertices",
+                "location": [
+                    653.3333740234375,
+                    -151.6666717529297
+                ],
+                "name": "Edge Vertices",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Geometry Proximity": {
+                "bl_idname": "GeometryNodeProximity",
+                "location": [
+                    853.3333740234375,
+                    -71.66666412353516
+                ],
+                "name": "Geometry Proximity",
+                "target_element": "EDGES",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Merged Road",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Adjacent Roads",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

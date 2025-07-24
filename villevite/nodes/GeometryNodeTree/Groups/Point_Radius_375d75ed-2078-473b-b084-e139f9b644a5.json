@@ -1,0 +1,53 @@
+{
+    "name": "Point Radius",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Point Radius",
+        "uuid": "375d75ed-2078-473b-b084-e139f9b644a5",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    94.99999237060547,
+                    0.0
+                ],
+                "name": "Group Output"
+            },
+            "Value": {
+                "bl_idname": "ShaderNodeValue",
+                "location": [
+                    -94.99999237060547,
+                    0.0
+                ],
+                "name": "Value",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 3.0,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Radius",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,406 @@
+{
+    "name": "Smooth by Angle.001",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "description": "Set the sharpness of mesh edges based on the angle between the neighboring faces",
+        "name": "Smooth by Angle.001",
+        "is_modifier": true,
+        "uuid": "2772565c-58c2-4415-81ab-87a2fb96426b",
+        "nodes": {
+            "Set Shade Smooth": {
+                "bl_idname": "GeometryNodeSetShadeSmooth",
+                "location": [
+                    120.0,
+                    -80.0
+                ],
+                "name": "Set Shade Smooth",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Shade Smooth.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Shade Smooth.001": {
+                "bl_idname": "GeometryNodeSetShadeSmooth",
+                "location": [
+                    300.0,
+                    -80.0
+                ],
+                "name": "Set Shade Smooth.001",
+                "domain": "FACE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    480.0,
+                    -80.0
+                ],
+                "name": "Group Output"
+            },
+            "Edge Angle": {
+                "bl_idname": "GeometryNodeInputMeshEdgeAngle",
+                "location": [
+                    -440.0,
+                    -240.0
+                ],
+                "name": "Edge Angle",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -80.0,
+                    -80.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Shade Smooth"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Is Edge Smooth": {
+                "bl_idname": "GeometryNodeInputEdgeSmooth",
+                "location": [
+                    -260.0,
+                    -120.0
+                ],
+                "name": "Is Edge Smooth",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Is Shade Smooth": {
+                "bl_idname": "GeometryNodeInputShadeSmooth",
+                "location": [
+                    -439.5191650390625,
+                    -396.6327819824219
+                ],
+                "name": "Is Shade Smooth",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    -260.0,
+                    -260.0
+                ],
+                "name": "Compare",
+                "operation": "LESS_EQUAL",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -80.0,
+                    -260.0
+                ],
+                "name": "Boolean Math.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Set Shade Smooth"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input.001": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -439.5191650390625,
+                    -329.1396179199219
+                ],
+                "name": "Group Input.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.5235987901687622,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group Input.002": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -259.0383605957031,
+                    -188.6585693359375
+                ],
+                "name": "Group Input.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.5235987901687622,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -80.0,
+                    -149.1396026611328
+                ],
+                "name": "Boolean Math",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Set Shade Smooth"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.002": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -260.0,
+                    -380.0
+                ],
+                "name": "Boolean Math.002",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group Input.003": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -440.0,
+                    -460.0
+                ],
+                "name": "Group Input.003",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.5235987901687622,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Mesh",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "description": "Maximum face angle for smooth edges",
+                "name": "Angle",
+                "socket_type": "NodeSocketFloat",
+                "default_value": 0.5235987901687622,
+                "max_value": 3.1415927410125732,
+                "min_value": 0.0,
+                "subtype": "ANGLE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Ignore Sharpness",
+                "force_non_field": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

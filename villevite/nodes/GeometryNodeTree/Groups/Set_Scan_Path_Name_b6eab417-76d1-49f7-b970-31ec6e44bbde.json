@@ -1,0 +1,324 @@
+{
+    "name": "Set Scan Path Name",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "name": "Set Scan Path Name",
+        "uuid": "b6eab417-76d1-49f7-b970-31ec6e44bbde",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1140.0,
+                    -300.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -860.0,
+                    0.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Input.002"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "For Each Geometry Element Input.002": {
+                "bl_idname": "GeometryNodeForeachGeometryElementInput",
+                "location": [
+                    -500.0,
+                    -226.72377014160156
+                ],
+                "name": "For Each Geometry Element Input.002",
+                "paired_output": "For Each Geometry Element Output.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Math.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Geometry Name"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "For Each Geometry Element Output.002": {
+                "bl_idname": "GeometryNodeForeachGeometryElementOutput",
+                "location": [
+                    860.0,
+                    -240.0
+                ],
+                "name": "For Each Geometry Element Output.002",
+                "domain": "CURVE",
+                "generation_items": [
+                    [
+                        "GEOMETRY",
+                        "Geometry"
+                    ]
+                ],
+                "input_items": [],
+                "main_items": [],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Set Geometry Name": {
+                "bl_idname": "GeometryNodeSetGeometryName",
+                "location": [
+                    120.0,
+                    -186.72377014160156
+                ],
+                "name": "Set Geometry Name",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Set Spline Type"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Geometry to Instance": {
+                "bl_idname": "GeometryNodeGeometryToInstance",
+                "location": [
+                    660.0,
+                    -260.0
+                ],
+                "name": "Geometry to Instance",
+                "width": 160.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "For Each Geometry Element Output.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    220.0,
+                    233.27622985839844
+                ],
+                "name": "Join Strings",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Set Geometry Name"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Math.003": {
+                "bl_idname": "ShaderNodeMath",
+                "location": [
+                    -340.0,
+                    73.27622985839844
+                ],
+                "name": "Math.003",
+                "operation": "DIVIDE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 1000.0,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Value to String"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Value to String": {
+                "bl_idname": "FunctionNodeValueToString",
+                "location": [
+                    -160.0,
+                    73.27622985839844
+                ],
+                "name": "Value to String",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Slice String"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Slice String": {
+                "bl_idname": "FunctionNodeSliceString",
+                "location": [
+                    0.0,
+                    113.27622985839844
+                ],
+                "name": "Slice String",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 4,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Set Spline Type": {
+                "bl_idname": "GeometryNodeCurveSplineType",
+                "location": [
+                    380.0,
+                    -200.0
+                ],
+                "name": "Set Spline Type",
+                "spline_type": "BEZIER",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Geometry to Instance"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Scan Paths",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Scan Paths",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Name",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

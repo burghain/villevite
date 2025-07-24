@@ -1,0 +1,140 @@
+{
+    "name": "Max Z Position",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Max Z Position",
+        "uuid": "ce1a6b81-5bab-4ce3-8538-8acfdc5413a0",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    402.0,
+                    -1.25
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -408.0,
+                    -1.25
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Attribute Statistic": {
+                "bl_idname": "GeometryNodeAttributeStatistic",
+                "location": [
+                    212.0,
+                    -7.5
+                ],
+                "name": "Attribute Statistic",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Position.001": {
+                "bl_idname": "GeometryNodeInputPosition",
+                "location": [
+                    -208.0,
+                    5.0
+                ],
+                "name": "Position.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate XYZ.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Separate XYZ.001": {
+                "bl_idname": "ShaderNodeSeparateXYZ",
+                "location": [
+                    2.0,
+                    5.0
+                ],
+                "name": "Separate XYZ.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Attribute Statistic"
+                        ],
+                        "index": 2
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Max Z",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketFloat",
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

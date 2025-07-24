@@ -1,0 +1,913 @@
+{
+    "name": ".test: True For All",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": ".test: True For All",
+        "uuid": "a0d0a527-c666-4612-a132-f323646c0bec",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1186.888916015625,
+                    361.5555419921875
+                ],
+                "name": "Group Output"
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    510.2221984863281,
+                    664.8888549804688
+                ],
+                "name": "Group.005",
+                "width": 250.0,
+                "node_tree": "2ae1c102-9feb-41f3-a936-4eaf68a3a28b",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "True For All",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Point True",
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Point False",
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Edge True",
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Edge False",
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 11
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -69.77777862548828,
+                    684.8888549804688
+                ],
+                "name": "Group.007",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Points",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Cube": {
+                "bl_idname": "GeometryNodeMeshCube",
+                "location": [
+                    -749.77783203125,
+                    564.8888549804688
+                ],
+                "name": "Cube",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 2,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.008",
+                            "Group.009",
+                            "Group.007",
+                            "Group.010",
+                            "Group.011",
+                            "Group.012"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    270.22222900390625,
+                    664.8888549804688
+                ],
+                "name": "Boolean Math",
+                "operation": "XNOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -269.77777099609375,
+                    564.8888549804688
+                ],
+                "name": "Boolean",
+                "boolean": true,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.008": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -49.77777862548828,
+                    504.8888854980469
+                ],
+                "name": "Group.008",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Points",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    210.22222900390625,
+                    484.8888854980469
+                ],
+                "name": "Boolean Math.001",
+                "operation": "XNOR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.001": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -249.77777099609375,
+                    384.8888854980469
+                ],
+                "name": "Boolean.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.008"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.009": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -109.77777862548828,
+                    264.8888854980469
+                ],
+                "name": "Group.009",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Edges",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.002": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    190.22222900390625,
+                    264.8888854980469
+                ],
+                "name": "Boolean Math.002",
+                "operation": "XNOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.002": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -329.77777099609375,
+                    204.88893127441406
+                ],
+                "name": "Boolean.002",
+                "boolean": true,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.009"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.010": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -169.77777099609375,
+                    104.88892364501953
+                ],
+                "name": "Group.010",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Edges",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Curve Line": {
+                "bl_idname": "GeometryNodeCurvePrimitiveLine",
+                "location": [
+                    -849.77783203125,
+                    -595.1111450195312
+                ],
+                "name": "Curve Line",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketVectorTranslation",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 1.0,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.013",
+                            "Group.014"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.003": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -349.77777099609375,
+                    24.888925552368164
+                ],
+                "name": "Boolean.003",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.010"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.003": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    170.22222900390625,
+                    104.88892364501953
+                ],
+                "name": "Boolean Math.003",
+                "operation": "XNOR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            7
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    530.22216796875,
+                    4.888925075531006
+                ],
+                "name": "Group.006",
+                "width": 250.0,
+                "node_tree": "2ae1c102-9feb-41f3-a936-4eaf68a3a28b",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "True For All",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Face True",
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Face False",
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Spline True",
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Spline False",
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 11
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.004": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    1006.888916015625,
+                    401.5555419921875
+                ],
+                "name": "Boolean Math.004",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.011": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -89.77777862548828,
+                    -175.11106872558594
+                ],
+                "name": "Group.011",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Faces",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.004": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -369.77777099609375,
+                    -315.1111145019531
+                ],
+                "name": "Boolean.004",
+                "boolean": true,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.011"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.005": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    250.22222900390625,
+                    -175.11106872558594
+                ],
+                "name": "Boolean Math.005",
+                "operation": "XNOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.012": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -89.77777862548828,
+                    -335.1111145019531
+                ],
+                "name": "Group.012",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Faces",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.005": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -369.77777099609375,
+                    -475.1111145019531
+                ],
+                "name": "Boolean.005",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.012"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.006": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    250.22222900390625,
+                    -335.1111145019531
+                ],
+                "name": "Boolean Math.006",
+                "operation": "XNOR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.013": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -89.77777862548828,
+                    -495.1111145019531
+                ],
+                "name": "Group.013",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Splines",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.006": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -369.77777099609375,
+                    -635.1111450195312
+                ],
+                "name": "Boolean.006",
+                "boolean": true,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.013"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.007": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    250.22222900390625,
+                    -495.1111145019531
+                ],
+                "name": "Boolean Math.007",
+                "operation": "XNOR",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.014": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -89.77777862548828,
+                    -715.1111450195312
+                ],
+                "name": "Group.014",
+                "node_tree": "2cd85821-8e40-433e-be25-e85a743b877d",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Splines",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.008"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean.007": {
+                "bl_idname": "FunctionNodeInputBool",
+                "location": [
+                    -389.77777099609375,
+                    -835.1111450195312
+                ],
+                "name": "Boolean.007",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.014"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.008": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    230.22222900390625,
+                    -675.1111450195312
+                ],
+                "name": "Boolean Math.008",
+                "operation": "XNOR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            7
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Error",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Tests"
+}

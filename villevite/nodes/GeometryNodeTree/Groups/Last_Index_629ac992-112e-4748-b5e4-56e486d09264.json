@@ -1,0 +1,247 @@
+{
+    "name": "Last Index",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Last Index",
+        "uuid": "629ac992-112e-4748-b5e4-56e486d09264",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    780.0,
+                    60.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -600.0,
+                    300.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Vertex",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Domain Size",
+                            "Domain Size.001",
+                            "Domain Size.002"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Domain Size": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -300.0,
+                    -60.0
+                ],
+                "name": "Domain Size",
+                "component": "CURVE",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Integer Math": {
+                "bl_idname": "FunctionNodeIntegerMath",
+                "location": [
+                    560.0,
+                    -40.0
+                ],
+                "name": "Integer Math",
+                "operation": "SUBTRACT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 1,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    300.0,
+                    220.0
+                ],
+                "name": "Menu Switch",
+                "data_type": "INT",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Vertex"
+                    ],
+                    [
+                        "Edge"
+                    ],
+                    [
+                        "Face"
+                    ],
+                    [
+                        "Control Point"
+                    ],
+                    [
+                        "Spline"
+                    ],
+                    [
+                        "Point Cloud"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Vertex",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Integer Math"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Domain Size.001": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -300.0,
+                    180.0
+                ],
+                "name": "Domain Size.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Domain Size.002": {
+                "bl_idname": "GeometryNodeAttributeDomainSize",
+                "location": [
+                    -280.0,
+                    -200.0
+                ],
+                "name": "Domain Size.002",
+                "component": "POINTCLOUD",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Last Index",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Domain",
+                "force_non_field": true,
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Vertex",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,757 @@
+{
+    "name": "Store Basic Road Attributes",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "default_group_node_width": 200,
+        "name": "Store Basic Road Attributes",
+        "uuid": "842259d0-fd9e-4eb2-906a-d5c6dfd46f12",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1242.727294921875,
+                    165.53799438476562
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -937.272705078125,
+                    365.5379943847656
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Edge",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Reroute"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute",
+                            "Store Named Attribute.004"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute",
+                            "Reroute.002"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.001",
+                            "Reroute.004"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.002",
+                            "Reroute.007"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3,
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.003",
+                            "Reroute.006"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0,
+                            3
+                        ],
+                        "to_node": [
+                            "Reroute.005",
+                            "Store Named Attribute.010"
+                        ],
+                        "index": 6
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    1022.727294921875,
+                    165.53799438476562
+                ],
+                "name": "Menu Switch",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Spline"
+                    ],
+                    [
+                        "Edge"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Edge",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -177.27273559570312,
+                    625.5380249023438
+                ],
+                "name": "Store Named Attribute",
+                "data_type": "INT",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.001": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    2.7272696495056152,
+                    545.5380249023438
+                ],
+                "name": "Store Named Attribute.001",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.002": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    182.72726440429688,
+                    445.5379943847656
+                ],
+                "name": "Store Named Attribute.002",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.003": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    362.7272644042969,
+                    345.5379943847656
+                ],
+                "name": "Store Named Attribute.003",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.010"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -897.272705078125,
+                    -14.462005615234375
+                ],
+                "name": "Group.005",
+                "node_tree": "c6aaa8ec-f2dc-41c9-9d6d-0512bcd10851",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.001"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.002"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.003"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.010"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Store Named Attribute.004": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -297.2727355957031,
+                    -114.46200561523438
+                ],
+                "name": "Store Named Attribute.004",
+                "data_type": "INT",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -757.272705078125,
+                    -534.4619750976562
+                ],
+                "name": "Group.007",
+                "width": 180.0,
+                "node_tree": "c6aaa8ec-f2dc-41c9-9d6d-0512bcd10851",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.005"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.006"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.007"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.009"
+                        ],
+                        "index": 4
+                    }
+                ]
+            },
+            "Store Named Attribute.005": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    -57.27273178100586,
+                    -174.46200561523438
+                ],
+                "name": "Store Named Attribute.005",
+                "data_type": "BOOLEAN",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.006": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    122.7272720336914,
+                    -214.46200561523438
+                ],
+                "name": "Store Named Attribute.006",
+                "data_type": "BOOLEAN",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.007": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    302.7272644042969,
+                    -274.4620056152344
+                ],
+                "name": "Store Named Attribute.007",
+                "data_type": "BOOLEAN",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.009"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.009": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    482.7272644042969,
+                    -314.4620056152344
+                ],
+                "name": "Store Named Attribute.009",
+                "data_type": "BOOLEAN",
+                "domain": "EDGE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -317.2727355957031,
+                    745.5380249023438
+                ],
+                "name": "Reroute",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Reroute.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.001": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    622.727294921875,
+                    725.5380249023438
+                ],
+                "name": "Reroute.001",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.002": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -437.2727355957031,
+                    -454.4620056152344
+                ],
+                "name": "Reroute.002",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.004": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -357.2727355957031,
+                    -514.4619750976562
+                ],
+                "name": "Reroute.004",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.005": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -157.27273559570312,
+                    -656.2979736328125
+                ],
+                "name": "Reroute.005",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.009"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.006": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -237.27273559570312,
+                    -574.4619750976562
+                ],
+                "name": "Reroute.006",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.007": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    -297.2727355957031,
+                    -554.4619750976562
+                ],
+                "name": "Reroute.007",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Store Named Attribute.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Store Named Attribute.010": {
+                "bl_idname": "GeometryNodeStoreNamedAttribute",
+                "location": [
+                    582.727294921875,
+                    265.5379943847656
+                ],
+                "name": "Store Named Attribute.010",
+                "data_type": "BOOLEAN",
+                "domain": "CURVE",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Roads",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Domain",
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Edge",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Roads",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Number Of Lanes",
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Has Bike Lane",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Has Parking Lots",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Has Sidewalk",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Has Central Reservation",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

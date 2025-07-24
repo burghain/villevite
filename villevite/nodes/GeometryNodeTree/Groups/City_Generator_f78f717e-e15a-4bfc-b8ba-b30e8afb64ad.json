@@ -1,0 +1,744 @@
+{
+    "name": "City Generator",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "City Generator",
+        "is_modifier": true,
+        "uuid": "f78f717e-e15a-4bfc-b8ba-b30e8afb64ad",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    2200.0,
+                    -20.0
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1880.0,
+                    -20.0
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5,
+                            2
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Group.003"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1,
+                            6,
+                            3
+                        ],
+                        "to_node": [
+                            "Group.007",
+                            "Group.001",
+                            "Group.003"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            7
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.20000000298023224,
+                        "to_socket_index": [
+                            8
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.699999988079071,
+                        "to_socket_index": [
+                            9
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "to_socket_index": [
+                            10
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            11
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 12
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            12
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 13
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.8999999761581421,
+                        "to_socket_index": [
+                            13
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 14
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            14
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 15
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 16
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 17
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 18
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -1360.0,
+                    620.0
+                ],
+                "name": "Group.006",
+                "width": 220.0,
+                "node_tree": "ba5eb210-12ab-4955-8428-550bc5585bca",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -980.0,
+                    420.0
+                ],
+                "name": "Group.007",
+                "width": 280.0,
+                "node_tree": "4fb451b2-4350-4885-9d49-4b321c7cc2f5",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.003"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            4,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001",
+                            "Reroute"
+                        ],
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 9
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    400.0,
+                    100.0
+                ],
+                "name": "Group.001",
+                "width": 200.0,
+                "node_tree": "2c029de9-70ac-4019-80f4-967b1cfbcd55",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.20000000298023224,
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.699999988079071,
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatFactor",
+                        "default_value": 0.8999999761581421,
+                        "index": 13
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 14
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    400.0,
+                    -360.0
+                ],
+                "name": "Group",
+                "width": 200.0,
+                "node_tree": "298956be-70e4-4ded-81d4-3da7729caf0e",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Geometry.004": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    1880.0,
+                    -20.0
+                ],
+                "name": "Join Geometry.004",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    400.0,
+                    440.0
+                ],
+                "name": "Group.003",
+                "width": 200.0,
+                "node_tree": "d45f1e07-c18d-4798-9235-9e185cd6e7b3",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry.004"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Reroute": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    220.0,
+                    -740.0
+                ],
+                "name": "Reroute",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Reroute.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Reroute.001": {
+                "bl_idname": "NodeReroute",
+                "location": [
+                    740.0,
+                    -740.0
+                ],
+                "name": "Reroute.001",
+                "width": 10.0,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "The City",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "City Map",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Preview",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Seed",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "max_value": 10000,
+                "min_value": -10000,
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            },
+            {
+                "name": "Generate Scanning Paths",
+                "force_non_field": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Scanning Path Segment Length",
+                "force_non_field": true,
+                "socket_type": "NodeSocketFloat",
+                "default_value": 200.0,
+                "max_value": 3.4028234663852886e+38,
+                "subtype": "DISTANCE",
+                "bl_idname": "NodeTreeInterfaceSocketFloat"
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Buildings",
+                "items": [
+                    {
+                        "name": "Enable Buildings",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 6,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Roadway",
+                "items": [
+                    {
+                        "name": "Enable Vehicles",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 8,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Roadway Vehicle Density",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "default_value": 0.20000000298023224,
+                        "max_value": 1.0,
+                        "min_value": 0.0,
+                        "subtype": "FACTOR",
+                        "parent_index": 8,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Parking Lot Vehicle Density",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "default_value": 0.699999988079071,
+                        "max_value": 1.0,
+                        "min_value": 0.0,
+                        "subtype": "FACTOR",
+                        "parent_index": 8,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Cyclist Density",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "default_value": 0.30000001192092896,
+                        "max_value": 1.0,
+                        "min_value": 0.0,
+                        "subtype": "FACTOR",
+                        "parent_index": 8,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Plots",
+                "items": [
+                    {
+                        "name": "Enable Plot Decoration",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 13,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Enable Fences",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 13,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Sidewalks",
+                "items": [
+                    {
+                        "name": "Enable Streetlights",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 16,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Enable Street Trees",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 16,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Tree Density",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "max_value": 1.0,
+                        "min_value": 0.0,
+                        "subtype": "FACTOR",
+                        "parent_index": 16,
+                        "bl_idname": "NodeTreeInterfaceSocketFloat"
+                    },
+                    {
+                        "name": "Enable Traffic Lights",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 16,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    }
+                ]
+            },
+            {
+                "item_type": "PANEL",
+                "name": "Surfaces",
+                "items": [
+                    {
+                        "name": "Enable Road Surfaces",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 21,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Enable Sidewalk Surfaces",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 21,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    },
+                    {
+                        "name": "Enable Lot Surfaces",
+                        "force_non_field": true,
+                        "socket_type": "NodeSocketBool",
+                        "default_value": true,
+                        "parent_index": 21,
+                        "bl_idname": "NodeTreeInterfaceSocketBool"
+                    }
+                ]
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

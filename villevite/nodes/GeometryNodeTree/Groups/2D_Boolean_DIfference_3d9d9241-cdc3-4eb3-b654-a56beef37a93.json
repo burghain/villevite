@@ -1,0 +1,631 @@
+{
+    "name": "2D Boolean DIfference",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "2D Boolean DIfference",
+        "uuid": "3d9d9241-cdc3-4eb3-b654-a56beef37a93",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1009.60546875,
+                    222.04689025878906
+                ],
+                "name": "Group Output",
+                "width": 198.636962890625
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1458.783203125,
+                    246.0246124267578
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group",
+                            "Group.001"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.002",
+                            "Subdivide Mesh"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Mesh Boolean": {
+                "bl_idname": "GeometryNodeMeshBoolean",
+                "location": [
+                    -139.9345703125,
+                    489.5729675292969
+                ],
+                "name": "Mesh Boolean",
+                "operation": "DIFFERENCE",
+                "solver": "EXACT",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Delete Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -1179.9345703125,
+                    -210.42701721191406
+                ],
+                "name": "Group.003",
+                "node_tree": "ce1a6b81-5bab-4ce3-8538-8acfdc5413a0",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0,
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Compare",
+                            "Group.002",
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -818.783203125,
+                    366.02459716796875
+                ],
+                "name": "Group",
+                "node_tree": "fda0a599-7a5d-4175-b775-73e90684bfd2",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -780.39453125,
+                    -7.953113079071045
+                ],
+                "name": "Group.002",
+                "node_tree": "fda0a599-7a5d-4175-b775-73e90684bfd2",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -519.9345703125,
+                    409.5729675292969
+                ],
+                "name": "Group.004",
+                "node_tree": "852b2249-89f5-4858-b978-ee8c3486a0e3",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 10.0,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Mesh Boolean"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -540.39453125,
+                    32.04688262939453
+                ],
+                "name": "Group.005",
+                "node_tree": "852b2249-89f5-4858-b978-ee8c3486a0e3",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 20.0,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -358.7831726074219,
+                    266.02459716796875
+                ],
+                "name": "Group.006",
+                "node_tree": "5ea8cb41-1d2e-4b7b-acf8-6ae58150d007",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": -10.0,
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Mesh Boolean"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Delete Geometry": {
+                "bl_idname": "GeometryNodeDeleteGeometry",
+                "location": [
+                    219.60543823242188,
+                    112.04689025878906
+                ],
+                "name": "Delete Geometry",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Compare": {
+                "bl_idname": "FunctionNodeCompare",
+                "location": [
+                    -18.78316879272461,
+                    -133.9753875732422
+                ],
+                "name": "Compare",
+                "operation": "NOT_EQUAL",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketColor",
+                        "default_value": [
+                            0.800000011920929,
+                            0.800000011920929,
+                            0.800000011920929,
+                            1.0
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.8999999761581421,
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatAngle",
+                        "default_value": 0.08726649731397629,
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.0010000000474974513,
+                        "index": 12
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Delete Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Separate XYZ.001": {
+                "bl_idname": "ShaderNodeSeparateXYZ",
+                "location": [
+                    -230.39456176757812,
+                    -57.95311737060547
+                ],
+                "name": "Separate XYZ.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Compare"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Position.001": {
+                "bl_idname": "GeometryNodeInputPosition",
+                "location": [
+                    -530.39453125,
+                    -157.95310974121094
+                ],
+                "name": "Position.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate XYZ.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Subdivide Mesh": {
+                "bl_idname": "GeometryNodeSubdivideMesh",
+                "location": [
+                    469.6054382324219,
+                    -77.95310974121094
+                ],
+                "name": "Subdivide Mesh",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Separate XYZ.002": {
+                "bl_idname": "ShaderNodeSeparateXYZ",
+                "location": [
+                    749.60546875,
+                    -537.9530639648438
+                ],
+                "name": "Separate XYZ.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Combine XYZ.001"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Combine XYZ.001"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Sample Nearest Surface.001"
+                        ],
+                        "index": 2
+                    }
+                ]
+            },
+            "Position.002": {
+                "bl_idname": "GeometryNodeInputPosition",
+                "location": [
+                    449.6054382324219,
+                    -637.9530639648438
+                ],
+                "name": "Position.002",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Separate XYZ.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Sample Nearest Surface.001": {
+                "bl_idname": "GeometryNodeSampleNearestSurface",
+                "location": [
+                    989.60546875,
+                    -617.9530639648438
+                ],
+                "name": "Sample Nearest Surface.001",
+                "width": 150.0,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Combine XYZ.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Combine XYZ.001": {
+                "bl_idname": "ShaderNodeCombineXYZ",
+                "location": [
+                    1209.60546875,
+                    -417.953125
+                ],
+                "name": "Combine XYZ.001",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketVector",
+                        "default_value": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    589.60546875,
+                    122.04689025878906
+                ],
+                "name": "Group.001",
+                "node_tree": "db852b78-61fb-45c3-936f-ad1f9b9fa638",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output",
+                            "Group.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    849.60546875,
+                    22.046884536743164
+                ],
+                "name": "Group.007",
+                "node_tree": "db852b78-61fb-45c3-936f-ad1f9b9fa638",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Base Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Aligned Subtracting Mesh",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Base Mesh",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Subtracting Mesh",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

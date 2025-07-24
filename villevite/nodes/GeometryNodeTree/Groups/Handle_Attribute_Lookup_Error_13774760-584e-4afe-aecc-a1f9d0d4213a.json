@@ -1,0 +1,544 @@
+{
+    "name": "Handle Attribute Lookup Error",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "ATTRIBUTE",
+        "name": "Handle Attribute Lookup Error",
+        "uuid": "13774760-584e-4afe-aecc-a1f9d0d4213a",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1381.176513671875,
+                    192.9412078857422
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -1378.823486328125,
+                    -267.058837890625
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Float",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Menu Switch"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            2
+                        ],
+                        "to_node": [
+                            "Group.002",
+                            "Switch"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings",
+                            "Join Strings.001"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Value to String"
+                        ],
+                        "index": 5
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    881.176513671875,
+                    312.941162109375
+                ],
+                "name": "Group.002",
+                "node_tree": "1937e57f-1fae-4f85-9efe-c8822b931a2f",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Switch"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    101.17644500732422,
+                    332.941162109375
+                ],
+                "name": "Warning",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Attribute does not exist: ",
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -98.82355499267578,
+                    472.941162109375
+                ],
+                "name": "Boolean Math",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -98.82355499267578,
+                    332.941162109375
+                ],
+                "name": "Join Strings",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": " ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.001": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    601.176513671875,
+                    32.941200256347656
+                ],
+                "name": "Boolean Math.001",
+                "operation": "OR",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.001": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    321.17645263671875,
+                    -187.0587921142578
+                ],
+                "name": "Warning.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Index out of range: Boolean Attribute ",
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Boolean Math.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.004": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -198.8235626220703,
+                    -107.05879974365234
+                ],
+                "name": "Boolean Math.004",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.001": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -298.82354736328125,
+                    -527.058837890625
+                ],
+                "name": "String.001",
+                "width": 240.0,
+                "string": "out of range on",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.001": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    81.17644500732422,
+                    -447.058837890625
+                ],
+                "name": "Join Strings.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": " ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.002": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -298.82354736328125,
+                    -287.058837890625
+                ],
+                "name": "String.002",
+                "width": 240.0,
+                "string": "IndexError: Index",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Value to String": {
+                "bl_idname": "FunctionNodeValueToString",
+                "location": [
+                    -198.8235626220703,
+                    -407.058837890625
+                ],
+                "name": "Value to String",
+                "data_type": "INT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.004": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -298.82354736328125,
+                    -647.058837890625
+                ],
+                "name": "String.004",
+                "width": 240.0,
+                "string": "attribute:",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.005": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -758.823486328125,
+                    332.941162109375
+                ],
+                "name": "String.005",
+                "string": "attribute does not exist:",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Menu Switch": {
+                "bl_idname": "GeometryNodeMenuSwitch",
+                "location": [
+                    -858.823486328125,
+                    572.941162109375
+                ],
+                "name": "Menu Switch",
+                "width": 240.0,
+                "data_type": "STRING",
+                "enum_definition": "Menu Switch",
+                "enum_items": [
+                    [
+                        "Float"
+                    ],
+                    [
+                        "Integer"
+                    ],
+                    [
+                        "Vector"
+                    ],
+                    [
+                        "Boolean"
+                    ]
+                ],
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Float",
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Float",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Integer",
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Vector",
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": "Boolean",
+                        "index": 4
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings",
+                            "Join Strings.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Switch": {
+                "bl_idname": "GeometryNodeSwitch",
+                "location": [
+                    1121.176513671875,
+                    292.941162109375
+                ],
+                "name": "Switch",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Geometry",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Value Type",
+                "socket_type": "NodeSocketMenu",
+                "default_value": "Float",
+                "bl_idname": "NodeTreeInterfaceSocketMenu"
+            },
+            {
+                "name": "Geometry",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Attribute Name",
+                "hide_value": true,
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Attribute Exists",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Index Is Valid",
+                "force_non_field": true,
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Index",
+                "force_non_field": true,
+                "socket_type": "NodeSocketInt",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketInt"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

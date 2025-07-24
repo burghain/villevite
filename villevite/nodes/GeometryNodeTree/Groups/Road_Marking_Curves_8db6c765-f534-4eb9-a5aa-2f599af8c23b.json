@@ -1,0 +1,691 @@
+{
+    "name": "Road Marking Curves",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "GEOMETRY",
+        "name": "Road Marking Curves",
+        "uuid": "8db6c765-f534-4eb9-a5aa-2f599af8c23b",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    1088.198486328125,
+                    114.41175842285156
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -943.6764526367188,
+                    -50.58823776245117
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            0,
+                            0
+                        ],
+                        "to_node": [
+                            "Group",
+                            "Group.007",
+                            "Group.001"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0,
+                            1,
+                            1,
+                            0
+                        ],
+                        "to_node": [
+                            "Group.003",
+                            "Group.007",
+                            "Group.001",
+                            "Group.010"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -380.0,
+                    320.0
+                ],
+                "name": "Group",
+                "width": 200.45382690429688,
+                "node_tree": "5c94d9b7-a36f-46ec-aff7-0af82dbd3c33",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve.004"
+                        ],
+                        "index": 1
+                    }
+                ]
+            },
+            "Group.003": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -383.6764831542969,
+                    129.41177368164062
+                ],
+                "name": "Group.003",
+                "width": 200.0,
+                "node_tree": "d8627f7e-5779-42aa-8986-1869a622dfa8",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.007": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -363.6764831542969,
+                    -270.5882263183594
+                ],
+                "name": "Group.007",
+                "width": 198.82366943359375,
+                "node_tree": "bb757543-54e7-4711-95f8-f33a5edc575f",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -363.6764831542969,
+                    -450.5882263183594
+                ],
+                "name": "Group.001",
+                "width": 200.0,
+                "node_tree": "37dc83eb-b0f4-491b-a1ce-3edc0ac0e1f0",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Fillet Curve": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    -3.6764636039733887,
+                    229.41177368164062
+                ],
+                "name": "Fillet Curve",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.25,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Fillet Curve.001": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    -3.6764636039733887,
+                    29.411762237548828
+                ],
+                "name": "Fillet Curve.001",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.25,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Fillet Curve.002": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    -3.6764636039733887,
+                    -170.58822631835938
+                ],
+                "name": "Fillet Curve.002",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.25,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Fillet Curve.003": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    -3.6764636039733887,
+                    -350.5882263183594
+                ],
+                "name": "Fillet Curve.003",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 0.25,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.002": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    268.1985168457031,
+                    314.4117736816406
+                ],
+                "name": "Group.002",
+                "width": 220.0,
+                "node_tree": "ff752d85-3396-42bf-91b4-3aefa60dcfda",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Regular",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Dashed Wide",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.004": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    256.3235168457031,
+                    109.41175842285156
+                ],
+                "name": "Group.004",
+                "width": 220.0,
+                "node_tree": "ff752d85-3396-42bf-91b4-3aefa60dcfda",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Thick",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Continous",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.005": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    256.3235168457031,
+                    -110.58824157714844
+                ],
+                "name": "Group.005",
+                "width": 220.0,
+                "node_tree": "ff752d85-3396-42bf-91b4-3aefa60dcfda",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Regular",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Continous",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.006": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    256.3235168457031,
+                    -290.5882263183594
+                ],
+                "name": "Group.006",
+                "width": 220.0,
+                "node_tree": "ff752d85-3396-42bf-91b4-3aefa60dcfda",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Thin",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Dashed Narrow",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Geometry": {
+                "bl_idname": "GeometryNodeJoinGeometry",
+                "location": [
+                    676.3235473632812,
+                    -30.588237762451172
+                ],
+                "name": "Join Geometry",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.008": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -371.8014831542969,
+                    -25.588237762451172
+                ],
+                "name": "Group.008",
+                "node_tree": "0cbe3954-561a-481b-b37c-44e58dae51e3",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "to_socket_index": [
+                            2,
+                            2,
+                            2,
+                            2,
+                            2,
+                            2
+                        ],
+                        "to_node": [
+                            "Fillet Curve",
+                            "Fillet Curve.001",
+                            "Fillet Curve.002",
+                            "Fillet Curve.003",
+                            "Fillet Curve.004",
+                            "Fillet Curve.006"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Fillet Curve",
+                            "Fillet Curve.001",
+                            "Fillet Curve.002",
+                            "Fillet Curve.003",
+                            "Fillet Curve.004",
+                            "Fillet Curve.006"
+                        ],
+                        "index": 3
+                    }
+                ]
+            },
+            "Fillet Curve.004": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    23.198535919189453,
+                    514.4117431640625
+                ],
+                "name": "Fillet Curve.004",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 5.0,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.009": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    240.0,
+                    660.0
+                ],
+                "name": "Group.009",
+                "width": 220.0,
+                "node_tree": "ff752d85-3396-42bf-91b4-3aefa60dcfda",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Regular",
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketMenu",
+                        "default_value": "Dashed Narrow",
+                        "index": 2
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Join Geometry"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Fillet Curve.006": {
+                "bl_idname": "GeometryNodeFilletCurve",
+                "location": [
+                    40.0,
+                    740.0
+                ],
+                "name": "Fillet Curve.006",
+                "mode": "POLY",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "default_value": 3,
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 5.0,
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 3
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group.009"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.010": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -380.0,
+                    640.0
+                ],
+                "name": "Group.010",
+                "width": 220.0,
+                "node_tree": "1a46f5d4-6ef6-4ff6-b988-c093f993b131",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Fillet Curve.006"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketGeometry",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 1
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Road Marking Curves",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Central Reservation Curves",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Traffic Light Placement Curves",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Roads",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            },
+            {
+                "name": "Road Endpoints",
+                "socket_type": "NodeSocketGeometry",
+                "bl_idname": "NodeTreeInterfaceSocketGeometry"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

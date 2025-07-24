@@ -1,0 +1,997 @@
+{
+    "name": "Assert Conditions",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "OUTPUT",
+        "name": "Assert Conditions",
+        "uuid": "802ab75d-ca1a-4085-812a-d4733211aa4c",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    813.15771484375,
+                    338.5553894042969
+                ],
+                "name": "Group Output"
+            },
+            "Group Input": {
+                "bl_idname": "NodeGroupInput",
+                "location": [
+                    -906.84228515625,
+                    118.55538940429688
+                ],
+                "name": "Group Input",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings",
+                            "Join Strings.001",
+                            "Join Strings.002",
+                            "Join Strings.003",
+                            "Join Strings.004",
+                            "Join Strings.005",
+                            "Join Strings.006",
+                            "Join Strings.007"
+                        ],
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1,
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings",
+                            "Join Strings.001",
+                            "Join Strings.002",
+                            "Join Strings.003",
+                            "Join Strings.004",
+                            "Join Strings.005",
+                            "Join Strings.006",
+                            "Join Strings.007"
+                        ],
+                        "index": 1
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.003"
+                        ],
+                        "index": 2
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings"
+                        ],
+                        "index": 3
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.004"
+                        ],
+                        "index": 4
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.001"
+                        ],
+                        "index": 5
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.005"
+                        ],
+                        "index": 6
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.002"
+                        ],
+                        "index": 7
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.006"
+                        ],
+                        "index": 8
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.003"
+                        ],
+                        "index": 9
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.007"
+                        ],
+                        "index": 10
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.004"
+                        ],
+                        "index": 11
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.008"
+                        ],
+                        "index": 12
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.005"
+                        ],
+                        "index": 13
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.009"
+                        ],
+                        "index": 14
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.006"
+                        ],
+                        "index": 15
+                    },
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Boolean Math.010"
+                        ],
+                        "index": 16
+                    },
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Join Strings.007"
+                        ],
+                        "index": 17
+                    }
+                ]
+            },
+            "Join Strings": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -106.84225463867188,
+                    918.555419921875
+                ],
+                "name": "Join Strings",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.001": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -128.65505981445312,
+                    651.743408203125
+                ],
+                "name": "Join Strings.001",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.002": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -128.65505981445312,
+                    353.743408203125
+                ],
+                "name": "Join Strings.002",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.003": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -128.65505981445312,
+                    55.743438720703125
+                ],
+                "name": "Join Strings.003",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    1018.555419921875
+                ],
+                "name": "Warning",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.001": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    718.555419921875
+                ],
+                "name": "Warning.001",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.002": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    418.5553894042969
+                ],
+                "name": "Warning.002",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.003": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    185.4371337890625,
+                    131.24343872070312
+                ],
+                "name": "Warning.003",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.003": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -107.36727905273438,
+                    1100.743408203125
+                ],
+                "name": "Boolean Math.003",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.004": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -107.36727905273438,
+                    802.743408203125
+                ],
+                "name": "Boolean Math.004",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.001"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.005": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -107.36727905273438,
+                    504.743408203125
+                ],
+                "name": "Boolean Math.005",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.002"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.006": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -107.36727905273438,
+                    206.74342346191406
+                ],
+                "name": "Boolean Math.006",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.003"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    553.15771484375,
+                    338.5553894042969
+                ],
+                "name": "Group",
+                "node_tree": "b9861b0e-b652-4f9a-9773-f0d8bbd1af54",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.004": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -126.84225463867188,
+                    -261.4446105957031
+                ],
+                "name": "Join Strings.004",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.005": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -126.84225463867188,
+                    -561.444580078125
+                ],
+                "name": "Join Strings.005",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.006": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -126.84225463867188,
+                    -861.444580078125
+                ],
+                "name": "Join Strings.006",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Join Strings.007": {
+                "bl_idname": "GeometryNodeStringJoin",
+                "location": [
+                    -126.84225463867188,
+                    -1161.444580078125
+                ],
+                "name": "Join Strings.007",
+                "width": 182.57550048828125,
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "default_value": ": ",
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Warning.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.004": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    -201.44461059570312
+                ],
+                "name": "Warning.004",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.005": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    -501.4446105957031
+                ],
+                "name": "Warning.005",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.006": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    -801.444580078125
+                ],
+                "name": "Warning.006",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            6
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Warning.007": {
+                "bl_idname": "GeometryNodeWarning",
+                "location": [
+                    173.15774536132812,
+                    -1081.444580078125
+                ],
+                "name": "Warning.007",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "default_value": true,
+                        "index": 0
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            7
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.007": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -106.84225463867188,
+                    -121.44461059570312
+                ],
+                "name": "Boolean Math.007",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.004"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.008": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -106.84225463867188,
+                    -421.4446105957031
+                ],
+                "name": "Boolean Math.008",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.005"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.009": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -106.84225463867188,
+                    -701.444580078125
+                ],
+                "name": "Boolean Math.009",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.006"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Boolean Math.010": {
+                "bl_idname": "FunctionNodeBooleanMath",
+                "location": [
+                    -106.84225463867188,
+                    -1001.444580078125
+                ],
+                "name": "Boolean Math.010",
+                "operation": "NOT",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Warning.007"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Error",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Module Name",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Group Name",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 1",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 1",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 2",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 2",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 3",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 3",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 4",
+                "hide_value": true,
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 4",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 5",
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 5",
+                "hide_value": true,
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 6",
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 6",
+                "hide_value": true,
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 7",
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 7",
+                "hide_value": true,
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Expected Condition 8",
+                "socket_type": "NodeSocketBool",
+                "default_value": true,
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            },
+            {
+                "name": "Message 8",
+                "hide_value": true,
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

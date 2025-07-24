@@ -1,0 +1,105 @@
+{
+    "name": "Wall has Door",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": "Wall has Door",
+        "uuid": "8a77451d-dae6-4832-8215-d718cce99144",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    296.7393493652344,
+                    30.002002716064453
+                ],
+                "name": "Group Output"
+            },
+            "Integer": {
+                "bl_idname": "FunctionNodeInputInt",
+                "location": [
+                    -233.3196563720703,
+                    87.74822235107422
+                ],
+                "name": "Integer",
+                "integer": 4,
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketInt",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    64.30978393554688,
+                    3.8195462226867676
+                ],
+                "name": "Group",
+                "node_tree": "6af1d85e-f401-4746-a609-4f63b4d2e121",
+                "inputs": [
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 5.0,
+                        "index": 0
+                    },
+                    {
+                        "bl_idname": "NodeSocketFloat",
+                        "default_value": 0.5,
+                        "index": 1
+                    }
+                ],
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "Group.001": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -127.7294692993164,
+                    -121.56977081298828
+                ],
+                "name": "Group.001",
+                "node_tree": "a99f2a7b-f5e1-4946-a9af-ff67c479d0bc",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketFloatDistance",
+                        "default_value": 3.0,
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Wall has Door",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

@@ -1,0 +1,194 @@
+{
+    "name": "Basic Road Attribute Names",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "color_tag": "INPUT",
+        "name": "Basic Road Attribute Names",
+        "uuid": "c6aaa8ec-f2dc-41c9-9d6d-0512bcd10851",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    278.74285888671875,
+                    139.88571166992188
+                ],
+                "name": "Group Output"
+            },
+            "String": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -51.257144927978516,
+                    239.88571166992188
+                ],
+                "name": "String",
+                "string": "Number Of Lanes",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.001": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -51.257144927978516,
+                    139.88571166992188
+                ],
+                "name": "String.001",
+                "string": "Has Bike Lane",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            1
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.002": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -45.257144927978516,
+                    -84.1142807006836
+                ],
+                "name": "String.002",
+                "string": "Has Sidewalk",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            3
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.003": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -45.257144927978516,
+                    35.88571548461914
+                ],
+                "name": "String.003",
+                "string": "Has Parking Lots",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            2
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.005": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -42.85714340209961,
+                    -185.71429443359375
+                ],
+                "name": "String.005",
+                "width": 180.0,
+                "string": "Has Central Reservation",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            4
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            },
+            "String.006": {
+                "bl_idname": "FunctionNodeInputString",
+                "location": [
+                    -42.85714340209961,
+                    -285.71429443359375
+                ],
+                "name": "String.006",
+                "width": 180.0,
+                "string": "Is One-Way",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketString",
+                        "to_socket_index": [
+                            5
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Number Of Lanes",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Has Bike Lane",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Has Parking Lots",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Has Sidewalk",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Has Central Reservation",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            },
+            {
+                "name": "Is One-Way",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketString",
+                "subtype": "NONE",
+                "bl_idname": "NodeTreeInterfaceSocketString"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}

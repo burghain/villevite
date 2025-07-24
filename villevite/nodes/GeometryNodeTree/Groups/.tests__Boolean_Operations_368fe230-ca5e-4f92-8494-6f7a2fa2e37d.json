@@ -1,0 +1,50 @@
+{
+    "name": ".tests: Boolean Operations",
+    "tree": {
+        "bl_idname": "GeometryNodeTree",
+        "name": ".tests: Boolean Operations",
+        "uuid": "368fe230-ca5e-4f92-8494-6f7a2fa2e37d",
+        "nodes": {
+            "Group Output": {
+                "bl_idname": "NodeGroupOutput",
+                "location": [
+                    95.0,
+                    0.0
+                ],
+                "name": "Group Output"
+            },
+            "Group.011": {
+                "bl_idname": "GeometryNodeGroup",
+                "location": [
+                    -95.0,
+                    0.0
+                ],
+                "name": "Group.011",
+                "node_tree": "a0d0a527-c666-4612-a132-f323646c0bec",
+                "outputs": [
+                    {
+                        "bl_idname": "NodeSocketBool",
+                        "to_socket_index": [
+                            0
+                        ],
+                        "to_node": [
+                            "Group Output"
+                        ],
+                        "index": 0
+                    }
+                ]
+            }
+        },
+        "interface_items": [
+            {
+                "name": "Error",
+                "in_out": "OUTPUT",
+                "socket_type": "NodeSocketBool",
+                "bl_idname": "NodeTreeInterfaceSocketBool"
+            }
+        ]
+    },
+    "blender_version": "4.5.0",
+    "tree_type": "GeometryNodeTree",
+    "category": "Groups"
+}
