@@ -25,15 +25,18 @@ class EdgePropertyWriter(BasicPropertyWriter):
 class NumberOfLanesWriter(EdgePropertyWriter):
 
     def process_prop(self, row):
-        if 'lanes' in row:
-            if row['lanes'] != None:
-               self.prop = int(row['lanes'])
-               return
+        try:
+            self.prop = int(row['lanes'])
+            return
+        except (KeyError, TypeError):
+            pass
 
-            if 'width' in row:
-                if row['width'] != None:
-                    self.prop = max(math.floor(float(row['width']) / 5), 1)
-                    return
+        try:
+            self.prop = max(math.floor(float(row['width']) / 5), 1)
+            return
+        except (KeyError, TypeError):
+            pass
+                    
 
 class HasParkingLotsWriter(EdgePropertyWriter):
 
@@ -45,13 +48,18 @@ class HasParkingLotsWriter(EdgePropertyWriter):
 class HasBikeLaneWriter(EdgePropertyWriter):
 
     def process_prop(self, row):
-        self.prop = row['cycleway'] != None
+        try:
+            self.prop = row['cycleway'] != None
+        except KeyError:
+            pass
 
 class HasSidewalkWriter(EdgePropertyWriter):
 
     def process_prop(self, row):
-        if row['sidewalk'] != None:
+        try:
             self.prop = row['sidewalk'] in ['both', 'separate']
+        except KeyError:
+            pass
 
 class StreetIDWriter(EdgePropertyWriter):
 

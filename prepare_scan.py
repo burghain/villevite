@@ -25,7 +25,7 @@ def reset_blender(dir, portable_dir):
 
 if __name__ == '__main__':
     with open('scan_config.json') as f:
-        BYPASS_GEN = True
+        BYPASS_GEN = False
 
         d = json.load(f)
 
@@ -43,7 +43,10 @@ if __name__ == '__main__':
 
         vlidar_zip = d['vlidar_zip']
 
-        osm_coords = d['osm_coords']
+        env_coords = os.environ.get('OSM_COORDS')
+        if env_coords:
+            osm_coords = env_coords
+        else: osm_coords = d['osm_coords']
 
         generate_script = d['generate_script']
         scan_script = d['scan_script']
@@ -54,9 +57,9 @@ if __name__ == '__main__':
 
         blend_savefile = f'{os.getcwd()}/city.blend'
 
-        if not BYPASS_GEN:
-            build()
+        print(f'Generate city model from coordinates {osm_coords}')
 
+        if not BYPASS_GEN:
             # install villevite into blender 4.5
             subprocess.run(
                 [
