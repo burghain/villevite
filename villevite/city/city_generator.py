@@ -64,7 +64,7 @@ class CityGenerator:
         self.city = self.retrieve_map()
 
         print(f"Adding City Generator geometry node group to {self.city.name}...")
-        self.city = nodes.add_to_object(self.city, "City Generator", self.parameters)
+        self.city = nodes.add_to_object(self.city, "GeoCity", self.parameters)
         self.city.name = self.CITY_NAME
 
         return self.city
