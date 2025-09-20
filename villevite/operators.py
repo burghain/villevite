@@ -111,9 +111,8 @@ class OperatorSurprise(bpy.types.Operator):
         Returns:
             set[str]: A set containing the execution status.
         """
-
-        curve = bpy.data.objects["Curve"]
-        print(dir(curve.data))
+        import cProfile
+        cProfile.run("import bpy; bpy.ops.villevite.generate_city()")
         return {"FINISHED"}
 class OperatorClearAll(bpy.types.Operator):
     """
