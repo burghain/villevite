@@ -5,12 +5,12 @@ from .fixtures import import_assets
 
 
 def test_assets_import_all(import_assets):
-    assert "City Generator" in bpy.data.node_groups
+    assert "GeoCity" in bpy.data.node_groups
 
 
 def test_assets_import_all_twice(import_assets):
-    duplicate_existed_before = "City Generator.001" in bpy.data.node_groups
+    duplicate_existed_before = "GeoCity.001" in bpy.data.node_groups
     assets.import_assets_and_nodes()
-    assert "City Generator" in bpy.data.node_groups
+    assert "GeoCity" in bpy.data.node_groups
     assert duplicate_existed_before == (
-        "City Generator.001" in bpy.data.node_groups)
+        "GeoCity.001" in bpy.data.node_groups)
