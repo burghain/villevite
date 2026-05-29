@@ -12,5 +12,4 @@ def test_assets_import_all_twice(import_assets):
     duplicate_existed_before = "GeoCity.001" in bpy.data.node_groups
     assets.import_assets_and_nodes()
     assert "GeoCity" in bpy.data.node_groups
-    assert duplicate_existed_before == (
-        "GeoCity.001" in bpy.data.node_groups)
+    assert duplicate_existed_before == ("GeoCity.001" in bpy.data.node_groups)
