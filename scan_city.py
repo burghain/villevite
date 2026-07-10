@@ -25,7 +25,8 @@ MAT_LIST = [
     "Street/Vehicle",
     "Vegetation/Tree-Branches",
     "Vegetation/Tree-Leaves",
-    "Vegetation/Tree-Stem"
+    "Vegetation/Tree-Stem",
+    "Street/Curbstone"
 ]
 
 argv = sys.argv
