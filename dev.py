@@ -27,7 +27,7 @@ def build() -> None:
     source_dir = f"./{ADDON_NAME}"
     filename = ADDON_NAME
 
-    version = "4.5.9"
+    version = "5.2.0"
     print(f"Building addon: Using blender version {version} to build")
     setup_blender("./blender", version)
     subprocess.run(
@@ -135,7 +135,7 @@ def test() -> None:
     """
     Runs tests for the addon across specified Blender versions.
     """
-    blender_versions = ["4.5.9"]
+    blender_versions = ["5.2.0"]
     blender_path = "./blender"
     for version in blender_versions:
 
