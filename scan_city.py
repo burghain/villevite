@@ -76,20 +76,27 @@ print("add scanner")
 # configure vlidar
 bpy.ops.pcscanner.add_scanner()
 
-new_collections = ['Instances', 'Assets', 'City Generator', 'Scan Paths']
-
+# append the generated city scene and link its content into the active scene
 with bpy.data.libraries.load(argv[0]) as (data_from, data_to):
-    data_to.collections = new_collections
+    data_to.scenes = ["Scene"]
 
-for c_name in new_collections:
-    bpy.context.scene.collection.children.link(c_name)
+city_scene = data_to.scenes[0]
+for collection in city_scene.collection.children:
+    bpy.context.scene.collection.children.link(collection)
+for obj in city_scene.collection.objects:
+    bpy.context.scene.collection.objects.link(obj)
+bpy.data.scenes.remove(city_scene)
 
 # assign material ids
 print("assign ids")
 
 for material in bpy.data.materials:
-    if material.name in MAT_LIST:
-        material.vLiDAR_material_id = MAT_LIST.index(material.name)
+    # Blender suffixes duplicated datablocks with ".001"; map them to the base material id
+    base_name = material.name
+    if base_name not in MAT_LIST and "." in base_name:
+        base_name = base_name.rsplit(".", 1)[0]
+    if base_name in MAT_LIST:
+        material.vLiDAR_material_id = MAT_LIST.index(base_name)
     else:
         material.vLiDAR_material_id = len(MAT_LIST)
 
