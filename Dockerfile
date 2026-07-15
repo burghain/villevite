@@ -1,6 +1,9 @@
 # escape=\
 
-FROM simonsose25/blender-scancam:4.4.0-alpha
+# The base image provides the scanning Blender (4.4 + vLiDAR toolchain).
+# The generation Blender (5.2.0) is downloaded by `dev.py build` inside the image.
+ARG BASE_IMAGE=simonsose25/blender-scancam:4.4.0-alpha
+FROM ${BASE_IMAGE}
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /home/ubuntu
