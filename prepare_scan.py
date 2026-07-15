@@ -7,14 +7,21 @@ import shutil
 """
 Build and scan city model to a point cloud
 
-Expects a json named 'scan_params.json' with needed configuration.
+Expects a json named 'scan_config.json' with needed configuration.
 
-blender_dir.. path to the blender folder
-bpy_executable.. Path to Blender's python executable
+blender_scancam_dir.. path to the scanning Blender folder
+bpy_scancam_executable.. Path to the scanning Blender's python executable
+blender_gen_dir.. path to the Blender folder used for city generation
 vlidar_zip.. path to the zip containing the vlidar addon
-pc_save_file.. path to where the point cloud should be saved
-osm_coords.. string with the coordinates of the map excerpt to use; format: 'minlon,minlat,maxlon,maxlat'
-blender_script.. path of the python file to be executed within blender
+pc_save_folder.. path to where the point clouds should be saved
+road_graph_blend.. optional path to a .blend with a user-prepared road graph
+                   (empty = generate from the bundled Default Road Graph)
+road_graph_object.. optional name of the road graph object in that file
+generate_script.. path of the generation python file to be executed within blender
+scan_script.. path of the scanning python file to be executed within blender
+
+The environment variables ROAD_GRAPH_BLEND and ROAD_GRAPH_OBJECT override the
+corresponding config values.
 """
 
 
@@ -38,18 +45,15 @@ if __name__ == "__main__":
         bpy_sc_executable = d["bpy_scancam_executable"]
 
         if not BYPASS_GEN:
-            blender_45_dir = d["blender_45_dir"]
-            blender_45_portable_dir = blender_45_dir + "/portable"
-            blender_45_executable = blender_45_dir + "/blender"
-            reset_blender(blender_45_dir, blender_45_portable_dir)
+            blender_gen_dir = d["blender_gen_dir"]
+            blender_gen_portable_dir = blender_gen_dir + "/portable"
+            blender_gen_executable = blender_gen_dir + "/blender"
+            reset_blender(blender_gen_dir, blender_gen_portable_dir)
 
         vlidar_zip = d["vlidar_zip"]
 
-        env_coords = os.environ.get("OSM_COORDS")
-        if env_coords:
-            osm_coords = env_coords
-        else:
-            osm_coords = d["osm_coords"]
+        road_graph_blend = os.environ.get("ROAD_GRAPH_BLEND") or d.get("road_graph_blend") or None
+        road_graph_object = os.environ.get("ROAD_GRAPH_OBJECT") or d.get("road_graph_object") or None
 
         generate_script = d["generate_script"]
         scan_script = d["scan_script"]
@@ -60,13 +64,14 @@ if __name__ == "__main__":
 
         blend_savefile = f"{os.getcwd()}/city.blend"
 
-        print(f"Generate city model from coordinates {osm_coords}")
+        graph_source = road_graph_blend if road_graph_blend else "Default Road Graph"
+        print(f"Generate city model from {graph_source}")
 
         if not BYPASS_GEN:
-            # install villevite into blender 4.5
+            # install villevite into the generation blender
             subprocess.run(
                 [
-                    blender_45_executable,
+                    blender_gen_executable,
                     "--command",
                     "extension",
                     "install-file",
@@ -77,18 +82,20 @@ if __name__ == "__main__":
                 ]
             )
 
-            # run villevite in blender 45
-            subprocess.run(
-                [
-                    blender_45_executable,
-                    "-b",
-                    "--python",
-                    generate_script,
-                    "--",
-                    blend_savefile,
-                    osm_coords,
-                ]
-            )
+            # run villevite in the generation blender
+            generate_cmd = [
+                blender_gen_executable,
+                "-b",
+                "--python",
+                generate_script,
+                "--",
+                blend_savefile,
+            ]
+            if road_graph_blend:
+                generate_cmd.append(road_graph_blend)
+                if road_graph_object:
+                    generate_cmd.append(road_graph_object)
+            subprocess.run(generate_cmd)
 
         # install vlidar deps into blender sc
         subprocess.run(

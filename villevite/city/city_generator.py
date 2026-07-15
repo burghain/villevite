@@ -4,79 +4,65 @@ from typing import Dict, List, Tuple, Optional
 
 
 from .. import nodes, assets
-from ..osm.osm_generator import OSMGenerator
 
 
 class CityGenerator:
     """
-    A class to generate a city using Blender and OpenStreetMap (OSM) data.
+    A class to generate a city from a manually built road graph.
 
-    Attributes:
-        source (str): The data source for the city generation.
-        source_file (str): The file path to the source data if using OSM-Attributes.
-        parameters (Dict[str, Any]): A dictionary of parameters for city generation.
+    The road graph is a wire mesh (vertices and edges) that the GeoCity
+    geometry node group consumes as its input geometry. All generation
+    parameters live on the GeoCity modifier itself.
     """
     SCAN_PATH_NAME: str = "Scan Path"
     SCAN_PATH_COLLECTION_NAME: str = "Scan Paths"
     CITY_NAME: str = "City"
+    GEO_CITY_GROUP: str = "GeoCity"
 
-    def __init__(self, properties: bpy.types.PropertyGroup) -> None:
+    def __init__(self, road_graph: bpy.types.Object) -> None:
         """
-        Initialize the CityGenerator with the given properties.
+        Initialize the CityGenerator with the road graph object to build from.
         """
-        self._set_parameters(properties)
-        self.coordinates = properties.coordinates
+        self.road_graph = road_graph
         assets.import_assets_and_nodes()
 
-    def _set_parameters(self, parameters: bpy.types.PropertyGroup) -> None:
-        """
-        Set the city generation parameters from the cityProperties Group.
-        """
-        self.parameters = {
-            "Roadway Vehicle Density": parameters.roadway_vehicle_density,
-            "Parking Lot Vehicle Density": parameters.parking_lot_vehicle_density,
-            "Preview": False,
-            "Seed": 0,
-        }
+    def _has_geocity_modifier(self, obj: bpy.types.Object) -> bool:
+        return any(
+            modifier.type == 'NODES'
+            and modifier.node_group is not None
+            and modifier.node_group.name == self.GEO_CITY_GROUP
+            for modifier in obj.modifiers
+        )
 
-    def _retrieve_map(self) -> Optional[bpy.types.Object]:
+    def generate(self) -> bpy.types.Object:
         """
-        Retrieve the city map .
+        Attach the GeoCity modifier to the road graph in place (idempotent).
 
         Returns:
-            Optional[bpy.types.Object]: The generated city map object or None if unsuccessful.
+            bpy.types.Object: The road graph object carrying the GeoCity modifier.
         """
-
-        print(f"Retrieving OSM data with coordinates: {self.coordinates}")
-
-        city_map = OSMGenerator(stringcoords=self.coordinates).generate()
-
-        return city_map
-
-    def generate(self) -> Optional[bpy.types.Object]:
-        """
-        Generate the city using the specified parameters.
-
-        Returns:
-            Optional[bpy.types.Object]: The generated city object or None if unsuccessful.
-        """
-        self.city = self._retrieve_map()
-
-        print(f"Adding City Generator geometry node group to {self.city.name}...")
-        self.city = nodes.add_to_object(self.city, "GeoCity", self.parameters)
-        self.city.name = self.CITY_NAME
-
+        self.city = self.road_graph
+        if not self._has_geocity_modifier(self.city):
+            print(f"Adding City Generator geometry node group to {self.city.name}...")
+            nodes.add_to_object(self.city, self.GEO_CITY_GROUP, {})
         return self.city
 
     def generate_for_scanning(self) -> Optional[Dict[str, bpy.types.Collection]]:
         """
         Generate the city and convert it to scanning objects.
 
+        The bake runs on a copy of the road graph so the user's manually
+        built graph survives the conversion.
+
         Returns:
             Dict[str, bpy.types.Collection]: Dictionary of created collections or None if conversion failed.
         """
-        # Generate the city
-        self.city = self.generate()
+        city = self.road_graph.copy()
+        city.name = self.CITY_NAME
+        bpy.context.scene.collection.objects.link(city)
+        self.city = city
+        if not self._has_geocity_modifier(city):
+            nodes.add_to_object(city, self.GEO_CITY_GROUP, {})
 
         # Convert the city to scanning objects
         result = self._convert_to_scanning_objects()

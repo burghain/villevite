@@ -15,14 +15,11 @@ import bpy
 
 from . import operators
 from . import ui
-from . import properties
 
 classes = [
     ui.VIEW3D_PT_SidePanel,
     operators.OperatorGenerateCity,
-    operators.OperatorReadOSM,
-    operators.OperatorSurprise,
-    properties.CityProperties,
+    operators.OperatorLoadDefaultRoadGraph,
     operators.OperatorClearAll,
 ]
 
@@ -34,14 +31,10 @@ def register() -> None:
     for cls in classes:
         bpy.utils.register_class(cls)
 
-    bpy.types.Scene.cityproperties = bpy.props.PointerProperty(
-        type=properties.CityProperties)
-
 
 def unregister() -> None:
     """
     Unregister the add-on classes and properties.
     """
-    del bpy.types.Scene.cityproperties
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)

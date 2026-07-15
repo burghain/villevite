@@ -1,10 +1,11 @@
 {
     "blender_scancam_dir": "/home/ubuntu/blender",
     "bpy_scancam_executable": "/home/ubuntu/blender/4.4/python/bin/python3.11",
-    "blender_45_dir": "/home/ubuntu/villevite/blender/blender-4.5.0",
+    "blender_gen_dir": "/home/ubuntu/villevite/blender/blender-5.2.0",
     "vlidar_zip": "/home/ubuntu/villevite/pointCloudRender-bachelorThesis.zip",
     "pc_save_folder": "/home/ubuntu/output/",
-    "osm_coords": "13.03154,52.39333,13.04747,52.39899",
+    "road_graph_blend": "",
+    "road_graph_object": "Road Graph",
     "generate_script": "/home/ubuntu/villevite/generate_city.py",
     "scan_script": "/home/ubuntu/villevite/scan_city.py"
 }
