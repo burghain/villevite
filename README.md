@@ -13,8 +13,8 @@ Villevite is a Blender add-on designed to procedurally generate cities for train
 
 ### Prerequisites
 
-- **Blender**: The add-on has been tested with Blender versions 4.3.2 and 4.4.0.
-- **Python**: Python 3.9 or later is required for development.
+- **Blender**: The add-on requires Blender 5.2.0 (bundled Python 3.13).
+- **Python**: Python 3.13 is recommended for development.
 
 ### Setting Up the Development Environment
 
@@ -54,11 +54,45 @@ Villevite includes a test suite to ensure the functionality of its components. T
 
 ## Usage
 
+The city is generated from a **road graph**: a plain wire mesh (vertices and edges, no
+faces) that you build manually. All road attributes (lanes, sidewalks, bike lanes, …) and
+building floor plans are generated automatically by the GeoCity geometry node group.
+
 1. Open Blender and navigate to the 3D Viewport.
-2. Access the Villevite panel from the side toolbar under the "Villevite" tab.
-3. Use the provided operators to generate city elements:
-   - **Generate City**: Creates a procedural city layout.
-   - **Generate Street Mesh**: Generates street meshes based on OSM data.
+2. Access the Villevite panel from the side toolbar under the "villevite" tab.
+3. Use the provided operators:
+   - **Load Default Road Graph**: Appends the starter road graph from the bundled
+     Nodes.blend. Edit it in Edit Mode (or build your own wire mesh from scratch).
+     Note: linked graphs (e.g. "Example Road Graph" from Templates.blend) must be made
+     local before they can be used.
+   - **Generate City**: Attaches the GeoCity modifier to the active (or first valid
+     selected) road graph object — if none is selected, the Default Road Graph is loaded
+     automatically. All generation parameters (seed, probabilities, densities, …) are
+     edited directly on the modifier.
+   - **Prepare for Scanning**: Bakes the city to real objects and extracts the scan paths
+     (runs on a copy, so your road graph is preserved).
+   - **Clear All**: Resets the scene.
+
+### Headless generation
+
+With the extension installed into Blender:
+
+```bash
+blender -b --python generate_city.py -- <output.blend> [<graph.blend> [<object_name>]]
+```
+
+Without a graph file, the city is generated from the bundled Default Road Graph. With a
+graph file, the object named `<object_name>` (default: "Road Graph") is used, falling back
+to the file's active object. `prepare_scan.py` reads the same options from
+`scan_config.json` (`road_graph_blend`, `road_graph_object`) or the environment variables
+`ROAD_GRAPH_BLEND` / `ROAD_GRAPH_OBJECT`, e.g. for Docker:
+
+```bash
+docker run -e ROAD_GRAPH_BLEND=/data/graph.blend -v <host_graphs>:/data ...
+```
+
+Note: the Docker base image still provides the Blender 4.4 scanning toolchain (vLiDAR);
+only city generation runs on Blender 5.2.0.
 
 ## Architecture
 
