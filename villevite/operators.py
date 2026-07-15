@@ -1,13 +1,14 @@
 """
 This module defines various operators for the Villevite Blender add-on.
 
-Operators include functionality for generating cities, reading OSM data, clearing all objects, and adjusting the clipping distance in the 3D viewport.
+Operators include functionality for loading the default road graph, generating
+cities, clearing all objects, and adjusting the clipping distance in the 3D viewport.
 """
 
 import bpy
-from .osm.osm_generator import OSMGenerator
 from .city.city_generator import CityGenerator
 from . import assets
+from . import road_graph
 
 
 def clear_all() -> None:
@@ -26,6 +27,8 @@ def increase_clipping_distance() -> None:
     """
     Increase the clipping distance for the 3D viewport in the current workspace. Neccessary to view large cities.
     """
+    if bpy.context.screen is None:  # background mode has no viewport
+        return
     for area in bpy.context.screen.areas:
         if area.type == 'VIEW_3D':
             for space in area.spaces:
@@ -36,11 +39,20 @@ def increase_clipping_distance() -> None:
 
 class OperatorGenerateCity(bpy.types.Operator):
     """
-    Blender Operator to generate a city with the given parameters.
+    Blender Operator to generate a city from a road graph.
+
+    Uses the active (or first valid selected) road graph object; if none is
+    found, the Default Road Graph is loaded from Nodes.blend and used instead.
     """
     bl_idname: str = "villevite.generate_city"
     bl_label: str = "Generate City"
     bl_options: set = {"REGISTER", "UNDO"}
+
+    for_scanning: bpy.props.BoolProperty(
+        name="Prepare for Scanning",
+        description="Bake the city to real objects and extract scan paths",
+        default=False,
+    )
 
     @classmethod
     def poll(cls, context: bpy.types.Context) -> bool:
@@ -53,8 +65,25 @@ class OperatorGenerateCity(bpy.types.Operator):
         """
         Execute the operator to generate a city.
         """
-        parameters = context.scene.cityproperties
-        citygen = CityGenerator(parameters)
+        graph = road_graph.find_road_graph(context)
+        if graph is None:
+            try:
+                graph = road_graph.ensure_default_road_graph(context)
+            except (ValueError, OSError) as error:
+                self.report({'ERROR'}, str(error))
+                return {'CANCELLED'}
+            self.report({'INFO'}, f"No road graph selected, using '{graph.name}'")
+
+        citygen = CityGenerator(graph)
+
+        if not self.for_scanning:
+            citygen.generate()
+            self.report(
+                {'INFO'},
+                f"GeoCity modifier attached to '{graph.name}'. Edit parameters on the modifier.",
+            )
+            return {"FINISHED"}
+
         result = citygen.generate_for_scanning()
 
         if not result:
@@ -70,50 +99,39 @@ class OperatorGenerateCity(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class OperatorReadOSM(bpy.types.Operator):
+class OperatorLoadDefaultRoadGraph(bpy.types.Operator):
     """
-    Operator to generate street meshes from OSM data.
-
-    Attributes:
-        bl_idname (str): Unique identifier for the operator.
-        bl_label (str): Display name for the operator.
-        bl_options (set): Options for the operator, such as undo support.
+    Operator to append the Default Road Graph from Nodes.blend and make it active.
     """
-    bl_idname: str = "villevite.generate_street_mesh"
-    bl_label: str = "Generate Street Mesh"
+    bl_idname: str = "villevite.load_default_road_graph"
+    bl_label: str = "Load Default Road Graph"
     bl_options: set = {"REGISTER", "UNDO"}
+
+    @classmethod
+    def poll(cls, context: bpy.types.Context) -> bool:
+        """
+        Should only be executable in object mode.
+        """
+        return context.mode == "OBJECT"
 
     def execute(self, context: bpy.types.Context) -> set[str]:
         """
-        Execute the operator to generate street meshes from OSM data.
+        Execute the operator to load the Default Road Graph.
         """
-        parameters = context.scene.cityproperties
+        try:
+            obj = road_graph.ensure_default_road_graph(context)
+        except (ValueError, OSError) as error:
+            self.report({'ERROR'}, str(error))
+            return {'CANCELLED'}
 
-        OSMGenerator(stringcoords=parameters.coordinates).generate()
+        for other in context.selected_objects:
+            other.select_set(False)
+        obj.select_set(True)
+        context.view_layer.objects.active = obj
+        self.report({'INFO'}, f"'{obj.name}' is active")
         return {"FINISHED"}
 
 
-class OperatorSurprise(bpy.types.Operator):
-    """
-    Operator to execute a surprise action, which converts a city to real objects for scanning.
-    """
-    bl_idname: str = "villevite.surprise"
-    bl_label: str = "Surprise me!"
-    bl_options: set = {"REGISTER", "UNDO"}
-
-    def execute(self, context: bpy.types.Context) -> set[str]:
-        """
-        Execute the operator to perform a surprise action.
-
-        Args:
-            context(bpy.types.Context): The current Blender context.
-
-        Returns:
-            set[str]: A set containing the execution status.
-        """
-        import cProfile
-        cProfile.run("import bpy; bpy.ops.villevite.generate_city()")
-        return {"FINISHED"}
 class OperatorClearAll(bpy.types.Operator):
     """
     Operator to clear all objects, node groups, and collections from the scene.

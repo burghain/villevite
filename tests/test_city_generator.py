@@ -1,7 +1,8 @@
 import bpy
 
 def test_city_collections_exist():
-    bpy.ops.villevite.generate_city()
+    bpy.ops.villevite.clear_all()
+    bpy.ops.villevite.generate_city(for_scanning=True)
     scan_path_collection = bpy.data.collections.get("Scan Paths")
     assert scan_path_collection is not None, "Collection 'Scan Paths' should exist"
     #assert bpy.data.collections.get("Instances") is not None, "Collection 'Instances' should exist"

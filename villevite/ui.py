@@ -25,16 +25,11 @@ class VIEW3D_PT_SidePanel(bpy.types.Panel):
     bl_label = "villevite"
 
     def draw(self, context: bpy.types.Context) -> None:
-        parameters = context.scene.cityproperties
         layout = self.layout
 
-        box = layout.box()
-        row1 = box.row()
-        row2 = box.row()
-        row2.prop(parameters, "coordinates")
-
+        layout.operator("villevite.load_default_road_graph",
+                        text="Load Default Road Graph")
         layout.operator("villevite.generate_city", text="Generate City")
-        layout.operator("villevite.generate_street_mesh",
-                        text="Generate Street Mesh")
-        layout.operator("villevite.surprise", text="Surprise Me")
+        layout.operator("villevite.generate_city",
+                        text="Prepare for Scanning").for_scanning = True
         layout.operator("villevite.clear_all", text="Clear All")

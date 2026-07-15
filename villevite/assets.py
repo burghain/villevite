@@ -83,3 +83,27 @@ def import_nodes(path):
                 all_groups = data_to.node_groups
                 all_groups.extend(to_import)
                 data_to.node_groups = all_groups
+
+
+def load_object(object_name: str, blend_file: str = "Nodes.blend") -> bpy.types.Object:
+    """
+    Append a named object from a .blend file in the GeometryNodes directory.
+
+    Idempotent: if an object with that name already exists in the current file,
+    it is returned instead of appending a duplicate.
+
+    Raises:
+        ValueError: If the object is not present in the source .blend file.
+    """
+    existing = bpy.data.objects.get(object_name)
+    if existing is not None:
+        return existing
+    blend_path = os.path.join(nodes_path, blend_file)
+    with bpy.data.libraries.load(blend_path, link=False, assets_only=False) as (
+        data_from,
+        data_to,
+    ):
+        if object_name not in data_from.objects:
+            raise ValueError(f"Object '{object_name}' not found in {blend_path}")
+        data_to.objects = [object_name]
+    return data_to.objects[0]
