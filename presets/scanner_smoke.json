@@ -1,0 +1,47 @@
+{
+  "_comment": [
+    "Small scan for smoke tests: verifies the label plumbing (materials and objects -> class",
+    "ids -> .las) on a stock Blender, without the patched build. It uses the panorama camera,",
+    "which ignores the scan pattern and samples equirectangularly, so the geometry of the cloud",
+    "is wrong for training -- use scanner_mobile_mapping.json for real data.",
+    "",
+    "The CPU backend is not an option here: it builds a BVH per object and cannot read",
+    "",
+    "compute_device is NONE (Cycles on the CPU) on purpose: a Blender built with",
+    "WITH_CYCLES_CUDA_BINARIES=OFF compiles its CUDA kernels at runtime with nvcc, which",
+    "refuses host compilers newer than GCC 15. Build with CUDA binaries on for real runs."
+  ],
+  "backend": "GPUScanningBackend",
+  "camera_type": "PanoramaGPUCamera",
+  "writer": "LASSampleWriter",
+  "compute_device": "NONE",
+  "scanner_type": "mobile_mapping_scanner",
+  "samples_per_second": 40000,
+  "angular_velocity_deg_per_s": 72000.0,
+  "velocity_kmh": 30.0,
+  "rotation_deg": [
+    60.0,
+    0.0,
+    -30.0
+  ],
+  "outputs": {
+    "normals": true,
+    "class_ids": true,
+    "object_ids": true,
+    "material_ids": true,
+    "rgb": false
+  },
+  "noise": {
+    "enabled": false,
+    "measurement_mean": 0.0,
+    "measurement_standard_deviation": 0.01,
+    "position_standard_deviation": 0.0,
+    "view_standard_deviation": 0.0
+  },
+  "beam_divergence": {
+    "enabled": false,
+    "divergence": 0.0005,
+    "accuracy": 2,
+    "max_echoes": 2
+  }
+}

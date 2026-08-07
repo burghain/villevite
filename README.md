@@ -115,3 +115,21 @@ only city generation runs on Blender 5.2.0.
 
 - The vehicles were selected from the CADillac dataset and can be used under the Creative Commons Public License Version 4.0.
 - "Cyclist - racing position - free 3d printable" (https://skfb.ly/6TM97) by Andy Woodhead is licensed under Creative Commons Attribution
+
+
+
+## Future Work
+### Potential Additions to the City Generator
+- Street Furniture Sidewalk:
+  - Bollards, Railings
+  - Electrical Boxes
+  - Parked Motocycles, Bikes, E-Scooter
+  - Bicycle Racks
+  - Advertisement Boards
+  - Restaurants, chairs & tables
+  - Construction sites on strett/ sidewalk
+  -  Mailboxes
+  -  Parking Metres
+  -  Trash cans (on poles, standalone)
+  -  Pedestrians
+-

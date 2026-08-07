@@ -1,0 +1,39 @@
+{
+  "_comment": [
+    "Inputs of the GeoCity geometry node group. Every key is the socket name as it appears on",
+    "the modifier; unknown keys are reported and ignored, so a preset stays readable when the",
+    "node group gains or loses a socket. The values below are the node group's own defaults,",
+    "spelled out so that a generated city is reproducible from its preset alone.",
+    "",
+    "'Seed' is what makes two cities from the same road graph differ; vary it, not the graph,",
+    "to get independent scenes."
+  ],
+
+  "Seed": 0,
+
+  "Min Number Of Lanes": 1,
+  "Max Number Of Lanes": 5,
+  "Parking Lot Probabity": 0.5,
+  "Sidewalk Parking Probability": 0.5,
+  "Bike Lane Probability": 0.5,
+  "Median Strip Probability": 0.3,
+  "Sidewalk Has Streetlight Probability": 0.4,
+
+  "Generate Scan Paths": true,
+  "Scan Path Segment Length": 200.0,
+
+  "Enable Buildings": true,
+  "Enable Fences": false,
+  "Fence Probability": 0.5,
+  "Lot Vegetation Density": 0.2,
+
+  "Roadway Vehicle Density": 0.2,
+  "Parking Lot Vehicle Density": 0.7,
+  "Cyclist Density": 0.3,
+
+  "Roadside Tree Density": 0.9,
+  "Tree Stump Probability": 0.5,
+
+  "Enable Street Surfaces": true,
+  "Enable Lot Surfaces": true
+}

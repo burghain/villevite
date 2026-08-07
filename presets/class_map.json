@@ -1,0 +1,79 @@
+{
+  "_comment": [
+    "Maps villevite's own names onto class paths of the class definition passed to",
+    "scan_city.py (--classes). A class path is 'BaseClass' or 'BaseClass:Subclass', spelled",
+    "exactly as in that file.",
+    "",
+    "Materials villevite owns are already named after their class, so the 'materials' list is",
+    "normally empty -- it exists for materials that come from the Assets library and cannot be",
+    "renamed (several of them share one class, and Blender datablock names are unique).",
+    "",
+    "Object rules are fnmatch patterns, tried in order, against the object name with Blender's",
+    "'.001' suffix removed. They classify geometry whose materials carry no class of their own.",
+    "A material class always wins over the object class, so an object listed here can still",
+    "contribute several classes."
+  ],
+  "objects": [
+    [
+      "Curbs",
+      "Ground:Curbstone"
+    ],
+    [
+      "Sidewalk Surfaces",
+      "Ground:Sidewalk"
+    ],
+    [
+      "Road Surfaces",
+      "Street"
+    ],
+    [
+      "Gutter",
+      "Street"
+    ],
+    [
+      "Lot Surfaces",
+      "Ground"
+    ],
+    [
+      "Road Markings",
+      "Street:RoadMarking"
+    ],
+    [
+      "Buildings",
+      "Building:HouseWall"
+    ],
+    [
+      "Traffic Light*",
+      "Other:TrafficLight"
+    ],
+    [
+      "Streetlight*",
+      "Other:Lantern"
+    ],
+    [
+      "Tree*",
+      "HighVegetation:Tree"
+    ],
+    [
+      "Vehicle*",
+      "Vehicle:Car"
+    ],
+    [
+      "Cyclist*",
+      "Other:Person"
+    ],
+    [
+      "*Bush*",
+      "Vegetation:Bush"
+    ],
+    [
+      "*Floor Wall",
+      "Building:HouseWall"
+    ],
+    [
+      "nettle_plant*",
+      "Vegetation:Bush"
+    ]
+  ],
+  "materials": []
+}

@@ -24,6 +24,7 @@ class CityGenerator:
         Initialize the CityGenerator with the road graph object to build from.
         """
         self.road_graph = road_graph
+        self.city_matrix = None
         assets.import_assets_and_nodes()
 
     def _has_geocity_modifier(self, obj: bpy.types.Object) -> bool:
@@ -125,6 +126,11 @@ class CityGenerator:
             new_collections = [coll for coll in bpy.data.collections if coll.name not in pre_collections]
 
             print(f"Generated {len(new_objects)} new objects and {len(new_collections)} new collections")
+            # The realized objects come out in the city's local space and are placed by the
+            # instancing empties that carry its transform. The scan paths are taken out of that
+            # instancing structure, so they need the transform applied directly -- remember it
+            # before the city object goes away.
+            self.city_matrix = self.city.matrix_world.copy()
             self._safe_remove_city_object()
 
             return new_objects, new_collections
@@ -181,9 +187,25 @@ class CityGenerator:
 
         print(f"Processing {len(scan_path_objects)} scan path objects...")
         self._batch_convert_scan_paths(scan_path_objects)
+        self._place_scan_paths(scan_path_objects)
 
         print(f"Found and organized {len(scan_path_collection.objects)} scan path objects")
         return scan_path_collection
+
+    def _place_scan_paths(self, scan_path_objects: List[bpy.types.Object]) -> None:
+        """
+        Move the scan paths into the same world space as the generated city.
+
+        Every other part of the city is placed by an instancing empty carrying the road graph's
+        transform. The scan paths are used directly by the scanner instead of being instanced,
+        so unless the transform is applied here they stay in the graph's local space -- and a
+        graph that is not at the origin leaves the scanner driving next to its own city.
+        """
+        if self.city_matrix is None:
+            return
+
+        for obj in scan_path_objects:
+            obj.matrix_world = self.city_matrix @ obj.matrix_world
 
     def _batch_convert_scan_paths(self, scan_path_objects: List[bpy.types.Object]) -> None:
         if not scan_path_objects:

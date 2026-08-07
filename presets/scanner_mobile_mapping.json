@@ -1,0 +1,40 @@
+{
+  "_comment": [
+    "vLiDAR settings for a vehicle-mounted mobile-mapping scan. These are the sim-to-real",
+    "knobs (sampling density, speed, noise, beam divergence): treat them as controlled",
+    "variables of an experiment, not as incidental defaults."
+  ],
+  "backend": "GPUScanningBackend",
+  "camera_type": "ScannerGPUCamera",
+  "writer": "LASSampleWriter",
+  "compute_device": "CUDA",
+  "scanner_type": "mobile_mapping_scanner",
+  "samples_per_second": 500000,
+  "angular_velocity_deg_per_s": 72000.0,
+  "velocity_kmh": 30.0,
+  "rotation_deg": [
+    60.0,
+    0.0,
+    -30.0
+  ],
+  "outputs": {
+    "normals": true,
+    "class_ids": true,
+    "object_ids": true,
+    "material_ids": true,
+    "rgb": false
+  },
+  "noise": {
+    "enabled": false,
+    "measurement_mean": 0.0,
+    "measurement_standard_deviation": 0.01,
+    "position_standard_deviation": 0.0,
+    "view_standard_deviation": 0.0
+  },
+  "beam_divergence": {
+    "enabled": false,
+    "divergence": 0.0005,
+    "accuracy": 2,
+    "max_echoes": 2
+  }
+}
